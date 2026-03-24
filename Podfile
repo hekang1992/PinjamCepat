@@ -17,6 +17,5 @@ target 'PinjamCepat' do
   pod 'Alamofire'
   pod 'IQKeyboardManagerSwift'
   pod 'TYAlertController'
-  pod 'DeviceKit'
   
 end

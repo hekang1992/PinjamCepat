@@ -15,9 +15,10 @@ final class NetworkMonitor {
     typealias StatusHandler = (NetworkReachabilityManager.NetworkReachabilityStatus) -> Void
 
     var statusChanged: StatusHandler?
+    
+    private var isListening = false
 
     private let reachabilityManager: NetworkReachabilityManager?
-    private var isListening = false
 
     private init() {
         self.reachabilityManager = NetworkReachabilityManager()
@@ -26,7 +27,7 @@ final class NetworkMonitor {
     func startListening() {
         guard !isListening else { return }
         isListening = true
-
+        
         reachabilityManager?.startListening(onUpdatePerforming: { [weak self] status in
             self?.handleStatusChange(status)
         })

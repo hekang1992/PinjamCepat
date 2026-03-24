@@ -21,6 +21,14 @@
 		73ED699A2F7253440096AE72 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED69992F7253440096AE72 /* BaseView.swift */; };
 		73ED699C2F72543C0096AE72 /* AppLaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED699B2F72543C0096AE72 /* AppLaunchViewController.swift */; };
 		73ED699E2F7257DB0096AE72 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED699D2F7257DB0096AE72 /* NetworkMonitor.swift */; };
+		73ED69A02F7258850096AE72 /* AppNetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED699F2F7258850096AE72 /* AppNetworkConfig.swift */; };
+		73ED69A22F725A180096AE72 /* NetworkEnvManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED69A12F725A180096AE72 /* NetworkEnvManager.swift */; };
+		73ED69A42F725B240096AE72 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED69A32F725B210096AE72 /* BaseModel.swift */; };
+		73ED69A62F725B310096AE72 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED69A52F725B310096AE72 /* NetworkManager.swift */; };
+		73ED69AB2F72628C0096AE72 /* LaunchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED69AA2F7262860096AE72 /* LaunchViewModel.swift */; };
+		73ED69AD2F7262940096AE72 /* LaunchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED69AC2F7262900096AE72 /* LaunchService.swift */; };
+		73ED69AF2F7263490096AE72 /* LoadingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED69AE2F7263490096AE72 /* LoadingManager.swift */; };
+		73ED69B12F7263E30096AE72 /* ToastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED69B02F7263E30096AE72 /* ToastManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +50,14 @@
 		73ED69992F7253440096AE72 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		73ED699B2F72543C0096AE72 /* AppLaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLaunchViewController.swift; sourceTree = "<group>"; };
 		73ED699D2F7257DB0096AE72 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		73ED699F2F7258850096AE72 /* AppNetworkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNetworkConfig.swift; sourceTree = "<group>"; };
+		73ED69A12F725A180096AE72 /* NetworkEnvManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEnvManager.swift; sourceTree = "<group>"; };
+		73ED69A32F725B210096AE72 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
+		73ED69A52F725B310096AE72 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		73ED69AA2F7262860096AE72 /* LaunchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewModel.swift; sourceTree = "<group>"; };
+		73ED69AC2F7262900096AE72 /* LaunchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchService.swift; sourceTree = "<group>"; };
+		73ED69AE2F7263490096AE72 /* LoadingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingManager.swift; sourceTree = "<group>"; };
+		73ED69B02F7263E30096AE72 /* ToastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastManager.swift; sourceTree = "<group>"; };
 		8507CCC6FC7E826F28BBF96D /* Pods-PinjamCepat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinjamCepat.release.xcconfig"; path = "Target Support Files/Pods-PinjamCepat/Pods-PinjamCepat.release.xcconfig"; sourceTree = "<group>"; };
 		87BDF22A1C2C4A94D8E3E4E4 /* Pods-PinjamCepat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinjamCepat.debug.xcconfig"; path = "Target Support Files/Pods-PinjamCepat/Pods-PinjamCepat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,11 +126,9 @@
 		73ED697F2F7229960096AE72 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				73ED69992F7253440096AE72 /* BaseView.swift */,
-				73ED69802F7229A90096AE72 /* BaseViewController.swift */,
-				73ED69822F7229C00096AE72 /* BaseTabBarController.swift */,
-				73ED69842F7229CF0096AE72 /* BaseNavigationController.swift */,
-				73ED699B2F72543C0096AE72 /* AppLaunchViewController.swift */,
+				73ED69A92F7260A60096AE72 /* View */,
+				73ED69A82F72609F0096AE72 /* ViewModel */,
+				73ED69A72F7260930096AE72 /* Controller */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -122,6 +136,9 @@
 		73ED698B2F7252D20096AE72 /* Http */ = {
 			isa = PBXGroup;
 			children = (
+				73ED69AE2F7263490096AE72 /* LoadingManager.swift */,
+				73ED69A52F725B310096AE72 /* NetworkManager.swift */,
+				73ED69A32F725B210096AE72 /* BaseModel.swift */,
 				73ED699D2F7257DB0096AE72 /* NetworkMonitor.swift */,
 			);
 			path = Http;
@@ -175,8 +192,39 @@
 		73ED69922F7252D80096AE72 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				73ED69B02F7263E30096AE72 /* ToastManager.swift */,
+				73ED69A12F725A180096AE72 /* NetworkEnvManager.swift */,
+				73ED699F2F7258850096AE72 /* AppNetworkConfig.swift */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		73ED69A72F7260930096AE72 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				73ED69802F7229A90096AE72 /* BaseViewController.swift */,
+				73ED69822F7229C00096AE72 /* BaseTabBarController.swift */,
+				73ED69842F7229CF0096AE72 /* BaseNavigationController.swift */,
+				73ED699B2F72543C0096AE72 /* AppLaunchViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		73ED69A82F72609F0096AE72 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				73ED69AC2F7262900096AE72 /* LaunchService.swift */,
+				73ED69AA2F7262860096AE72 /* LaunchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		73ED69A92F7260A60096AE72 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				73ED69992F7253440096AE72 /* BaseView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		9C0F5ECBDD47281BF2CB704C /* Frameworks */ = {
@@ -308,14 +356,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73ED69AF2F7263490096AE72 /* LoadingManager.swift in Sources */,
 				73ED69942F72530F0096AE72 /* HomeViewController.swift in Sources */,
 				73ED69852F7229CF0096AE72 /* BaseNavigationController.swift in Sources */,
 				7315F83E2F7220FC00C6DE2E /* AppDelegate.swift in Sources */,
+				73ED69A42F725B240096AE72 /* BaseModel.swift in Sources */,
 				73ED699C2F72543C0096AE72 /* AppLaunchViewController.swift in Sources */,
 				73ED69982F7253200096AE72 /* CenterViewController.swift in Sources */,
 				73ED69812F7229A90096AE72 /* BaseViewController.swift in Sources */,
 				73ED69832F7229C00096AE72 /* BaseTabBarController.swift in Sources */,
 				73ED699E2F7257DB0096AE72 /* NetworkMonitor.swift in Sources */,
+				73ED69A22F725A180096AE72 /* NetworkEnvManager.swift in Sources */,
+				73ED69AD2F7262940096AE72 /* LaunchService.swift in Sources */,
+				73ED69AB2F72628C0096AE72 /* LaunchViewModel.swift in Sources */,
+				73ED69A62F725B310096AE72 /* NetworkManager.swift in Sources */,
+				73ED69A02F7258850096AE72 /* AppNetworkConfig.swift in Sources */,
+				73ED69B12F7263E30096AE72 /* ToastManager.swift in Sources */,
 				73ED69962F7253170096AE72 /* OrderViewController.swift in Sources */,
 				73ED699A2F7253440096AE72 /* BaseView.swift in Sources */,
 			);
