@@ -6,24 +6,86 @@
 //
 
 import UIKit
+import SnapKit
+import RxSwift
+import RxCocoa
+import Combine
+import MJRefresh
 
 class CenterViewController: BaseViewController {
-
+    
+    private var viewModel = CenterViewModel()
+    
+    lazy var bgImageView: UIImageView = {
+        let bgImageView = UIImageView()
+        bgImageView.image = UIImage(named: "app_bg_image")
+        return bgImageView
+    }()
+    
+    lazy var centerView: CenterView = {
+        let centerView = CenterView()
+        return centerView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        view.addSubview(bgImageView)
+        bgImageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        view.addSubview(centerView)
+        centerView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        self.centerView.scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
+            guard let self else { return }
+            self.centerInfo()
+        })
+        
+        bindViewModel()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        centerInfo()
     }
-    */
+    
+}
 
+extension CenterViewController {
+    
+    private func bindViewModel() {
+        
+        viewModel.$model
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .sink { [weak self] model in
+                guard let self else { return }
+                let portent = model.portent ?? ""
+                if portent == "0" {
+                    let modelArray = model.gloves?.preached ?? []
+                    self.centerView.modelArray = modelArray
+                }
+                self.centerView.scrollView.mj_header?.endRefreshing()
+            }
+            .store(in: &cancellables)
+        
+        viewModel.$errorMsg
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .sink { [weak self] _ in
+                guard let self else { return }
+                self.centerView.scrollView.mj_header?.endRefreshing()
+            }
+            .store(in: &cancellables)
+        
+    }
+    
+    private func centerInfo() {
+        let parameters = ["ugly": "1"]
+        viewModel.centerInfo(parameters: parameters)
+    }
+    
 }

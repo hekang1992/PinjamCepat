@@ -16,9 +16,9 @@ class DeviceParamsManager {
         params["rouse"] = getDeviceModel()
         params["begin"] = getIDFV()
         params["neighbourhood"] = getOSVersion()
-        params["able"] = "sessionId"
+        params["able"] = LoginManager.shared.getToken() ?? ""
         params["doubted"] = getIDFA()
-        params["handle"] = "1"
+        params["handle"] = LanguageManager.shared.getCurrentLanguageCode()
         return params
     }
     

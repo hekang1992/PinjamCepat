@@ -49,9 +49,6 @@ PODS:
   - RxCocoa (6.9.0):
     - RxRelay (= 6.9.0)
     - RxSwift (= 6.9.0)
-  - RxGesture (4.0.4):
-    - RxCocoa (~> 6.0)
-    - RxSwift (~> 6.0)
   - RxRelay (6.9.0):
     - RxSwift (= 6.9.0)
   - RxSwift (6.9.0)
@@ -66,7 +63,6 @@ DEPENDENCIES:
   - Kingfisher
   - MJRefresh
   - RxCocoa
-  - RxGesture
   - RxSwift
   - SnapKit
   - Toast-Swift
@@ -89,7 +85,6 @@ SPEC REPOS:
     - Kingfisher
     - MJRefresh
     - RxCocoa
-    - RxGesture
     - RxRelay
     - RxSwift
     - SnapKit
@@ -112,13 +107,12 @@ SPEC CHECKSUMS:
   Kingfisher: 23d18f54677d973b713e54ce6a8f5eef6e7056ba
   MJRefresh: ff9e531227924c84ce459338414550a05d2aea78
   RxCocoa: ac16414696ae706516be3e1ab00fcce5bdc9be8a
-  RxGesture: f3efb47ed2d26a8082f7b660d4a59970e275a7f8
   RxRelay: 6b0c930e5cef57d5fe2032571e5e65b78e3cbdb1
   RxSwift: 31649ace6aceeb422e16ff71c60804f9c3281ed9
   SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
   Toast-Swift: 7a03a532afe3a560d4044bc7c237e2864d295173
   TYAlertController: c121090edb0bea7426f987da94cdddd81eef4231
 
-PODFILE CHECKSUM: f7b25264a2101f8db25568edd019053dc165a9a3
+PODFILE CHECKSUM: 19f5417d045c39f8048da207cc0c6434e6d5d721
 
 COCOAPODS: 1.16.2

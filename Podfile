@@ -11,7 +11,6 @@ target 'PinjamCepat' do
   pod 'Toast-Swift'
   pod 'FBSDKCoreKit'
   pod 'RxSwift'
-  pod 'RxGesture'
   pod 'RxCocoa'
   pod 'Kingfisher'
   pod 'Alamofire'

