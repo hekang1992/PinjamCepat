@@ -22,24 +22,24 @@ class BaseTabBarController: UITabBarController {
         let homeNav = BaseNavigationController(rootViewController: homeVC)
         homeNav.tabBarItem = UITabBarItem(
             title: nil,
-            image: UIImage(named: "en_home_tab_nor_image")?.withRenderingMode(.alwaysOriginal),
-            selectedImage: UIImage(named: "en_home_tab_sel_image")?.withRenderingMode(.alwaysOriginal)
+            image: UIImage(named: "en_home_tab_nor_image".localized)?.withRenderingMode(.alwaysOriginal),
+            selectedImage: UIImage(named: "en_home_tab_sel_image".localized)?.withRenderingMode(.alwaysOriginal)
         )
         
         let orderVC = OrderViewController()
         let orderNav = BaseNavigationController(rootViewController: orderVC)
         orderNav.tabBarItem = UITabBarItem(
             title: nil,
-            image: UIImage(named: "en_order_tab_nor_image")?.withRenderingMode(.alwaysOriginal),
-            selectedImage: UIImage(named: "en_order_tab_sel_image")?.withRenderingMode(.alwaysOriginal)
+            image: UIImage(named: "en_order_tab_nor_image".localized)?.withRenderingMode(.alwaysOriginal),
+            selectedImage: UIImage(named: "en_order_tab_sel_image".localized)?.withRenderingMode(.alwaysOriginal)
         )
         
         let centerVC = CenterViewController()
         let centerNav = BaseNavigationController(rootViewController: centerVC)
         centerNav.tabBarItem = UITabBarItem(
             title: nil,
-            image: UIImage(named: "en_center_tab_nor_image")?.withRenderingMode(.alwaysOriginal),
-            selectedImage: UIImage(named: "en_center_tab_sel_image")?.withRenderingMode(.alwaysOriginal)
+            image: UIImage(named: "en_center_tab_nor_image".localized)?.withRenderingMode(.alwaysOriginal),
+            selectedImage: UIImage(named: "en_center_tab_sel_image".localized)?.withRenderingMode(.alwaysOriginal)
         )
         
         viewControllers = [homeNav, orderNav, centerNav]

@@ -20,16 +20,24 @@ final class LoadingManager {
             guard self.containerView == nil else { return }
             guard let window = Self.getKeyWindow() else { return }
             
+            let grayView = UIView()
+            grayView.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+            
             let container = UIView()
-            container.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+            container.backgroundColor = UIColor.black.withAlphaComponent(0.8)
             container.layer.cornerRadius = 12
             
             let indicator = UIActivityIndicatorView(style: .large)
             indicator.color = .white
             indicator.startAnimating()
             
+            window.addSubview(grayView)
+            grayView.addSubview(container)
             container.addSubview(indicator)
-            window.addSubview(container)
+            
+            grayView.snp.makeConstraints { make in
+                make.edges.equalToSuperview()
+            }
             
             container.snp.makeConstraints { make in
                 make.center.equalToSuperview()
@@ -40,7 +48,7 @@ final class LoadingManager {
                 make.center.equalToSuperview()
             }
             
-            self.containerView = container
+            self.containerView = grayView
         }
     }
     

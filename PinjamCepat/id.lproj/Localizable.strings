@@ -6,9 +6,9 @@
   
 */
 
-"ind_home_tab_nor_image" = "ind_home_tab_nor_image";
-"ind_home_tab_sel_image" = "ind_home_tab_sel_image";
-"ind_order_tab_nor_image" = "ind_order_tab_nor_image";
-"ind_order_tab_sel_image" = "ind_order_tab_sel_image";
-"ind_center_tab_nor_image" = "ind_center_tab_nor_image";
-"ind_center_tab_sel_image" = "ind_center_tab_sel_image";
+"en_home_tab_nor_image" = "ind_home_tab_nor_image";
+"en_home_tab_sel_image" = "ind_home_tab_sel_image";
+"en_order_tab_nor_image" = "ind_order_tab_nor_image";
+"en_order_tab_sel_image" = "ind_order_tab_sel_image";
+"en_center_tab_nor_image" = "ind_center_tab_nor_image";
+"en_center_tab_sel_image" = "ind_center_tab_sel_image";

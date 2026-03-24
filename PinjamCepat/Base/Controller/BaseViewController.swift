@@ -8,15 +8,36 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Combine
 
 class BaseViewController: UIViewController {
     
     var disposeBag = DisposeBag()
     
+    var cancellables = Set<AnyCancellable>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .white
+    }
+    
+}
+
+extension BaseViewController {
+    
+    func switchRootVc() {
+        guard let window = UIApplication.shared.connectedScenes
+            .compactMap({ $0 as? UIWindowScene })
+            .first?
+            .windows
+            .first(where: { $0.isKeyWindow }) else { return }
+        
+        let tabBarController = BaseTabBarController()
+        
+        UIView.transition(with: window, duration: 0.25, options: .transitionCrossDissolve) {
+            window.rootViewController = tabBarController
+        }
     }
     
 }

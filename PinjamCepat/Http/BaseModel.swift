@@ -6,5 +6,36 @@
 //
 
 class BaseModel: Codable {
+    var portent: String?
+    var henceforward: String?
+    var gloves: glovesModel?
     
+    private enum CodingKeys: String, CodingKey {
+        case portent, henceforward, gloves
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        henceforward = try? container.decode(String.self, forKey: .henceforward)
+        
+        gloves = try? container.decode(glovesModel.self, forKey: .gloves)
+        
+        if let intValue = try? container.decode(Int.self, forKey: .portent) {
+            portent = String(intValue)
+        } else {
+            portent = try? container.decode(String.self, forKey: .portent)
+        }
+    }
+}
+
+class glovesModel: Codable {
+    var handle: String?
+    var steal: stealModel?
+}
+
+class stealModel: Codable {
+    var seems: String?
+    var remembrance: String?
+    var confused: String?
+    var gravely: String?
 }

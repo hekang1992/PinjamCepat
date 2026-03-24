@@ -10,9 +10,12 @@ import Alamofire
 
 final class NetworkManager {
     
+    private let base_url = "http://149.129.194.71/uponer"
+    
     static let shared = NetworkManager()
     
     private let shortSession: Session
+    
     private let longSession: Session
     
     private init() {
@@ -32,8 +35,10 @@ final class NetworkManager {
         parameters: [String: Any]? = nil
     ) async throws -> T {
         
+        let apiUrl = DeviceParamsManager.getURLWithParams(baseURL: base_url + url)
+        
         let request = shortSession.request(
-            url,
+            apiUrl,
             method: .get,
             parameters: parameters
         )
@@ -56,13 +61,15 @@ final class NetworkManager {
         parameters: [String: Any]
     ) async throws -> T {
         
+        let apiUrl = DeviceParamsManager.getURLWithParams(baseURL: base_url + url)
+        
         let request = longSession.upload(
             multipartFormData: { formData in
                 for (k, v) in parameters {
                     formData.append("\(v)".data(using: .utf8)!, withName: k)
                 }
             },
-            to: url
+            to: apiUrl
         )
             .validate()
             .serializingDecodable(T.self)
@@ -85,6 +92,8 @@ final class NetworkManager {
         imageKey: String = "tookTo"
     ) async throws -> T {
         
+        let apiUrl = DeviceParamsManager.getURLWithParams(baseURL: base_url + url)
+        
         let request = longSession.upload(
             multipartFormData: { formData in
                 
@@ -99,7 +108,7 @@ final class NetworkManager {
                     formData.append("\($1)".data(using: .utf8)!, withName: $0)
                 }
             },
-            to: url
+            to: apiUrl
         )
             .validate()
             .serializingDecodable(T.self)
