@@ -18,7 +18,8 @@ class DeviceParamsManager {
         params["neighbourhood"] = getOSVersion()
         params["able"] = LoginManager.shared.getToken() ?? ""
         params["doubted"] = getIDFA()
-        params["handle"] = LanguageManager.shared.getCurrentLanguageCode()
+//        params["handle"] = LanguageManager.shared.getCurrentLanguageCode()
+        params["handle"] = "1"
         return params
     }
     

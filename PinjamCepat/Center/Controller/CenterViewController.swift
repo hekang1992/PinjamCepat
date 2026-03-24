@@ -16,12 +16,6 @@ class CenterViewController: BaseViewController {
     
     private var viewModel = CenterViewModel()
     
-    lazy var bgImageView: UIImageView = {
-        let bgImageView = UIImageView()
-        bgImageView.image = UIImage(named: "app_bg_image")
-        return bgImageView
-    }()
-    
     lazy var centerView: CenterView = {
         let centerView = CenterView()
         return centerView
@@ -29,10 +23,6 @@ class CenterViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(bgImageView)
-        bgImageView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
         
         view.addSubview(centerView)
         centerView.snp.makeConstraints { make in
@@ -43,6 +33,12 @@ class CenterViewController: BaseViewController {
             guard let self else { return }
             self.centerInfo()
         })
+        
+        self.centerView.listTapBlock = { [weak self] model in
+            guard let self = self else { return }
+            let pageUrl = model.ugly ?? ""
+            self.goH5WebVc(pageUrl: pageUrl)
+        }
         
         bindViewModel()
     }

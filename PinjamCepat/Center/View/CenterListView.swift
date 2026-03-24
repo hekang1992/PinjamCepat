@@ -8,8 +8,12 @@
 import UIKit
 import Kingfisher
 import SnapKit
+import RxSwift
+import RxCocoa
 
 class CenterListView: BaseView {
+    
+    var listTapBlock: (() -> Void)?
     
     var model: preachedModel? {
         didSet {
@@ -54,13 +58,19 @@ class CenterListView: BaseView {
         arrowImageView.contentMode = .scaleAspectFit
         return arrowImageView
     }()
-
+    
+    lazy var tapBtn: UIButton = {
+        let tapBtn = UIButton(type: .custom)
+        return tapBtn
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(bgView)
         bgView.addSubview(logoImageView)
         bgView.addSubview(oneLabel)
         bgView.addSubview(arrowImageView)
+        addSubview(tapBtn)
         
         bgView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -83,6 +93,20 @@ class CenterListView: BaseView {
             make.width.height.equalTo(24)
             make.centerY.equalToSuperview()
         }
+        
+        tapBtn.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        tapBtn
+            .rx
+            .tap
+            .throttle(.microseconds(200), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] in
+                guard let self else { return }
+                self.listTapBlock?()
+            })
+            .disposed(by: disposeBag)
     }
     
     @MainActor required init?(coder: NSCoder) {

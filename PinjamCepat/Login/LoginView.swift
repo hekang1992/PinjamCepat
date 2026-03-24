@@ -20,12 +20,6 @@ class LoginView: BaseView {
     
     var policyBlock: (() -> Void)?
     
-    lazy var bgImageView: UIImageView = {
-        let bgImageView = UIImageView()
-        bgImageView.image = UIImage(named: "app_bg_image")
-        return bgImageView
-    }()
-    
     lazy var backBtn: UIButton = {
         let backBtn = UIButton(type: .custom)
         backBtn.adjustsImageWhenHighlighted = false
@@ -138,7 +132,6 @@ class LoginView: BaseView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(bgImageView)
         addSubview(backBtn)
         addSubview(descImageView)
         addSubview(oneLabel)
@@ -155,10 +148,6 @@ class LoginView: BaseView {
         addSubview(loginBtn)
         addSubview(sureBtn)
         addSubview(policyBtn)
-        
-        bgImageView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
         
         backBtn.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide).offset(14)

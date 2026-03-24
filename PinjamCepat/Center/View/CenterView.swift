@@ -20,6 +20,8 @@ class CenterView: UIView {
         }
     }
     
+    var listTapBlock: ((preachedModel) -> Void)?
+    
     lazy var listContainerView: UIView = {
         let listContainerView = UIView()
         listContainerView.backgroundColor = .clear
@@ -173,6 +175,10 @@ class CenterView: UIView {
     private func createListItemView(with model: preachedModel, index: Int) -> UIView {
         let itemView = CenterListView()
         itemView.model = model
+        itemView.listTapBlock = { [weak self] in
+            guard let self else { return }
+            self.listTapBlock?(model)
+        }
         return itemView
     }
     

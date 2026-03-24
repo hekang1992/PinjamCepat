@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import Combine
+import SnapKit
 
 class BaseViewController: UIViewController {
     
@@ -16,10 +17,22 @@ class BaseViewController: UIViewController {
     
     var cancellables = Set<AnyCancellable>()
     
+    lazy var headView: AppHeadView = {
+        let headView = AppHeadView(frame: .zero)
+        return headView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .white
+        
+        let bgImageView = UIImageView()
+        bgImageView.image = UIImage(named: "app_bg_image")
+        view.addSubview(bgImageView)
+        bgImageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
     
 }
@@ -44,6 +57,12 @@ extension BaseViewController {
         let loginVc = BaseNavigationController(rootViewController: LoginViewController())
         loginVc.modalPresentationStyle = .overFullScreen
         self.present(loginVc, animated: true)
+    }
+    
+    func goH5WebVc(pageUrl: String) {
+        let webVc = H5WebViewController()
+        webVc.pageUrl = pageUrl
+        self.navigationController?.pushViewController(webVc, animated: true)
     }
     
 }
