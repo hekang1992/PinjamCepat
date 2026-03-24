@@ -14,6 +14,12 @@ class LoginView: BaseView {
     
     var backBlock: (() -> Void)?
     
+    var codeBlock: (() -> Void)?
+    
+    var loginBlock: (() -> Void)?
+    
+    var policyBlock: (() -> Void)?
+    
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
         bgImageView.image = UIImage(named: "app_bg_image")
@@ -104,6 +110,7 @@ class LoginView: BaseView {
         codeBtn.setTitleColor(.white, for: .normal)
         codeBtn.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         codeBtn.setBackgroundImage(UIImage(named: "code_btn_image"), for: .normal)
+        codeBtn.setBackgroundImage(UIImage(named: "code_disbtn_image"), for: .disabled)
         return codeBtn
     }()
     
@@ -265,6 +272,36 @@ class LoginView: BaseView {
             .bind(onNext: { [weak self] in
                 guard let self = self else { return }
                 self.sureBtn.isSelected.toggle()
+            })
+            .disposed(by: disposeBag)
+        
+        policyBtn
+            .rx
+            .tap
+            .throttle(.milliseconds(200), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.policyBlock?()
+            })
+            .disposed(by: disposeBag)
+        
+        codeBtn
+            .rx
+            .tap
+            .throttle(.milliseconds(200), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.codeBlock?()
+            })
+            .disposed(by: disposeBag)
+        
+        loginBtn
+            .rx
+            .tap
+            .throttle(.milliseconds(200), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.loginBlock?()
             })
             .disposed(by: disposeBag)
     }
