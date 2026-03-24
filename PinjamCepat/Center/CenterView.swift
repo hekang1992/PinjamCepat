@@ -148,7 +148,7 @@ class CenterView: UIView {
             
             itemView.snp.makeConstraints { make in
                 make.left.right.equalToSuperview().inset(12)
-                
+                make.height.equalTo(46)
                 if let previous = previousView {
                     make.top.equalTo(previous.snp.bottom).offset(12)
                 } else {
@@ -170,66 +170,9 @@ class CenterView: UIView {
         setupGradientBackground()
     }
     
-    // 创建单个列表项视图
     private func createListItemView(with model: preachedModel, index: Int) -> UIView {
-        let itemView = UIView()
-        itemView.backgroundColor = .white
-        itemView.layer.cornerRadius = 8
-        itemView.layer.masksToBounds = true
-        
-        // 添加阴影效果（可选）
-        itemView.layer.shadowColor = UIColor.black.cgColor
-        itemView.layer.shadowOpacity = 0.05
-        itemView.layer.shadowOffset = CGSize(width: 0, height: 2)
-        itemView.layer.shadowRadius = 4
-        itemView.layer.masksToBounds = false
-        
-        // 创建内容标签（您可以根据实际模型属性自定义）
-        let titleLabel = UILabel()
-        titleLabel.text = model.vowed ?? "标题" // 假设 preachedModel 有 title 属性
-        titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        titleLabel.textColor = .black
-        
-        let detailLabel = UILabel()
-        detailLabel.text = model.vowed ?? "详情" // 假设 preachedModel 有 detail 属性
-        detailLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        detailLabel.textColor = .gray
-        detailLabel.numberOfLines = 0
-        
-        // 添加序号标签（可选）
-        let indexLabel = UILabel()
-        indexLabel.text = "\(index + 1)"
-        indexLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
-        indexLabel.textColor = .white
-        indexLabel.backgroundColor = UIColor(red: 0.2, green: 0.5, blue: 0.9, alpha: 1)
-        indexLabel.textAlignment = .center
-        indexLabel.layer.cornerRadius = 15
-        indexLabel.layer.masksToBounds = true
-        
-        itemView.addSubview(indexLabel)
-        itemView.addSubview(titleLabel)
-        itemView.addSubview(detailLabel)
-        
-        // 布局约束
-        indexLabel.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(12)
-            make.top.equalToSuperview().offset(12)
-            make.width.height.equalTo(30)
-        }
-        
-        titleLabel.snp.makeConstraints { make in
-            make.left.equalTo(indexLabel.snp.right).offset(12)
-            make.top.equalToSuperview().offset(12)
-            make.right.equalToSuperview().offset(-12)
-        }
-        
-        detailLabel.snp.makeConstraints { make in
-            make.left.equalTo(indexLabel.snp.right).offset(12)
-            make.top.equalTo(titleLabel.snp.bottom).offset(4)
-            make.right.equalToSuperview().offset(-12)
-            make.bottom.equalToSuperview().offset(-12)
-        }
-        
+        let itemView = CenterListView()
+        itemView.model = model
         return itemView
     }
     
