@@ -6,5 +6,17 @@ target 'PinjamCepat' do
   use_frameworks!
 
   # Pods for PinjamCepat
-
+  pod 'SnapKit'
+  pod 'MJRefresh'
+  pod 'Toast-Swift'
+  pod 'FBSDKCoreKit'
+  pod 'RxSwift'
+  pod 'RxGesture'
+  pod 'RxCocoa'
+  pod 'Kingfisher'
+  pod 'Alamofire'
+  pod 'IQKeyboardManagerSwift'
+  pod 'TYAlertController'
+  pod 'DeviceKit'
+  
 end

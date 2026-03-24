@@ -11,6 +11,16 @@
 		7315F83E2F7220FC00C6DE2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7315F8342F7220FC00C6DE2E /* AppDelegate.swift */; };
 		7315F8412F7220FC00C6DE2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7315F8352F7220FC00C6DE2E /* Assets.xcassets */; };
 		7315F8432F7220FC00C6DE2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7315F8382F7220FC00C6DE2E /* LaunchScreen.storyboard */; };
+		73ED69812F7229A90096AE72 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED69802F7229A90096AE72 /* BaseViewController.swift */; };
+		73ED69832F7229C00096AE72 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED69822F7229C00096AE72 /* BaseTabBarController.swift */; };
+		73ED69852F7229CF0096AE72 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED69842F7229CF0096AE72 /* BaseNavigationController.swift */; };
+		73ED69892F722A570096AE72 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 73ED69872F722A570096AE72 /* Localizable.strings */; };
+		73ED69942F72530F0096AE72 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED69932F72530F0096AE72 /* HomeViewController.swift */; };
+		73ED69962F7253170096AE72 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED69952F7253170096AE72 /* OrderViewController.swift */; };
+		73ED69982F7253200096AE72 /* CenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED69972F7253200096AE72 /* CenterViewController.swift */; };
+		73ED699A2F7253440096AE72 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED69992F7253440096AE72 /* BaseView.swift */; };
+		73ED699C2F72543C0096AE72 /* AppLaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED699B2F72543C0096AE72 /* AppLaunchViewController.swift */; };
+		73ED699E2F7257DB0096AE72 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED699D2F7257DB0096AE72 /* NetworkMonitor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +31,17 @@
 		7315F8362F7220FC00C6DE2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7315F8372F7220FC00C6DE2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7315F8452F7221CD00C6DE2E /* PinjamCepat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PinjamCepat.entitlements; sourceTree = "<group>"; };
+		73ED69802F7229A90096AE72 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		73ED69822F7229C00096AE72 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
+		73ED69842F7229CF0096AE72 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		73ED69882F722A570096AE72 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		73ED698A2F722A690096AE72 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
+		73ED69932F72530F0096AE72 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		73ED69952F7253170096AE72 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
+		73ED69972F7253200096AE72 /* CenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterViewController.swift; sourceTree = "<group>"; };
+		73ED69992F7253440096AE72 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		73ED699B2F72543C0096AE72 /* AppLaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLaunchViewController.swift; sourceTree = "<group>"; };
+		73ED699D2F7257DB0096AE72 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		8507CCC6FC7E826F28BBF96D /* Pods-PinjamCepat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinjamCepat.release.xcconfig"; path = "Target Support Files/Pods-PinjamCepat/Pods-PinjamCepat.release.xcconfig"; sourceTree = "<group>"; };
 		87BDF22A1C2C4A94D8E3E4E4 /* Pods-PinjamCepat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinjamCepat.debug.xcconfig"; path = "Target Support Files/Pods-PinjamCepat/Pods-PinjamCepat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,11 +90,93 @@
 			children = (
 				7315F8362F7220FC00C6DE2E /* Info.plist */,
 				7315F8352F7220FC00C6DE2E /* Assets.xcassets */,
+				73ED69872F722A570096AE72 /* Localizable.strings */,
 				7315F8342F7220FC00C6DE2E /* AppDelegate.swift */,
 				7315F8452F7221CD00C6DE2E /* PinjamCepat.entitlements */,
 				7315F8382F7220FC00C6DE2E /* LaunchScreen.storyboard */,
+				73ED69922F7252D80096AE72 /* Other */,
+				73ED69912F7252D70096AE72 /* Product */,
+				73ED69902F7252D60096AE72 /* Auth */,
+				73ED698F2F7252D60096AE72 /* Center */,
+				73ED698E2F7252D50096AE72 /* Order */,
+				73ED698D2F7252D50096AE72 /* Home */,
+				73ED698C2F7252D40096AE72 /* Login */,
+				73ED698B2F7252D20096AE72 /* Http */,
+				73ED697F2F7229960096AE72 /* Base */,
 			);
 			path = PinjamCepat;
+			sourceTree = "<group>";
+		};
+		73ED697F2F7229960096AE72 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				73ED69992F7253440096AE72 /* BaseView.swift */,
+				73ED69802F7229A90096AE72 /* BaseViewController.swift */,
+				73ED69822F7229C00096AE72 /* BaseTabBarController.swift */,
+				73ED69842F7229CF0096AE72 /* BaseNavigationController.swift */,
+				73ED699B2F72543C0096AE72 /* AppLaunchViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		73ED698B2F7252D20096AE72 /* Http */ = {
+			isa = PBXGroup;
+			children = (
+				73ED699D2F7257DB0096AE72 /* NetworkMonitor.swift */,
+			);
+			path = Http;
+			sourceTree = "<group>";
+		};
+		73ED698C2F7252D40096AE72 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		73ED698D2F7252D50096AE72 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				73ED69932F72530F0096AE72 /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		73ED698E2F7252D50096AE72 /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				73ED69952F7253170096AE72 /* OrderViewController.swift */,
+			);
+			path = Order;
+			sourceTree = "<group>";
+		};
+		73ED698F2F7252D60096AE72 /* Center */ = {
+			isa = PBXGroup;
+			children = (
+				73ED69972F7253200096AE72 /* CenterViewController.swift */,
+			);
+			path = Center;
+			sourceTree = "<group>";
+		};
+		73ED69902F7252D60096AE72 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		73ED69912F7252D70096AE72 /* Product */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
+		73ED69922F7252D80096AE72 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 		9C0F5ECBDD47281BF2CB704C /* Frameworks */ = {
@@ -95,6 +198,7 @@
 				7315F8182F7220F400C6DE2E /* Sources */,
 				7315F8192F7220F400C6DE2E /* Frameworks */,
 				7315F81A2F7220F400C6DE2E /* Resources */,
+				A00DEADC157C1382C204605C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -126,6 +230,7 @@
 			knownRegions = (
 				en,
 				Base,
+				id,
 			);
 			mainGroup = 7315F8132F7220F400C6DE2E;
 			minimizedProjectReferenceProxies = 1;
@@ -145,6 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7315F8412F7220FC00C6DE2E /* Assets.xcassets in Resources */,
+				73ED69892F722A570096AE72 /* Localizable.strings in Resources */,
 				7315F8432F7220FC00C6DE2E /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -152,6 +258,27 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		A00DEADC157C1382C204605C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PinjamCepat/Pods-PinjamCepat-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PinjamCepat/Pods-PinjamCepat-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PinjamCepat/Pods-PinjamCepat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		EA9032987F5058CFDE56BDFA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -181,7 +308,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73ED69942F72530F0096AE72 /* HomeViewController.swift in Sources */,
+				73ED69852F7229CF0096AE72 /* BaseNavigationController.swift in Sources */,
 				7315F83E2F7220FC00C6DE2E /* AppDelegate.swift in Sources */,
+				73ED699C2F72543C0096AE72 /* AppLaunchViewController.swift in Sources */,
+				73ED69982F7253200096AE72 /* CenterViewController.swift in Sources */,
+				73ED69812F7229A90096AE72 /* BaseViewController.swift in Sources */,
+				73ED69832F7229C00096AE72 /* BaseTabBarController.swift in Sources */,
+				73ED699E2F7257DB0096AE72 /* NetworkMonitor.swift in Sources */,
+				73ED69962F7253170096AE72 /* OrderViewController.swift in Sources */,
+				73ED699A2F7253440096AE72 /* BaseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +330,15 @@
 				7315F8372F7220FC00C6DE2E /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		73ED69872F722A570096AE72 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				73ED69882F722A570096AE72 /* en */,
+				73ED698A2F722A690096AE72 /* id */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -284,6 +429,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -316,7 +462,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -347,6 +493,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -379,7 +526,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

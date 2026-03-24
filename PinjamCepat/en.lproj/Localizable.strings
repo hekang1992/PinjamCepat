@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  PinjamCepat
+
+  Created by hekang on 2026/3/24.
+  
+*/
+
+"en_home_tab_nor_image" = "en_home_tab_nor_image";
+"en_home_tab_sel_image" = "en_home_tab_sel_image";
+"en_order_tab_nor_image" = "en_order_tab_nor_image";
+"en_order_tab_sel_image" = "en_order_tab_sel_image";
+"en_center_tab_nor_image" = "en_center_tab_nor_image";
+"en_center_tab_sel_image" = "en_center_tab_sel_image";
