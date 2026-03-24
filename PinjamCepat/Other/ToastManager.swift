@@ -57,3 +57,30 @@ final class ToastManager {
             .first { $0.isKeyWindow }
     }
 }
+
+extension UIColor {
+    convenience init?(hexString: String, alpha: CGFloat = 1.0) {
+        var formattedString = hexString
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .uppercased()
+        
+        if formattedString.hasPrefix("#") {
+            formattedString = String(formattedString.dropFirst())
+        }
+        
+        guard formattedString.count == 6 else {
+            return nil
+        }
+        
+        var hexValue: UInt64 = 0
+        guard Scanner(string: formattedString).scanHexInt64(&hexValue) else {
+            return nil
+        }
+        
+        let r = CGFloat((hexValue & 0xFF0000) >> 16) / 255.0
+        let g = CGFloat((hexValue & 0x00FF00) >> 8) / 255.0
+        let b = CGFloat(hexValue & 0x0000FF) / 255.0
+        
+        self.init(red: r, green: g, blue: b, alpha: alpha)
+    }
+}

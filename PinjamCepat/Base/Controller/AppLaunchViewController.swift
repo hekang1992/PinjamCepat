@@ -8,11 +8,12 @@
 import UIKit
 import SnapKit
 import Alamofire
-import IQKeyboardManagerSwift
 import Combine
 import RxSwift
 import RxCocoa
 import FBSDKCoreKit
+import IQKeyboardManagerSwift
+import IQKeyboardToolbarManager
 
 class AppLaunchViewController: BaseViewController {
     
@@ -36,6 +37,7 @@ class AppLaunchViewController: BaseViewController {
         setupUI()
         setupNetworkMonitoring()
         IQKeyboardManager.shared.isEnabled = true
+        IQKeyboardToolbarManager.shared.isEnabled = true
         IQKeyboardManager.shared.resignOnTouchOutside = true
     }
     

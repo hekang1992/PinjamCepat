@@ -40,4 +40,10 @@ extension BaseViewController {
         }
     }
     
+    func toLoginVc() {
+        let loginVc = BaseNavigationController(rootViewController: LoginViewController())
+        loginVc.modalPresentationStyle = .overFullScreen
+        self.present(loginVc, animated: true)
+    }
+    
 }

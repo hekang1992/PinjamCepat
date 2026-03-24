@@ -55,7 +55,16 @@ class BaseTabBarController: UITabBarController {
 extension BaseTabBarController: UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        guard LoginManager.shared.isLoggedIn() else {
+            toLoginVc()
+            return false
+        }
         return true
     }
     
+    private func toLoginVc() {
+        let loginVc = BaseNavigationController(rootViewController: LoginViewController())
+        loginVc.modalPresentationStyle = .overFullScreen
+        self.present(loginVc, animated: true)
+    }
 }

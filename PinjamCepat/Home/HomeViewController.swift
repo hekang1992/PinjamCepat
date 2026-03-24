@@ -6,24 +6,38 @@
 //
 
 import UIKit
+import SnapKit
+import RxSwift
+import RxCocoa
 
 class HomeViewController: BaseViewController {
-
+    
+    lazy var tryBtn: UIButton = {
+        let tryBtn = UIButton(type: .custom)
+        tryBtn.setBackgroundImage(UIImage(named: "try_again_image"), for: .normal)
+        return tryBtn
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        view.addSubview(tryBtn)
+        
+        tryBtn.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.size.equalTo(CGSize(width: 219, height: 58))
+        }
+        
+        tryBtn
+            .rx
+            .tap
+            .throttle(.milliseconds(200), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.toLoginVc()
+            })
+            .disposed(by: disposeBag)
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

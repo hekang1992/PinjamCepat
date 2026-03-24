@@ -12,3 +12,13 @@
 "en_order_tab_sel_image" = "ind_order_tab_sel_image";
 "en_center_tab_nor_image" = "ind_center_tab_nor_image";
 "en_center_tab_sel_image" = "ind_center_tab_sel_image";
+
+"en_login_desc_image" = "ind_login_desc_image";
+"Phone number" = "Nomor telepon";
+"Enter phone number" = "Masukkan nomor telepon";
+"Verification code" = "Kode verifikasi";
+"Enter verification code" = "Masukkan kode verifikasi";
+"Get code" = "Kirim kode";
+"en_login_btn_image" = "ind_login_btn_image";
+"+91" = "+62";
+"en_pol_image" = "ind_pol_image";
