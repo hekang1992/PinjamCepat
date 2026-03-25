@@ -60,9 +60,13 @@ extension BaseViewController {
     }
     
     func goH5WebVc(pageUrl: String) {
-        let webVc = H5WebViewController()
-        webVc.pageUrl = pageUrl
-        self.navigationController?.pushViewController(webVc, animated: true)
+        if pageUrl.hasPrefix("ios://Pinj.amCe.pat") {
+            AppRouter.open(pageUrl, from: self)
+        }else {
+            let webVc = H5WebViewController()
+            webVc.pageUrl = pageUrl
+            self.navigationController?.pushViewController(webVc, animated: true)
+        }
     }
     
 }
