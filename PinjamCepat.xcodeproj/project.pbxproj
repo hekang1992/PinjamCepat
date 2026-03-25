@@ -235,6 +235,67 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		73CC6B9C2F73E7A1002C7CD7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7362DFE52F73747900D50737 /* ProductViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		73CC6B9D2F73E7AC002C7CD7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				73F39FD82F73AF63004B0C78 /* ProductService.swift */,
+				73F39FD62F73AF56004B0C78 /* ProductViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		73CC6B9E2F73E7BE002C7CD7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				73F39FD42F73AF52004B0C78 /* ProductView.swift */,
+				73F39FDA2F73B6D6004B0C78 /* ProductListViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		73CC6B9F2F73E7E6002C7CD7 /* Face */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Face;
+			sourceTree = "<group>";
+		};
+		73CC6BA02F73E7ED002C7CD7 /* Work */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Work;
+			sourceTree = "<group>";
+		};
+		73CC6BA12F73E7F1002C7CD7 /* Personal */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Personal;
+			sourceTree = "<group>";
+		};
+		73CC6BA22F73E7F2002C7CD7 /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Contact;
+			sourceTree = "<group>";
+		};
+		73CC6BA32F73E7F3002C7CD7 /* Bank */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Bank;
+			sourceTree = "<group>";
+		};
 		73ED697F2F7229960096AE72 /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,6 +360,11 @@
 		73ED69902F7252D60096AE72 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				73CC6B9F2F73E7E6002C7CD7 /* Face */,
+				73CC6BA12F73E7F1002C7CD7 /* Personal */,
+				73CC6BA02F73E7ED002C7CD7 /* Work */,
+				73CC6BA22F73E7F2002C7CD7 /* Contact */,
+				73CC6BA32F73E7F3002C7CD7 /* Bank */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -306,11 +372,9 @@
 		73ED69912F7252D70096AE72 /* Product */ = {
 			isa = PBXGroup;
 			children = (
-				73F39FD82F73AF63004B0C78 /* ProductService.swift */,
-				73F39FD62F73AF56004B0C78 /* ProductViewModel.swift */,
-				7362DFE52F73747900D50737 /* ProductViewController.swift */,
-				73F39FD42F73AF52004B0C78 /* ProductView.swift */,
-				73F39FDA2F73B6D6004B0C78 /* ProductListViewCell.swift */,
+				73CC6B9E2F73E7BE002C7CD7 /* View */,
+				73CC6B9D2F73E7AC002C7CD7 /* ViewModel */,
+				73CC6B9C2F73E7A1002C7CD7 /* Controller */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -444,9 +508,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-PinjamCepat/Pods-PinjamCepat-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-PinjamCepat/Pods-PinjamCepat-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
