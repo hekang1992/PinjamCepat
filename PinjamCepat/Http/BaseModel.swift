@@ -47,4 +47,17 @@ class preachedModel: Codable {
     var vowed: String?
     var ugly: String?
     var bearded: String?
+    var led: String?
+    var yielded: [yieldedModel]?
+}
+
+class yieldedModel: Codable {
+    var whimseys: Int?
+    var brain: String?
+    var trouble: String?
+    var sabbath: String?
+    var beseech: String?
+    var poorly: String?
+    var skill: String?
+    var verily: String?
 }
