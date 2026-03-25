@@ -21,6 +21,7 @@ class ProductListViewCell: UITableViewCell {
             
             typeImageView.image = against == 1 ? UIImage(named: "tc_sel_image") : UIImage(named: "tc_nor_image")
             
+            oneLabel.text = model.vowed ?? ""
         }
     }
     
@@ -76,10 +77,16 @@ class ProductListViewCell: UITableViewCell {
             make.left.equalToSuperview().offset(10)
         }
         
+        oneLabel.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.left.equalTo(numLabel.snp.right).offset(15)
+            make.height.equalTo(20)
+        }
+        
         typeImageView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.width.height.equalTo(24)
-            make.right.equalToSuperview().offset(-14)
+            make.right.equalToSuperview().offset(-15)
         }
     }
     
