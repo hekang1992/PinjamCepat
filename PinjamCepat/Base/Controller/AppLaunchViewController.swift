@@ -20,6 +20,7 @@ class AppLaunchViewController: BaseViewController {
     private lazy var bgImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "app_launch_image")
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
@@ -157,7 +158,8 @@ extension AppLaunchViewController {
     }
     
     private func setupLanguageCode(with serverCode: String) {
-        LanguageManager.shared.setLanguageFromServerCode("1")
+//        LanguageManager.shared.setLanguageFromServerCode("1")
+        LanguageManager.shared.setLanguageFromServerCode(serverCode)
     }
     
 }

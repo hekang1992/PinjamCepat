@@ -59,17 +59,7 @@ class AppRouter {
 extension AppRouter {
     
     static func switchRootVc() {
-        guard let window = UIApplication.shared.connectedScenes
-            .compactMap({ $0 as? UIWindowScene })
-            .first?
-            .windows
-            .first(where: { $0.isKeyWindow }) else { return }
-        
-        let tabBarController = BaseTabBarController()
-        
-        UIView.transition(with: window, duration: 0.25, options: .transitionCrossDissolve) {
-            window.rootViewController = tabBarController
-        }
+        NotificationCenter.default.post(name: NSNotification.Name("switch_RootVc"), object: nil)
     }
     
 }

@@ -114,6 +114,30 @@ extension ProductView: UITableViewDelegate, UITableViewDataSource {
         headImageView.addSubview(oneLabel)
         headImageView.addSubview(twoLabel)
         
+        logoImageView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(7.pix())
+            make.left.equalToSuperview().offset(19)
+            make.width.height.equalTo(28)
+        }
+        
+        nameLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(logoImageView)
+            make.left.equalTo(logoImageView.snp.right).offset(5)
+            make.height.equalTo(20)
+        }
+        
+        oneLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(55.pix())
+            make.left.equalToSuperview().offset(19)
+            make.height.equalTo(15)
+        }
+        
+        twoLabel.snp.makeConstraints { make in
+            make.top.equalTo(oneLabel.snp.bottom)
+            make.left.equalTo(oneLabel)
+            make.height.equalTo(59)
+        }
+        
         logoImageView.kf.setImage(with: URL(string: model?.lines?.trouble ?? ""))
         nameLabel.text = model?.lines?.brain ?? ""
         oneLabel.text = model?.lines?.disease ?? ""

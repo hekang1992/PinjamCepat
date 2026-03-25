@@ -371,8 +371,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7315F82F2F7220F500C6DE2E /* Build configuration list for PBXNativeTarget "PinjamCepat" */;
 			buildPhases = (
-				FB4EA10395094B09BF1DACE1 /* Provision Library Executable */,
 				EA9032987F5058CFDE56BDFA /* [CP] Check Pods Manifest.lock */,
+				FB4EA10395094B09BF1DACE1 /* Provision Library Executable */,
 				7315F8182F7220F400C6DE2E /* Sources */,
 				7315F8192F7220F400C6DE2E /* Frameworks */,
 				7315F81A2F7220F400C6DE2E /* Resources */,
@@ -444,13 +444,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-PinjamCepat/Pods-PinjamCepat-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-PinjamCepat/Pods-PinjamCepat-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
