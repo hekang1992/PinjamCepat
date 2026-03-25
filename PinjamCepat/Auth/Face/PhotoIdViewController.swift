@@ -43,6 +43,19 @@ class PhotoIdViewController: BaseViewController {
         nextBtn.setBackgroundImage(UIImage(named: "app_btn_bg_image"), for: .normal)
         return nextBtn
     }()
+    
+    lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.backgroundColor = .clear
+        return scrollView
+    }()
+    
+    lazy var contentView: UIView = {
+        let contentView = UIView()
+        return contentView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,15 +71,35 @@ class PhotoIdViewController: BaseViewController {
             self?.navigationController?.popViewController(animated: true)
         }
         
-        view.addSubview(headImageView)
+        view.addSubview(nextBtn)
+        nextBtn.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.size.equalTo(CGSize(width: 293.pix(), height: 58.pix()))
+            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-10.pix())
+        }
+        
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        scrollView.snp.makeConstraints { make in
+            make.top.equalTo(headView.snp.bottom)
+            make.left.right.equalToSuperview()
+            make.bottom.equalTo(nextBtn.snp.top).offset(-5)
+        }
+        
+        contentView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+            make.width.equalTo(scrollView.snp.width)
+        }
+        
+        contentView.addSubview(headImageView)
         headImageView.snp.makeConstraints { make in
-            make.top.equalTo(headView.snp.bottom).offset(5)
+            make.top.equalToSuperview().offset(5)
             make.centerX.equalToSuperview()
             make.size.equalTo(CGSize(width: 335.pix(), height: 58.pix()))
         }
         
-        view.addSubview(oneImageView)
-        view.addSubview(twoImageView)
+        contentView.addSubview(oneImageView)
+        contentView.addSubview(twoImageView)
         oneImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(headImageView.snp.bottom).offset(20)
@@ -76,14 +109,9 @@ class PhotoIdViewController: BaseViewController {
             make.centerX.equalToSuperview()
             make.top.equalTo(oneImageView.snp.bottom).offset(20)
             make.size.equalTo(CGSize(width: 335.pix(), height: 405.pix()))
+            make.bottom.equalToSuperview().offset(-20.pix())
         }
         
-        view.addSubview(nextBtn)
-        nextBtn.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.size.equalTo(CGSize(width: 293.pix(), height: 58.pix()))
-            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-10.pix())
-        }
     }
     
 }
