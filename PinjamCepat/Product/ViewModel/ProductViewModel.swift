@@ -14,11 +14,25 @@ class ProductViewModel: ObservableObject {
     
     @Published var errorMsg: String?
     
+    @Published var idModel: BaseModel?
+    
     func getProductDetailInfo(parameters: [String: Any]) {
         
         Task {
             do {
                 model = try await ProductService.getProductDetailInfo(parameters: parameters)
+            } catch {
+                errorMsg = error.localizedDescription
+            }
+        }
+        
+    }
+    
+    func getAuthIDInfo(parameters: [String: Any]) {
+        
+        Task {
+            do {
+                idModel = try await ProductService.getAuthIDInfo(parameters: parameters)
             } catch {
                 errorMsg = error.localizedDescription
             }

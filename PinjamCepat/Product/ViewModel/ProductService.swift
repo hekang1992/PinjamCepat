@@ -22,4 +22,20 @@ class ProductService {
         
         return result
     }
+    
+    static func getAuthIDInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        LoadingManager.shared.show()
+        
+        defer {
+            LoadingManager.shared.hide()
+        }
+        
+        let result: BaseModel = try await NetworkManager.shared.post(
+            url: "/physicianer/seems",
+            parameters: parameters
+        )
+        
+        return result
+    }
 }

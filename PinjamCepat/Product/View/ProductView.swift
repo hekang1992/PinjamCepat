@@ -8,9 +8,13 @@
 import UIKit
 import SnapKit
 import Kingfisher
+import RxSwift
+import RxCocoa
 
 class ProductView: BaseView {
     
+    var nextBlock: ((recordModel, linesModel) -> Void)?
+        
     var model: glovesModel? {
         didSet {
             guard let model else { return }
@@ -42,7 +46,7 @@ class ProductView: BaseView {
         }
         return tableView
     }()
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(nextBtn)
@@ -56,6 +60,18 @@ class ProductView: BaseView {
             make.top.left.right.equalToSuperview()
             make.bottom.equalTo(nextBtn.snp.top).offset(-5.pix())
         }
+        
+        nextBtn
+            .rx
+            .tap
+            .throttle(.microseconds(200), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] in
+                guard let self, let model else { return }
+                if let stepModel = model.record, let cardModel = model.lines {
+                    self.nextBlock?(stepModel, cardModel)
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     @MainActor required init?(coder: NSCoder) {
@@ -108,7 +124,7 @@ extension ProductView: UITableViewDelegate, UITableViewDataSource {
         twoLabel.textAlignment = .left
         twoLabel.textColor = UIColor(hexString: "#262626")
         twoLabel.font = .systemFont(ofSize: 48, weight: .bold)
-       
+        
         headImageView.addSubview(logoImageView)
         headImageView.addSubview(nameLabel)
         headImageView.addSubview(oneLabel)
@@ -159,7 +175,20 @@ extension ProductView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let model = self.model?.contemplative?[indexPath.row]
+        let cellModel = self.model?.contemplative?[indexPath.row]
+        let stepModel = self.model?.record
+        
+        let isAuth = cellModel?.against ?? 0
+        
+        if isAuth == 1 {
+            if let cellModel = cellModel, let cardModel = self.model?.lines {
+                self.nextBlock?(cellModel, cardModel)
+            }
+        }else {
+            if let stepModel = stepModel, let cardModel = self.model?.lines {
+                self.nextBlock?(stepModel, cardModel)
+            }
+        }
     }
     
 }

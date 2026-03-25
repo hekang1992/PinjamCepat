@@ -85,4 +85,5 @@ class linesModel: Codable {
     var solely: String?
     var disease: String?
     var sabbath: String?
+    var whimseys: String?
 }

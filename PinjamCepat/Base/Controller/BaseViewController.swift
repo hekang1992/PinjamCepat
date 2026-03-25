@@ -60,4 +60,29 @@ extension BaseViewController {
         }
     }
     
+    func goAuthPageVc(stepModel: recordModel, cardModel: linesModel) {
+        let type = stepModel.mental ?? ""
+        
+        switch type {
+        case "noa":
+            break
+            
+        case "nob":
+            break
+            
+        case "noc":
+            break
+            
+        case "nod":
+            break
+            
+        case "noe":
+            break
+            
+        default:
+            break
+        }
+        
+    }
+    
 }

@@ -53,6 +53,17 @@ class ProductViewController: BaseViewController {
             self.getProductDetailInfo(productId: productID)
         })
         
+        self.productView.nextBlock = { [weak self] stepModel, cardModel in
+            guard let self = self else { return }
+            let type = stepModel.mental ?? ""
+            if type == "noa" {
+                let productID = cardModel.whimseys ?? ""
+                self.getAuthIDInfo(with: productID)
+            }else {
+                self.goAuthPageVc(stepModel: stepModel, cardModel: cardModel)
+            }
+        }
+        
         bindViewModel()
     }
     
@@ -87,11 +98,27 @@ extension ProductViewController {
             }
             .store(in: &cancellables)
         
+        viewModel.$idModel
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .sink { [weak self] model in
+                let portent = model.portent ?? ""
+                if portent == "0" {
+                    
+                }
+            }
+            .store(in: &cancellables)
+        
     }
     
     private func getProductDetailInfo(productId: String) {
         let parameters = ["despondency": productId]
         viewModel.getProductDetailInfo(parameters: parameters)
+    }
+    
+    private func getAuthIDInfo(with productId: String) {
+        let parameters = ["despondency": productId]
+        viewModel.getAuthIDInfo(parameters: parameters)
     }
     
 }
