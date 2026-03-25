@@ -43,6 +43,12 @@ class AppRouter {
         case "/you":
             self.switchRootVc()
             
+        case "/the":
+            break
+            
+        case "/with":
+            break
+            
         default:
             break
         }
