@@ -102,9 +102,29 @@ extension ProductViewController {
             .receive(on: DispatchQueue.main)
             .compactMap { $0 }
             .sink { [weak self] model in
+                guard let self else { return }
                 let portent = model.portent ?? ""
                 if portent == "0" {
+                    let photoUrl = model.gloves?.yielded?.addressed ?? ""
+                    let faceUrl = model.gloves?.yielded?.discovers ?? ""
                     
+                    guard !photoUrl.isEmpty else {
+                        let photoVc = PhotoIdViewController()
+                        photoVc.photoModel = viewModel.model
+                        navigationController?.pushViewController(photoVc, animated: true)
+                        return
+                    }
+                    
+                    guard !faceUrl.isEmpty else {
+                        let faceVc = FaceViewController()
+                        faceVc.photoModel = viewModel.model
+                        navigationController?.pushViewController(faceVc, animated: true)
+                        return
+                    }
+                    
+                    let completeVc = CompleteViewController()
+                    completeVc.photoModel = viewModel.model
+                    navigationController?.pushViewController(completeVc, animated: true)
                 }
             }
             .store(in: &cancellables)

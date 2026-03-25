@@ -39,6 +39,7 @@ class glovesModel: Codable {
     var record: recordModel?
     var contemplative: [recordModel]?
     var lines: linesModel?
+    var yielded: yieldedModel?
 }
 
 class stealModel: Codable {
@@ -65,6 +66,8 @@ class yieldedModel: Codable {
     var poorly: String?
     var skill: String?
     var verily: String?
+    var addressed: String?
+    var discovers: String?
 }
 
 class cherishModel: Codable {
