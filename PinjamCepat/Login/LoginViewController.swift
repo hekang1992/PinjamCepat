@@ -27,6 +27,13 @@ class LoginViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let bgImageView = UIImageView()
+        bgImageView.image = UIImage(named: "app_bg_image")
+        view.addSubview(bgImageView)
+        bgImageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
         view.addSubview(loginView)
         loginView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -38,7 +45,7 @@ class LoginViewController: BaseViewController {
         
         loginView.policyBlock = { [weak self] in
             guard let self else { return }
-            ToastManager.showMessage("policy")
+            self.goH5WebVc(pageUrl: "https://www.baidu.com")
         }
         
         loginView.codeBlock = { [weak self] in
@@ -78,6 +85,15 @@ class LoginViewController: BaseViewController {
         super.viewDidAppear(animated)
         self.loginView.phoneFiled.becomeFirstResponder()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.loginView.codeFiled.resignFirstResponder()
+        self.loginView.phoneFiled.resignFirstResponder()
+    }
+}
+
+extension LoginViewController {
     
     private func startCountdown(seconds: Int = 60) {
         stopCountdown()
@@ -125,6 +141,7 @@ class LoginViewController: BaseViewController {
             }
         }
     }
+    
 }
 
 extension LoginViewController {

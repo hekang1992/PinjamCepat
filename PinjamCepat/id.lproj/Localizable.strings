@@ -33,3 +33,6 @@
 "enh_head_image" = "end_head_image";
 "en_ys_image" = "end_ys_image";
 "en_bz_image" = "end_bz_image";
+
+"Product Details" = "Detail Produk";
+"cc_en_image" = "ccd_en_image";

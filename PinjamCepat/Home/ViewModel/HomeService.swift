@@ -22,4 +22,20 @@ class HomeService {
         return result
     }
     
+    static func clickProductInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        LoadingManager.shared.show()
+        
+        defer {
+            LoadingManager.shared.hide()
+        }
+        
+        let result: BaseModel = try await NetworkManager.shared.post(
+            url: "/physicianer/handle",
+            parameters: parameters
+        )
+        
+        return result
+    }
+    
 }

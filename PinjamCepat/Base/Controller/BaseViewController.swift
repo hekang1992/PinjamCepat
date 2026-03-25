@@ -28,11 +28,12 @@ class BaseViewController: UIViewController {
         view.backgroundColor = .white
         
         let bgImageView = UIImageView()
-        bgImageView.image = UIImage(named: "app_bg_image")
+        bgImageView.image = UIImage(named: "home_bg_image")
         view.addSubview(bgImageView)
         bgImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
     }
     
 }

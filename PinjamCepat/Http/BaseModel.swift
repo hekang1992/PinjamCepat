@@ -33,7 +33,12 @@ class glovesModel: Codable {
     var steal: stealModel?
     var pure: String?
     var able: String?
+    var ugly: String?
     var preached: [preachedModel]?
+    var cherish: cherishModel?
+    var record: recordModel?
+    var contemplative: [recordModel]?
+    var lines: linesModel?
 }
 
 class stealModel: Codable {
@@ -60,4 +65,24 @@ class yieldedModel: Codable {
     var poorly: String?
     var skill: String?
     var verily: String?
+}
+
+class cherishModel: Codable {
+    var efficacy: String?
+}
+
+class recordModel: Codable {
+    var mental: String?
+    var vowed: String?
+    var disordered: String?
+    var morbidly: String?
+    var against: Int?
+}
+
+class linesModel: Codable {
+    var brain: String?
+    var trouble: String?
+    var solely: String?
+    var disease: String?
+    var sabbath: String?
 }

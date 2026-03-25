@@ -8,8 +8,14 @@
 import UIKit
 import SnapKit
 import Kingfisher
+import RxSwift
+import RxCocoa
 
 class EndCardView: BaseView {
+    
+    var tapProductBlock: ((String) -> Void)?
+    
+    var policyBlock: (() -> Void)?
     
     // MARK: - Model
     var model: yieldedModel? {
@@ -20,6 +26,7 @@ class EndCardView: BaseView {
     private lazy var headImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "enh_head_image".localized)
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
     
@@ -65,6 +72,7 @@ class EndCardView: BaseView {
     private lazy var policyButton: UIButton = {
         let button = UIButton(type: .custom)
         button.adjustsImageWhenHighlighted = false
+        button.isHidden = true
         button.setBackgroundImage(UIImage(named: "hc_loan_image"), for: .normal)
         return button
     }()
@@ -77,11 +85,49 @@ class EndCardView: BaseView {
         return button
     }()
     
+    private lazy var tapBtn: UIButton = {
+        let tapBtn = UIButton(type: .custom)
+        return tapBtn
+    }()
+    
     // MARK: - Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
         setupConstraints()
+        
+        tapBtn
+            .rx
+            .tap
+            .throttle(.microseconds(200), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] in
+                guard let self, let model else { return }
+                let productId = String(model.whimseys ?? 0)
+                self.tapProductBlock?(productId)
+            })
+            .disposed(by: disposeBag)
+        
+        applyButton
+            .rx
+            .tap
+            .throttle(.microseconds(200), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] in
+                guard let self, let model else { return }
+                let productId = String(model.whimseys ?? 0)
+                self.tapProductBlock?(productId)
+            })
+            .disposed(by: disposeBag)
+        
+        policyButton
+            .rx
+            .tap
+            .throttle(.microseconds(200), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] in
+                guard let self else { return }
+                self.policyBlock?()
+            })
+            .disposed(by: disposeBag)
+        
     }
     
     @MainActor required init?(coder: NSCoder) {
@@ -109,6 +155,7 @@ private extension EndCardView {
         headImageView.addSubview(twoLabel)
         headImageView.addSubview(leftButton)
         headImageView.addSubview(rightButton)
+        headImageView.addSubview(tapBtn)
         
         let isEnglish = LanguageManager.shared.getCurrentLanguage() == .english
         
@@ -135,6 +182,9 @@ private extension EndCardView {
             make.top.equalToSuperview()
             make.left.equalToSuperview().offset(20.pix())
             make.size.equalTo(CGSize(width: 355.pix(), height: 192.pix()))
+        }
+        tapBtn.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
     }
     
@@ -219,5 +269,13 @@ private extension EndCardView {
         leftButton.setTitle("  " + (model.skill ?? ""), for: .normal)
         rightButton.setTitle("  " + (model.verily ?? ""), for: .normal)
         applyButton.setTitle(model.sabbath, for: .normal)
+        
+        let loanUrl = UserDefaults.standard.string(forKey: "loan_url") ?? ""
+        if loanUrl.isEmpty {
+            policyButton.isHidden = true
+        }else {
+            policyButton.isHidden = false
+        }
+        
     }
 }

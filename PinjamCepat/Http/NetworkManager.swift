@@ -20,13 +20,13 @@ final class NetworkManager {
     
     private init() {
         let shortConfig = URLSessionConfiguration.default
-        shortConfig.timeoutIntervalForRequest = 30
-        shortConfig.timeoutIntervalForResource = 30
+        shortConfig.timeoutIntervalForRequest = 10
+        shortConfig.timeoutIntervalForResource = 10
         shortSession = Session(configuration: shortConfig)
         
         let longConfig = URLSessionConfiguration.default
-        longConfig.timeoutIntervalForRequest = 60
-        longConfig.timeoutIntervalForResource = 60
+        longConfig.timeoutIntervalForRequest = 30
+        longConfig.timeoutIntervalForResource = 30
         longSession = Session(configuration: longConfig)
     }
     

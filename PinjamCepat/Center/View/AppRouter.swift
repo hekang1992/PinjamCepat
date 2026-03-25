@@ -38,6 +38,7 @@ class AppRouter {
         case "/and":
             let vc = ProductViewController()
             vc.productID = params["despondency"] ?? ""
+            vc.name = "Product Details".localized
             sourceVC.navigationController?.pushViewController(vc, animated: true)
             
         case "/you":

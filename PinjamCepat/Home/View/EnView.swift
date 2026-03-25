@@ -7,8 +7,15 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
+import MJRefresh
 
 class EnView: BaseView {
+    
+    var tapProductBlock: ((String) -> Void)?
+    
+    var policyBlock: (() -> Void)?
     
     // MARK: - Model
     var model: yieldedModel? {
@@ -16,7 +23,7 @@ class EnView: BaseView {
     }
     
     // MARK: - UI Components
-    private lazy var scrollView: UIScrollView = {
+    lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
@@ -102,6 +109,14 @@ private extension EnView {
             make.centerX.equalToSuperview()
             make.size.equalTo(CGSize(width: 375.pix(), height: height))
         }
+        
+        headView.tapProductBlock = { [weak self] productId in
+            self?.tapProductBlock?(productId)
+        }
+        
+        headView.policyBlock = { [weak self] in
+            self?.policyBlock?()
+        }
     }
     
     func setupOneImageViewConstraints() {
@@ -125,4 +140,13 @@ private extension EnView {
         guard let model = model else { return }
         headView.model = model
     }
+    
+}
+
+extension EnView {
+    
+    func endRefresh() {
+        self.scrollView.mj_header?.endRefreshing()
+    }
+    
 }

