@@ -7,8 +7,16 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
-class TimeSelectView: UIView {
+class TimeSelectView: BaseView {
+    
+    private lazy var grayView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        return view
+    }()
     
     private lazy var dayContainer: UIView = {
         let view = UIView()
@@ -90,6 +98,29 @@ class TimeSelectView: UIView {
         return bgImageView
     }()
     
+    lazy var descLabel: UILabel = {
+        let descLabel = UILabel()
+        descLabel.textAlignment = .left
+        descLabel.text = "Select a date".localized
+        descLabel.textColor = .white
+        descLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        return descLabel
+    }()
+    
+    lazy var nextBtn: UIButton = {
+        let nextBtn = UIButton(type: .custom)
+        nextBtn.setTitleColor(.white, for: .normal)
+        nextBtn.setTitle("Confirm".localized, for: .normal)
+        nextBtn.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
+        nextBtn.setBackgroundImage(UIImage(named: "app_btn_bg_image"), for: .normal)
+        return nextBtn
+    }()
+    
+    lazy var cancelBtn: UIButton = {
+        let cancelBtn = UIButton(type: .custom)
+        return cancelBtn
+    }()
+    
     private var days: [Int] = Array(1...31)
     private var months: [Int] = Array(1...12)
     private var years: [Int] = {
@@ -102,6 +133,7 @@ class TimeSelectView: UIView {
     private var selectedYear: Int = 1992
     
     var onDateChanged: ((String) -> Void)?
+    var cancelChanged: (() -> Void)?
     
     // MARK: - Initialization
     override init(frame: CGRect) {
@@ -118,9 +150,35 @@ class TimeSelectView: UIView {
     private func setupUI() {
         backgroundColor = .white
         
+        addSubview(grayView)
+        grayView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
         addSubview(bgImageView)
         bgImageView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.bottom.left.right.equalToSuperview()
+            make.height.equalTo(404.pix())
+        }
+        
+        bgImageView.addSubview(descLabel)
+        descLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(12.pix())
+            make.left.equalToSuperview().offset(26)
+            make.height.equalTo(25)
+        }
+        
+        bgImageView.addSubview(nextBtn)
+        nextBtn.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-20.pix())
+            make.size.equalTo(CGSize(width: 293.pix(), height: 58.pix()))
+        }
+        
+        bgImageView.addSubview(cancelBtn)
+        cancelBtn.snp.makeConstraints { make in
+            make.top.right.equalToSuperview()
+            make.size.equalTo(CGSize(width: 50.pix(), height: 40.pix()))
         }
         
         dayContainer.addSubview(dayTitleLabel)
@@ -168,11 +226,28 @@ class TimeSelectView: UIView {
         bgImageView.addSubview(pickerStackView)
         
         pickerStackView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(50.pix())
+            make.top.equalToSuperview().offset(55.pix())
             make.left.right.equalToSuperview().inset(20)
-            make.bottom.equalToSuperview().offset(-20)
-            make.height.equalTo(180)
+            make.bottom.equalTo(nextBtn.snp.top).offset(-5.pix())
         }
+        
+        nextBtn
+            .rx
+            .tap
+            .bind(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.updateDisplayLabel()
+            })
+            .disposed(by: disposeBag)
+        
+        cancelBtn
+            .rx
+            .tap
+            .bind(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.cancelChanged?()
+            })
+            .disposed(by: disposeBag)
         
         setDefaultDate()
     }

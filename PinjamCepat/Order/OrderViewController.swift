@@ -19,15 +19,18 @@ class OrderViewController: BaseViewController {
         
         KeyWindow?.addSubview(timeSelectView)
         timeSelectView.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview()
-            make.size.equalTo(CGSize(width: 375.pix(), height: 316.pix()))
+            make.edges.equalToSuperview()
         }
         
         timeSelectView.setDate(with: "20-08-1985")
         
+        timeSelectView.cancelChanged = {
+            timeSelectView.removeFromSuperview()
+        }
+        
         timeSelectView.onDateChanged = { dateString in
             print("日期已改变: \(dateString)")
+            timeSelectView.removeFromSuperview()
         }
     }
     

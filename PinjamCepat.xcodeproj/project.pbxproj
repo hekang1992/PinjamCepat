@@ -60,6 +60,7 @@
 		73F39FD92F73AF6A004B0C78 /* ProductService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F39FD82F73AF63004B0C78 /* ProductService.swift */; };
 		73F39FDB2F73B6D6004B0C78 /* ProductListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F39FDA2F73B6D6004B0C78 /* ProductListViewCell.swift */; };
 		73F6A3C92F74D8D900A7ABD2 /* TimeSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F6A3C82F74D8D900A7ABD2 /* TimeSelectView.swift */; };
+		73F6A3CB2F74F58800A7ABD2 /* PopIDAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F6A3CA2F74F57800A7ABD2 /* PopIDAuthView.swift */; };
 		73FB533A2F74C127000169D3 /* FaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FB53392F74C11F000169D3 /* FaceViewModel.swift */; };
 		73FB533C2F74C135000169D3 /* FaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FB533B2F74C12F000169D3 /* FaceService.swift */; };
 		73FB533E2F74C48C000169D3 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FB533D2F74C48C000169D3 /* CameraManager.swift */; };
@@ -123,6 +124,7 @@
 		73F39FD82F73AF63004B0C78 /* ProductService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductService.swift; sourceTree = "<group>"; };
 		73F39FDA2F73B6D6004B0C78 /* ProductListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewCell.swift; sourceTree = "<group>"; };
 		73F6A3C82F74D8D900A7ABD2 /* TimeSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectView.swift; sourceTree = "<group>"; };
+		73F6A3CA2F74F57800A7ABD2 /* PopIDAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopIDAuthView.swift; sourceTree = "<group>"; };
 		73FB53392F74C11F000169D3 /* FaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceViewModel.swift; sourceTree = "<group>"; };
 		73FB533B2F74C12F000169D3 /* FaceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceService.swift; sourceTree = "<group>"; };
 		73FB533D2F74C48C000169D3 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 		73CC6B9F2F73E7E6002C7CD7 /* Face */ = {
 			isa = PBXGroup;
 			children = (
+				73F6A3CA2F74F57800A7ABD2 /* PopIDAuthView.swift */,
 				73F6A3C82F74D8D900A7ABD2 /* TimeSelectView.swift */,
 				73FB533D2F74C48C000169D3 /* CameraManager.swift */,
 				73FB533B2F74C12F000169D3 /* FaceService.swift */,
@@ -600,6 +603,7 @@
 				7362DFE62F73747900D50737 /* ProductViewController.swift in Sources */,
 				73ED69852F7229CF0096AE72 /* BaseNavigationController.swift in Sources */,
 				7315F83E2F7220FC00C6DE2E /* AppDelegate.swift in Sources */,
+				73F6A3CB2F74F58800A7ABD2 /* PopIDAuthView.swift in Sources */,
 				73F6A3C92F74D8D900A7ABD2 /* TimeSelectView.swift in Sources */,
 				73434AA22F7423BB00D99435 /* FaceViewController.swift in Sources */,
 				73ED69BB2F727BF00096AE72 /* LoginView.swift in Sources */,
