@@ -42,4 +42,20 @@ class FaceService {
         return result
     }
     
+    static func saveAuthIDInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        LoadingManager.shared.show()
+        
+        defer {
+            LoadingManager.shared.hide()
+        }
+        
+        let result: BaseModel = try await NetworkManager.shared.post(
+            url: "/physicianer/confused",
+            parameters: parameters
+        )
+        
+        return result
+    }
+    
 }

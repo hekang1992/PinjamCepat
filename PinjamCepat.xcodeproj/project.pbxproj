@@ -61,6 +61,8 @@
 		73F39FDB2F73B6D6004B0C78 /* ProductListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F39FDA2F73B6D6004B0C78 /* ProductListViewCell.swift */; };
 		73F6A3C92F74D8D900A7ABD2 /* TimeSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F6A3C82F74D8D900A7ABD2 /* TimeSelectView.swift */; };
 		73F6A3CB2F74F58800A7ABD2 /* PopIDAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F6A3CA2F74F57800A7ABD2 /* PopIDAuthView.swift */; };
+		73F6A3CD2F74F7FF00A7ABD2 /* SureListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F6A3CC2F74F7FF00A7ABD2 /* SureListViewCell.swift */; };
+		73F6A3CF2F75086400A7ABD2 /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F6A3CE2F75086400A7ABD2 /* PersonalViewController.swift */; };
 		73FB533A2F74C127000169D3 /* FaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FB53392F74C11F000169D3 /* FaceViewModel.swift */; };
 		73FB533C2F74C135000169D3 /* FaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FB533B2F74C12F000169D3 /* FaceService.swift */; };
 		73FB533E2F74C48C000169D3 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FB533D2F74C48C000169D3 /* CameraManager.swift */; };
@@ -125,6 +127,8 @@
 		73F39FDA2F73B6D6004B0C78 /* ProductListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewCell.swift; sourceTree = "<group>"; };
 		73F6A3C82F74D8D900A7ABD2 /* TimeSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectView.swift; sourceTree = "<group>"; };
 		73F6A3CA2F74F57800A7ABD2 /* PopIDAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopIDAuthView.swift; sourceTree = "<group>"; };
+		73F6A3CC2F74F7FF00A7ABD2 /* SureListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SureListViewCell.swift; sourceTree = "<group>"; };
+		73F6A3CE2F75086400A7ABD2 /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
 		73FB53392F74C11F000169D3 /* FaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceViewModel.swift; sourceTree = "<group>"; };
 		73FB533B2F74C12F000169D3 /* FaceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceService.swift; sourceTree = "<group>"; };
 		73FB533D2F74C48C000169D3 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
@@ -288,6 +292,7 @@
 				73434AA32F7427A600D99435 /* PhotoIdViewController.swift */,
 				73434AA12F7423BB00D99435 /* FaceViewController.swift */,
 				73C5A1F42F7436F1007A963B /* CompleteViewController.swift */,
+				73F6A3CC2F74F7FF00A7ABD2 /* SureListViewCell.swift */,
 			);
 			path = Face;
 			sourceTree = "<group>";
@@ -302,6 +307,7 @@
 		73CC6BA12F73E7F1002C7CD7 /* Personal */ = {
 			isa = PBXGroup;
 			children = (
+				73F6A3CE2F75086400A7ABD2 /* PersonalViewController.swift */,
 			);
 			path = Personal;
 			sourceTree = "<group>";
@@ -615,6 +621,7 @@
 				73FB533E2F74C48C000169D3 /* CameraManager.swift in Sources */,
 				73ED69B32F7268C30096AE72 /* DeviceIdentifier.swift in Sources */,
 				73F39FD72F73AF5F004B0C78 /* ProductViewModel.swift in Sources */,
+				73F6A3CF2F75086400A7ABD2 /* PersonalViewController.swift in Sources */,
 				7362DFF52F73821300D50737 /* HomeService.swift in Sources */,
 				736CA1B92F72E63400FDB0EB /* AppHeadView.swift in Sources */,
 				73FB533C2F74C135000169D3 /* FaceService.swift in Sources */,
@@ -633,6 +640,7 @@
 				73ED69A62F725B310096AE72 /* NetworkManager.swift in Sources */,
 				73ED69BD2F727CD30096AE72 /* LoginManager.swift in Sources */,
 				7362DFEC2F7381D600D50737 /* EnView.swift in Sources */,
+				73F6A3CD2F74F7FF00A7ABD2 /* SureListViewCell.swift in Sources */,
 				73ED69B72F72781B0096AE72 /* LanguageManager.swift in Sources */,
 				73ED69A02F7258850096AE72 /* AppNetworkConfig.swift in Sources */,
 				73ED69B12F7263E30096AE72 /* ToastManager.swift in Sources */,

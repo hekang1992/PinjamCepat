@@ -12,11 +12,11 @@ import RxCocoa
 
 class PopIDAuthView: BaseView {
     
-    private lazy var grayView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        return view
-    }()
+    var modelArray: [peculiarModel]? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
@@ -51,7 +51,23 @@ class PopIDAuthView: BaseView {
     var onDateChanged: (() -> Void)?
     var cancelChanged: (() -> Void)?
     
-    // MARK: - Initialization
+    lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .clear
+        tableView.estimatedRowHeight = 60
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.showsVerticalScrollIndicator = false
+        tableView.contentInsetAdjustmentBehavior = .never
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.register(SureListViewCell.self, forCellReuseIdentifier: "SureListViewCell")
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
+        return tableView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -62,14 +78,7 @@ class PopIDAuthView: BaseView {
         setupUI()
     }
     
-    // MARK: - Setup
     private func setupUI() {
-        backgroundColor = .white
-        
-        addSubview(grayView)
-        grayView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
         
         addSubview(bgImageView)
         bgImageView.snp.makeConstraints { make in
@@ -97,6 +106,13 @@ class PopIDAuthView: BaseView {
             make.size.equalTo(CGSize(width: 50.pix(), height: 40.pix()))
         }
         
+        bgImageView.addSubview(tableView)
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(descLabel.snp.bottom).offset(34.pix())
+            make.left.right.equalToSuperview().inset(20)
+            make.bottom.equalTo(nextBtn.snp.top).offset(-5.pix())
+        }
+        
         nextBtn
             .rx
             .tap
@@ -119,3 +135,76 @@ class PopIDAuthView: BaseView {
     
 }
 
+extension PopIDAuthView: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.modelArray?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let model = self.modelArray?[indexPath.row]
+        
+        let cellType: CellType
+        
+        if indexPath.row == 0 || indexPath.row == 1 {
+            cellType = .text
+        }else {
+            cellType = .click
+        }
+        
+        let cell = SureListViewCell(style: .default,
+                                    reuseIdentifier: "SureListViewCell_\(cellType.rawValue)",
+                                    type: cellType)
+        cell.model = model
+        
+        if cellType == .text {
+            
+            cell.textChangeBlock = { text in
+                model?.commonwealth = text
+            }
+            
+        }else {
+            
+            cell.tapBlock = { [weak self] text in
+                guard let self = self else { return }
+                self.endEditing(true)
+                let timeSelectView = TimeSelectView()
+                
+                let KeyWindow = getKeyWindow()
+                
+                KeyWindow?.addSubview(timeSelectView)
+                timeSelectView.snp.makeConstraints { make in
+                    make.edges.equalToSuperview()
+                }
+                
+                timeSelectView.setDate(with: text)
+                
+                timeSelectView.cancelChanged = {
+                    timeSelectView.removeFromSuperview()
+                }
+                
+                timeSelectView.onDateChanged = { dateString in
+                    model?.commonwealth = dateString
+                    cell.nameFiled.text = dateString
+                    timeSelectView.removeFromSuperview()
+                }
+            }
+            
+        }
+        
+        return cell
+        
+    }
+}
+
+extension PopIDAuthView {
+    
+    private  func getKeyWindow() -> UIWindow? {
+        return UIApplication.shared
+            .connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .flatMap { $0.windows }
+            .first { $0.isKeyWindow }
+    }
+    
+}

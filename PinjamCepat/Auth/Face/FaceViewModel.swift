@@ -16,6 +16,8 @@ class FaceViewModel {
     
     @Published var pModel: BaseModel?
     
+    @Published var saveModel: BaseModel?
+    
     func getAuthIDInfo(parameters: [String: Any]) {
         
         Task {
@@ -39,6 +41,17 @@ class FaceViewModel {
             }
         }
         
+    }
+    
+    func saveAuthIDInfo(parameters: [String: Any]) {
+        
+        Task {
+            do {
+                saveModel = try await FaceService.saveAuthIDInfo(parameters: parameters)
+            } catch {
+                errorMsg = error.localizedDescription
+            }
+        }
     }
     
 }

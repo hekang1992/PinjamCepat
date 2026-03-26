@@ -1,10 +1,10 @@
-/* 
-  Localizable.strings
-  PinjamCepat
-
-  Created by hekang on 2026/3/24.
-  
-*/
+/*
+ Localizable.strings
+ PinjamCepat
+ 
+ Created by hekang on 2026/3/24.
+ 
+ */
 
 "en_home_tab_nor_image" = "en_home_tab_nor_image";
 "en_home_tab_sel_image" = "en_home_tab_sel_image";
@@ -51,3 +51,12 @@
 "Select a date" = "Select a date";
 "Confirm" = "Confirm";
 "Information Confirmation" = "Information Confirmation";
+"Name" = "Name";
+"ID number" = "ID number";
+"Birth date" = "Birth date";
+"Cancel" = "Cancel";
+"Go to Settings" = "Go to Settings";
+"Permission Required" = "Permission Required";
+"Camera permission is disabled. Please enable it in Settings to allow your loan application to be processed." = "Camera permission is disabled. Please enable it in Settings to allow your loan application to be processed.";
+"cco_desc_en_image" = "cco_desc_en_image";
+"cco_en_image" = "cco_en_image";

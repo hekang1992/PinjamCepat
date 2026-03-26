@@ -12,12 +12,6 @@ import RxCocoa
 
 class TimeSelectView: BaseView {
     
-    private lazy var grayView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        return view
-    }()
-    
     private lazy var dayContainer: UIView = {
         let view = UIView()
         return view
@@ -148,12 +142,6 @@ class TimeSelectView: BaseView {
     
     // MARK: - Setup
     private func setupUI() {
-        backgroundColor = .white
-        
-        addSubview(grayView)
-        grayView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
         
         addSubview(bgImageView)
         bgImageView.snp.makeConstraints { make in

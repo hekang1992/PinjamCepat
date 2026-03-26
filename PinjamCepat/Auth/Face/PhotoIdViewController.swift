@@ -11,6 +11,7 @@ import Combine
 import MJRefresh
 import RxSwift
 import RxCocoa
+import TYAlertController
 
 class PhotoIdViewController: BaseViewController {
     
@@ -19,7 +20,7 @@ class PhotoIdViewController: BaseViewController {
     var photoModel: BaseModel? {
         didSet {
             guard let photoModel = photoModel else { return }
-            headView.nameLabel.text = photoModel.gloves?.record?.vowed ?? ""
+            headView.nameLabel.text = photoModel.gloves?.contemplative?.first?.vowed ?? ""
         }
     }
     
@@ -76,7 +77,7 @@ class PhotoIdViewController: BaseViewController {
         }
         
         headView.backBlock = { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
+            self?.toProductVc()
         }
         
         view.addSubview(nextBtn)
@@ -151,9 +152,7 @@ class PhotoIdViewController: BaseViewController {
                 if addressed.isEmpty {
                     self.takeRearPhoto()
                 }else {
-                    let faceVc = FaceViewController()
-                    faceVc.photoModel = photoModel
-                    self.navigationController?.pushViewController(faceVc, animated: true)
+                    self.goFaceVc()
                 }
             })
             .disposed(by: disposeBag)
@@ -166,6 +165,12 @@ class PhotoIdViewController: BaseViewController {
 }
 
 extension PhotoIdViewController {
+    
+    private func goFaceVc() {
+        let faceVc = FaceViewController()
+        faceVc.photoModel = photoModel
+        self.navigationController?.pushViewController(faceVc, animated: true)
+    }
     
     private func bindViewModel() {
         viewModel.$model
@@ -197,12 +202,61 @@ extension PhotoIdViewController {
                 guard let self else { return }
                 let portent = model.portent ?? ""
                 if portent == "0" {
-                    
+                    let intimacy = model.gloves?.intimacy ?? 1
+                    if intimacy == 0 {
+                        self.goFaceVc()
+                    }else {
+                        let modelArray = model.gloves?.peculiar ?? []
+                        self.sheetView(modelArray: modelArray)
+                    }
                 }else {
                     ToastManager.showMessage(model.henceforward ?? "")
                 }
             }
             .store(in: &cancellables)
+        
+        viewModel.$saveModel
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .sink { [weak self] model in
+                guard let self else { return }
+                let portent = model.portent ?? ""
+                if portent == "0" {
+                    self.dismiss(animated: true) {
+                        self.goFaceVc()
+                    }
+                }else {
+                    ToastManager.showMessage(model.henceforward ?? "")
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
+}
+
+extension PhotoIdViewController {
+    
+    private func sheetView(modelArray: [peculiarModel]) {
+        let popView = PopIDAuthView(frame: self.view.bounds)
+        popView.modelArray = modelArray
+        let alertVc = TYAlertController(alert: popView, preferredStyle: .actionSheet)
+        self.present(alertVc!, animated: true)
+        
+        popView.cancelChanged = { [weak self] in
+            self?.dismiss(animated: true)
+        }
+        
+        popView.onDateChanged = { [weak self] in
+            guard let self = self else { return }
+            let modelArray = viewModel.pModel?.gloves?.peculiar ?? []
+            var parameters: [String: Any] = ["despondency": photoModel?.gloves?.lines?.whimseys ?? ""]
+            for model in modelArray {
+                let key = model.portent ?? ""
+                let value = model.commonwealth ?? ""
+                parameters[key] = value
+            }
+            viewModel.saveAuthIDInfo(parameters: parameters)
+        }
     }
     
 }

@@ -80,14 +80,14 @@ class CameraManager: NSObject, UIImagePickerControllerDelegate, UINavigationCont
         guard let vc = presentingVC else { return }
         
         let alert = UIAlertController(
-            title: "无法使用相机",
-            message: "请在设置中开启相机权限",
+            title: "Permission Required".localized,
+            message: "Camera permission is disabled. Please enable it in Settings to allow your loan application to be processed.".localized,
             preferredStyle: .alert
         )
         
-        alert.addAction(UIAlertAction(title: "取消", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel))
         
-        alert.addAction(UIAlertAction(title: "去设置", style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: "Go to Settings".localized, style: .default, handler: { _ in
             if let url = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(url)
             }

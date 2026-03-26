@@ -17,6 +17,8 @@ class BaseViewController: UIViewController {
     
     var cancellables = Set<AnyCancellable>()
     
+    private var productViewModel = ProductViewModel()
+    
     lazy var headView: AppHeadView = {
         let headView = AppHeadView(frame: .zero)
         return headView
@@ -33,6 +35,19 @@ class BaseViewController: UIViewController {
         bgImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
+        productViewModel.$model
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .sink { [weak self] model in
+                let portent = model.portent ?? ""
+                if portent == "0" {
+                    let cardModel = model.gloves?.lines ?? linesModel()
+                    let stepModel = model.gloves?.record ?? recordModel()
+                    self?.goAuthPageVc(stepModel: stepModel, cardModel: cardModel)
+                }
+            }
+            .store(in: &cancellables)
         
     }
     
@@ -60,6 +75,28 @@ extension BaseViewController {
         }
     }
     
+    func toProductVc() {
+        guard let nav = navigationController else {
+            navigationController?.popToRootViewController(animated: true)
+            return
+        }
+        
+        if let productVC = nav.viewControllers.compactMap({ $0 as? ProductViewController }).first {
+            nav.popToViewController(productVC, animated: true)
+        } else {
+            nav.popToRootViewController(animated: true)
+        }
+    }
+    
+}
+
+extension BaseViewController {
+    
+    func toProductDetailInfo(cardModel: linesModel) {
+        let parameters = ["despondency": cardModel.whimseys ?? ""]
+        productViewModel.getProductDetailInfo(parameters: parameters)
+    }
+    
     func goAuthPageVc(stepModel: recordModel, cardModel: linesModel) {
         let type = stepModel.mental ?? ""
         
@@ -68,7 +105,10 @@ extension BaseViewController {
             break
             
         case "nob":
-            break
+            let listVc = PersonalViewController()
+            listVc.stepModel = stepModel
+            listVc.cardModel = cardModel
+            self.navigationController?.pushViewController(listVc, animated: true)
             
         case "noc":
             break
@@ -84,5 +124,4 @@ extension BaseViewController {
         }
         
     }
-    
 }

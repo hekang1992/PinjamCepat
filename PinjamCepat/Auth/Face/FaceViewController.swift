@@ -7,13 +7,20 @@
 
 import UIKit
 import SnapKit
+import Combine
+import MJRefresh
+import RxSwift
+import RxCocoa
+import TYAlertController
 
 class FaceViewController: BaseViewController {
+    
+    private var viewModel = FaceViewModel()
     
     var photoModel: BaseModel? {
         didSet {
             guard let photoModel = photoModel else { return }
-            headView.nameLabel.text = photoModel.gloves?.record?.vowed ?? ""
+            headView.nameLabel.text = photoModel.gloves?.contemplative?.first?.vowed ?? ""
         }
     }
     
@@ -29,10 +36,11 @@ class FaceViewController: BaseViewController {
         return oneImageView
     }()
     
-    lazy var twoImageView: UIImageView = {
-        let twoImageView = UIImageView()
-        twoImageView.image = UIImage(named: "idc_7_image".localized)
-        return twoImageView
+    lazy var photoBtn: UIButton = {
+        let photoBtn = UIButton()
+        photoBtn.setImage(UIImage(named: "idc_7_image".localized), for: .normal)
+        photoBtn.adjustsImageWhenHighlighted = false
+        return photoBtn
     }()
     
     lazy var nextBtn: UIButton = {
@@ -41,6 +49,7 @@ class FaceViewController: BaseViewController {
         nextBtn.setTitle("Next".localized, for: .normal)
         nextBtn.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
         nextBtn.setBackgroundImage(UIImage(named: "app_btn_bg_image"), for: .normal)
+        nextBtn.adjustsImageWhenHighlighted = false
         return nextBtn
     }()
     
@@ -56,10 +65,10 @@ class FaceViewController: BaseViewController {
         let contentView = UIView()
         return contentView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.addSubview(headView)
         headView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
@@ -68,7 +77,7 @@ class FaceViewController: BaseViewController {
         }
         
         headView.backBlock = { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
+            self?.toProductVc()
         }
         
         view.addSubview(nextBtn)
@@ -99,19 +108,119 @@ class FaceViewController: BaseViewController {
         }
         
         contentView.addSubview(oneImageView)
-        contentView.addSubview(twoImageView)
+        contentView.addSubview(photoBtn)
+        
         oneImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(headImageView.snp.bottom).offset(20)
             make.size.equalTo(CGSize(width: 317.pix(), height: 16.pix()))
         }
-        twoImageView.snp.makeConstraints { make in
+        photoBtn.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(oneImageView.snp.bottom).offset(20)
             make.size.equalTo(CGSize(width: 335.pix(), height: 405.pix()))
             make.bottom.equalToSuperview().offset(-20.pix())
         }
         
+        self.scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
+            guard let self = self else { return }
+            self.getDetailInfo()
+        })
+        
+        photoBtn
+            .rx
+            .tap
+            .throttle(.milliseconds(200), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] in
+                guard let self = self else { return }
+                let discovers = viewModel.model?.gloves?.yielded?.discovers ?? ""
+                if discovers.isEmpty {
+                    self.takeFrontPhoto()
+                }else {
+                    return
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        nextBtn
+            .rx
+            .tap
+            .throttle(.milliseconds(200), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] in
+                guard let self = self else { return }
+                let discovers = viewModel.model?.gloves?.yielded?.discovers ?? ""
+                if discovers.isEmpty {
+                    self.takeFrontPhoto()
+                }else {
+                    
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        getDetailInfo()
+        
+        bindViewModel()
+    }
+    
+}
+
+extension FaceViewController {
+    
+    private func bindViewModel() {
+        viewModel.$model
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .sink { [weak self] model in
+                guard let self else { return }
+                let portent = model.portent ?? ""
+                if portent == "0" {
+                    
+                }
+                self.scrollView.mj_header?.endRefreshing()
+            }
+            .store(in: &cancellables)
+        
+        viewModel.$errorMsg
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .sink { [weak self] _ in
+                guard let self else { return }
+                self.scrollView.mj_header?.endRefreshing()
+            }
+            .store(in: &cancellables)
+        
+        viewModel.$pModel
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .sink { [weak self] model in
+                guard let self else { return }
+                let portent = model.portent ?? ""
+                if portent == "0" {
+                    self.toProductDetailInfo(cardModel: photoModel?.gloves?.lines ?? linesModel())
+                }else {
+                    ToastManager.showMessage(model.henceforward ?? "")
+                }
+            }
+            .store(in: &cancellables)
+        
+        
+    }
+    
+}
+
+extension FaceViewController {
+    
+    private func getDetailInfo() {
+        let parameters = ["despondency": photoModel?.gloves?.lines?.whimseys ?? ""]
+        viewModel.getAuthIDInfo(parameters: parameters)
+    }
+    
+    private func takeFrontPhoto() {
+        CameraManager.shared.openCamera(from: self, useFront: true) { [weak self] data in
+            guard let self, let data else { return }
+            let parameters = ["led": "10", "strictness": "1"]
+            viewModel.uploadRearInfo(parameters: parameters, imageData: data)
+        }
     }
     
 }

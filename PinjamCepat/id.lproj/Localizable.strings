@@ -1,10 +1,10 @@
-/* 
-  Localizable.strings
-  PinjamCepat
-
-  Created by hekang on 2026/3/24.
-  
-*/
+/*
+ Localizable.strings
+ PinjamCepat
+ 
+ Created by hekang on 2026/3/24.
+ 
+ */
 
 "en_home_tab_nor_image" = "ind_home_tab_nor_image";
 "en_home_tab_sel_image" = "ind_home_tab_sel_image";
@@ -51,3 +51,12 @@
 "Select a date" = "Pilih Tanggal";
 "Confirm" = "Konfirmasi";
 "Information Confirmation" = "Konfirmasi Informasi";
+"Name" = "Nama lengkap";
+"ID number" = "KTP nomor";
+"Birth date" = "Tanggal lahir";
+"Cancel" = "Nanti Saja";
+"Go to Settings" = "Buka Pengaturan";
+"Permission Required" = "Izin Diperlukan";
+"Camera permission is disabled. Please enable it in Settings to allow your loan application to be processed." = "Izin kamera dinonaktifkan. Harap aktifkan di Pengaturan agar pengajuan pinjaman Anda dapat diproses.";
+"cco_desc_en_image" = "cco_desc_edn_image";
+"cco_en_image" = "cco_edn_image";
