@@ -39,4 +39,20 @@ class ProductService {
         return result
     }
     
+    static func orderIDInfo(parameters: [String: Any]) async throws -> BaseModel? {
+        
+        LoadingManager.shared.show()
+        
+        defer {
+            LoadingManager.shared.hide()
+        }
+        
+        let result: BaseModel = try await NetworkManager.shared.post(
+            url: "/physicianer/scurrilous",
+            parameters: parameters
+        )
+        
+        return result
+    }
+    
 }

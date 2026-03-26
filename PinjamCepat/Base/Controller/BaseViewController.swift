@@ -49,6 +49,18 @@ class BaseViewController: UIViewController {
             }
             .store(in: &cancellables)
         
+        productViewModel.$orderModel
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .sink { [weak self] model in
+                let portent = model.portent ?? ""
+                if portent == "0" {
+                    let pageUrl = model.gloves?.ugly ?? ""
+                    self?.goH5WebVc(pageUrl: pageUrl)
+                }
+            }
+            .store(in: &cancellables)
+        
     }
     
 }
@@ -120,7 +132,14 @@ extension BaseViewController {
             break
             
         case "noe":
-            break
+            let listVc = BankViewController()
+            listVc.stepModel = stepModel
+            listVc.cardModel = cardModel
+            self.navigationController?.pushViewController(listVc, animated: true)
+            
+        case "":
+            let parameters = ["fitting": cardModel.fitting ?? ""]
+            productViewModel.orderIDInfo(parameters: parameters)
             
         default:
             break

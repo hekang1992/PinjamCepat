@@ -43,6 +43,37 @@ class glovesModel: Codable {
     var intimacy: Int?
     var peculiar: [peculiarModel]?
     var favourite: [favouriteModel]?
+    
+    enum CodingKeys: String, CodingKey {
+        case handle, steal, pure, able, ugly, preached, cherish, record,
+              contemplative, lines, yielded, intimacy, peculiar, favourite
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        handle = try container.decodeIfPresent(String.self, forKey: .handle)
+        steal = try container.decodeIfPresent(stealModel.self, forKey: .steal)
+        pure = try container.decodeIfPresent(String.self, forKey: .pure)
+        able = try container.decodeIfPresent(String.self, forKey: .able)
+        ugly = try container.decodeIfPresent(String.self, forKey: .ugly)
+        preached = try container.decodeIfPresent([preachedModel].self, forKey: .preached)
+        cherish = try container.decodeIfPresent(cherishModel.self, forKey: .cherish)
+        contemplative = try container.decodeIfPresent([recordModel].self, forKey: .contemplative)
+        lines = try container.decodeIfPresent(linesModel.self, forKey: .lines)
+        yielded = try container.decodeIfPresent(yieldedModel.self, forKey: .yielded)
+        intimacy = try container.decodeIfPresent(Int.self, forKey: .intimacy)
+        peculiar = try container.decodeIfPresent([peculiarModel].self, forKey: .peculiar)
+        favourite = try container.decodeIfPresent([favouriteModel].self, forKey: .favourite)
+        
+        if let recordObject = try? container.decode(recordModel.self, forKey: .record) {
+            record = recordObject
+        } else if let recordArray = try? container.decode([String].self, forKey: .record), recordArray.isEmpty {
+            record = nil
+        } else {
+            record = nil
+        }
+    }
 }
 
 class stealModel: Codable {
@@ -78,9 +109,10 @@ class cherishModel: Codable {
 }
 
 class recordModel: Codable {
-    var mental: String?
     var vowed: String?
+    var rendered: String?
     var disordered: String?
+    var mental: String?
     var morbidly: String?
     var against: Int?
 }
@@ -92,6 +124,7 @@ class linesModel: Codable {
     var disease: String?
     var sabbath: String?
     var whimseys: String?
+    var fitting: String?
 }
 
 class peculiarModel: Codable {

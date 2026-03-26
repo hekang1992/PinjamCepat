@@ -68,8 +68,9 @@ class ProductView: BaseView {
             .throttle(.microseconds(200), scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] in
                 guard let self, let model else { return }
-                if let stepModel = model.record, let cardModel = model.lines {
-                    self.nextBlock?(stepModel, cardModel)
+                if let cardModel = model.lines {
+                    self.nextBlock?(model.record ?? recordModel(),
+                                    cardModel)
                 }
             })
             .disposed(by: disposeBag)
