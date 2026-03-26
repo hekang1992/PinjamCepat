@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import Combine
 import MJRefresh
+import AppTrackingTransparency
 
 class HomeViewController: BaseViewController {
     
@@ -79,10 +80,21 @@ class HomeViewController: BaseViewController {
             self.getHomeInfo()
         })
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        requestIDFADelayed()
+    }
 }
 
 // MARK: - Binding
 extension HomeViewController {
+    
+    func requestIDFADelayed() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+            ATTrackingManager.requestTrackingAuthorization { _ in }
+        }
+    }
     
     private func updateViewVisibility(with model: BaseModel) {
         var listArray = model.gloves?.preached ?? []
@@ -90,7 +102,6 @@ extension HomeViewController {
         let hasWhoseb = listArray.contains { model in
             (model.led ?? "") == "whoseb"
         }
-        
         
         oneView.isHidden = !hasWhoseb
         

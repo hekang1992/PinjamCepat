@@ -25,6 +25,7 @@ class ProductView: BaseView {
     lazy var nextBtn: UIButton = {
         let nextBtn = UIButton(type: .custom)
         nextBtn.setTitleColor(.white, for: .normal)
+        nextBtn.adjustsImageWhenHighlighted = false
         nextBtn.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         nextBtn.setBackgroundImage(UIImage(named: "app_btn_bg_image"), for: .normal)
         return nextBtn

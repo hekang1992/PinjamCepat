@@ -6,24 +6,37 @@
 //
 
 import UIKit
+import SnapKit
 
 class OrderViewController: BaseViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        let timeSelectView = TimeSelectView()
+        
+        let KeyWindow = getKeyWindow()
+        
+        KeyWindow?.addSubview(timeSelectView)
+        timeSelectView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.size.equalTo(CGSize(width: 375.pix(), height: 316.pix()))
+        }
+        
+        timeSelectView.setDate(with: "20-08-1985")
+        
+        timeSelectView.onDateChanged = { dateString in
+            print("日期已改变: \(dateString)")
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private  func getKeyWindow() -> UIWindow? {
+        return UIApplication.shared
+            .connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .flatMap { $0.windows }
+            .first { $0.isKeyWindow }
     }
-    */
-
+    
 }
