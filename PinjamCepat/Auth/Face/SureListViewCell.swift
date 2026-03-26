@@ -26,6 +26,17 @@ class SureListViewCell: UITableViewCell {
         }
     }
     
+    var listModel: favouriteModel? {
+        didSet {
+            guard let listModel = listModel else { return }
+            oneLabel.text = listModel.vowed ?? ""
+            nameFiled.placeholder = listModel.rendered ?? ""
+            nameFiled.text = listModel.aware ?? ""
+            let scroll = listModel.scroll ?? 0
+            nameFiled.keyboardType = scroll == 1 ? .numberPad : .default
+        }
+    }
+    
     var tapBlock: ((String) -> Void)?
     
     var textChangeBlock: ((String) -> Void)?

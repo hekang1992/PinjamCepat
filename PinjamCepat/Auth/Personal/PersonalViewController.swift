@@ -15,12 +15,15 @@ import TYAlertController
 
 class PersonalViewController: BaseViewController {
     
-    private var viewModel = FaceViewModel()
+    private var viewModel = PersonalViewModel()
+    
+    var modelArray: [favouriteModel] = []
     
     var stepModel: recordModel? {
         didSet {
             guard let stepModel = stepModel else { return }
             headView.nameLabel.text = stepModel.vowed ?? ""
+            
         }
     }
     
@@ -44,6 +47,23 @@ class PersonalViewController: BaseViewController {
         nextBtn.setBackgroundImage(UIImage(named: "app_btn_bg_image"), for: .normal)
         nextBtn.adjustsImageWhenHighlighted = false
         return nextBtn
+    }()
+    
+    lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .clear
+        tableView.estimatedRowHeight = 60
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.showsVerticalScrollIndicator = false
+        tableView.contentInsetAdjustmentBehavior = .never
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.register(SureListViewCell.self, forCellReuseIdentifier: "SureListViewCell")
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
+        return tableView
     }()
     
     override func viewDidLoad() {
@@ -87,6 +107,138 @@ class PersonalViewController: BaseViewController {
             })
             .disposed(by: disposeBag)
         
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(headImageView.snp.bottom).offset(20)
+            make.left.right.equalToSuperview().inset(20)
+            make.bottom.equalTo(nextBtn.snp.top).offset(-5)
+        }
+        
+        bindViewModel()
+        getListInfo()
+    }
+    
+}
+
+extension PersonalViewController {
+    
+    private func bindViewModel() {
+        viewModel.$model
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .sink { [weak self] model in
+                guard let self else { return }
+                let portent = model.portent ?? ""
+                if portent == "0" {
+                    self.modelArray = model.gloves?.favourite ?? []
+                    self.tableView.reloadData()
+                }
+            }
+            .store(in: &cancellables)
+        
+        viewModel.$errorMsg
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .sink { _ in
+                
+            }
+            .store(in: &cancellables)
+        
+        viewModel.$saveModel
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .sink { [weak self] model in
+                guard let self else { return }
+                let portent = model.portent ?? ""
+                if portent == "0" {
+                    self.goAuthPageVc(stepModel: stepModel ?? recordModel(),
+                                      cardModel: cardModel ?? linesModel())
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func getListInfo() {
+        if let cardModel = cardModel {
+            let parameters = ["despondency": cardModel.whimseys ?? ""]
+            viewModel.listInfo(parameters: parameters)
+        }
+        
+    }
+    
+}
+
+extension PersonalViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.modelArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let model = self.modelArray[indexPath.row]
+        
+        let cellType: CellType
+        
+        if model.belief == "wickednessb" {
+            cellType = .text
+        }else {
+            cellType = .click
+        }
+        
+        let cell = SureListViewCell(style: .default,
+                                    reuseIdentifier: "SureListViewCell_\(cellType.rawValue)",
+                                    type: cellType)
+        cell.listModel = model
+        
+        if cellType == .text {
+            
+            cell.textChangeBlock = { text in
+                model.led = text
+                model.aware = text
+            }
+            
+        }else {
+            
+            cell.tapBlock = { [weak self] text in
+                guard let self = self else { return }
+                self.view.endEditing(true)
+                
+                let popView = AppSheetSelectView(frame: self.view.bounds)
+                
+                popView.nameStr = model.vowed ?? ""
+                
+                let modelArray = model.write ?? []
+                
+                popView.modelArray = modelArray
+                
+                for (index, model) in modelArray.enumerated() {
+                    if model.jest == text {
+                        popView.selectedIndex = IndexPath(row: index, section: 0)
+                    }
+                }
+                
+                let alertVc = TYAlertController(alert: popView, preferredStyle: .actionSheet)
+                
+                self.present(alertVc!, animated: true)
+                
+                popView.cancelChanged = { [weak self] in
+                    self?.dismiss(animated: true)
+                }
+                
+                popView.onDateChanged = { [weak self] writeModel in
+                    guard let self else { return }
+                    self.dismiss(animated: true)
+                    cell.nameFiled.text = writeModel.jest ?? ""
+                    model.led = writeModel.led ?? ""
+                    model.aware = writeModel.jest ?? ""
+                }
+                
+            }
+            
+        }
+        
+        return cell
         
     }
     

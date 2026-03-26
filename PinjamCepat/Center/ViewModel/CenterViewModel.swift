@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 
-class CenterViewModel {
+class CenterViewModel: ObservableObject {
     
     @Published var model: BaseModel?
     

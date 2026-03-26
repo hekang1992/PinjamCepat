@@ -63,6 +63,9 @@
 		73F6A3CB2F74F58800A7ABD2 /* PopIDAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F6A3CA2F74F57800A7ABD2 /* PopIDAuthView.swift */; };
 		73F6A3CD2F74F7FF00A7ABD2 /* SureListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F6A3CC2F74F7FF00A7ABD2 /* SureListViewCell.swift */; };
 		73F6A3CF2F75086400A7ABD2 /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F6A3CE2F75086400A7ABD2 /* PersonalViewController.swift */; };
+		73F6A3D12F750EB300A7ABD2 /* PersonalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F6A3D02F750EAB00A7ABD2 /* PersonalViewModel.swift */; };
+		73F6A3D32F750EBE00A7ABD2 /* PersonalSerVice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F6A3D22F750EB700A7ABD2 /* PersonalSerVice.swift */; };
+		73F6A3D52F751BC700A7ABD2 /* AppSheetSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F6A3D42F751BC700A7ABD2 /* AppSheetSelectView.swift */; };
 		73FB533A2F74C127000169D3 /* FaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FB53392F74C11F000169D3 /* FaceViewModel.swift */; };
 		73FB533C2F74C135000169D3 /* FaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FB533B2F74C12F000169D3 /* FaceService.swift */; };
 		73FB533E2F74C48C000169D3 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FB533D2F74C48C000169D3 /* CameraManager.swift */; };
@@ -129,6 +132,9 @@
 		73F6A3CA2F74F57800A7ABD2 /* PopIDAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopIDAuthView.swift; sourceTree = "<group>"; };
 		73F6A3CC2F74F7FF00A7ABD2 /* SureListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SureListViewCell.swift; sourceTree = "<group>"; };
 		73F6A3CE2F75086400A7ABD2 /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
+		73F6A3D02F750EAB00A7ABD2 /* PersonalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewModel.swift; sourceTree = "<group>"; };
+		73F6A3D22F750EB700A7ABD2 /* PersonalSerVice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalSerVice.swift; sourceTree = "<group>"; };
+		73F6A3D42F751BC700A7ABD2 /* AppSheetSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSheetSelectView.swift; sourceTree = "<group>"; };
 		73FB53392F74C11F000169D3 /* FaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceViewModel.swift; sourceTree = "<group>"; };
 		73FB533B2F74C12F000169D3 /* FaceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceService.swift; sourceTree = "<group>"; };
 		73FB533D2F74C48C000169D3 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
@@ -307,7 +313,10 @@
 		73CC6BA12F73E7F1002C7CD7 /* Personal */ = {
 			isa = PBXGroup;
 			children = (
+				73F6A3D22F750EB700A7ABD2 /* PersonalSerVice.swift */,
+				73F6A3D02F750EAB00A7ABD2 /* PersonalViewModel.swift */,
 				73F6A3CE2F75086400A7ABD2 /* PersonalViewController.swift */,
+				73F6A3D42F751BC700A7ABD2 /* AppSheetSelectView.swift */,
 			);
 			path = Personal;
 			sourceTree = "<group>";
@@ -608,6 +617,7 @@
 				73ED69942F72530F0096AE72 /* HomeViewController.swift in Sources */,
 				7362DFE62F73747900D50737 /* ProductViewController.swift in Sources */,
 				73ED69852F7229CF0096AE72 /* BaseNavigationController.swift in Sources */,
+				73F6A3D52F751BC700A7ABD2 /* AppSheetSelectView.swift in Sources */,
 				7315F83E2F7220FC00C6DE2E /* AppDelegate.swift in Sources */,
 				73F6A3CB2F74F58800A7ABD2 /* PopIDAuthView.swift in Sources */,
 				73F6A3C92F74D8D900A7ABD2 /* TimeSelectView.swift in Sources */,
@@ -625,6 +635,7 @@
 				7362DFF52F73821300D50737 /* HomeService.swift in Sources */,
 				736CA1B92F72E63400FDB0EB /* AppHeadView.swift in Sources */,
 				73FB533C2F74C135000169D3 /* FaceService.swift in Sources */,
+				73F6A3D32F750EBE00A7ABD2 /* PersonalSerVice.swift in Sources */,
 				73ED69812F7229A90096AE72 /* BaseViewController.swift in Sources */,
 				73ED69832F7229C00096AE72 /* BaseTabBarController.swift in Sources */,
 				736CA1BB2F72E70200FDB0EB /* H5WebViewController.swift in Sources */,
@@ -642,6 +653,7 @@
 				7362DFEC2F7381D600D50737 /* EnView.swift in Sources */,
 				73F6A3CD2F74F7FF00A7ABD2 /* SureListViewCell.swift in Sources */,
 				73ED69B72F72781B0096AE72 /* LanguageManager.swift in Sources */,
+				73F6A3D12F750EB300A7ABD2 /* PersonalViewModel.swift in Sources */,
 				73ED69A02F7258850096AE72 /* AppNetworkConfig.swift in Sources */,
 				73ED69B12F7263E30096AE72 /* ToastManager.swift in Sources */,
 				7362DFF72F73876F00D50737 /* EndCardView.swift in Sources */,

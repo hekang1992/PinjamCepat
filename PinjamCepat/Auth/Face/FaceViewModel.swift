@@ -8,7 +8,7 @@
 import Combine
 import Foundation
 
-class FaceViewModel {
+class FaceViewModel: ObservableObject {
     
     @Published var model: BaseModel?
     

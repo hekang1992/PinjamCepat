@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class LoginViewModel {
+class LoginViewModel: ObservableObject {
     
     @Published var codeModel: BaseModel?
     

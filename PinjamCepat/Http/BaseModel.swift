@@ -42,6 +42,7 @@ class glovesModel: Codable {
     var yielded: yieldedModel?
     var intimacy: Int?
     var peculiar: [peculiarModel]?
+    var favourite: [favouriteModel]?
 }
 
 class stealModel: Codable {
@@ -97,4 +98,36 @@ class peculiarModel: Codable {
     var guardianship: String?
     var commonwealth: String?
     var portent: String?
+}
+
+class favouriteModel: Codable {
+    var vowed: String?
+    var belief: String?
+    var rendered: String?
+    var aware: String?//value
+    var led: String?//key
+    var scroll: Int?
+    var portent: String?
+    var write: [writeModel]?
+}
+
+class writeModel: Codable {
+    var jest: String?
+    var led: String?
+    
+    private enum CodingKeys: String, CodingKey {
+        case jest, led
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        jest = try? container.decode(String.self, forKey: .jest)
+        
+        if let intValue = try? container.decode(Int.self, forKey: .led) {
+            led = String(intValue)
+        } else {
+            led = try? container.decode(String.self, forKey: .led)
+        }
+    }
 }
