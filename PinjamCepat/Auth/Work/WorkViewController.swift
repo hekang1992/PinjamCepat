@@ -1,5 +1,5 @@
 //
-//  PersonalViewController.swift
+//  WorkViewController.swift
 //  PinjamCepat
 //
 //  Created by hekang on 2026/3/25.
@@ -13,9 +13,9 @@ import RxSwift
 import RxCocoa
 import TYAlertController
 
-class PersonalViewController: BaseViewController {
+class WorkViewController: BaseViewController {
     
-    private var viewModel = PersonalViewModel()
+    private var viewModel = WorkViewModel()
     
     var modelArray: [favouriteModel] = []
     
@@ -35,7 +35,7 @@ class PersonalViewController: BaseViewController {
     
     lazy var headImageView: UIImageView = {
         let headImageView = UIImageView()
-        headImageView.image = UIImage(named: "en_two_image".localized)
+        headImageView.image = UIImage(named: "en_tc_image".localized)
         return headImageView
     }()
     
@@ -126,7 +126,7 @@ class PersonalViewController: BaseViewController {
     
 }
 
-extension PersonalViewController {
+extension WorkViewController {
     
     private func bindViewModel() {
         viewModel.$model
@@ -175,7 +175,7 @@ extension PersonalViewController {
     
 }
 
-extension PersonalViewController: UITableViewDelegate, UITableViewDataSource {
+extension WorkViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.modelArray.count

@@ -104,11 +104,36 @@ class favouriteModel: Codable {
     var vowed: String?
     var belief: String?
     var rendered: String?
-    var aware: String?//value
-    var led: String?//key
+    var aware: String?
+    var led: String?
     var scroll: Int?
     var portent: String?
     var write: [writeModel]?
+    
+    private enum CodingKeys: String, CodingKey {
+        case vowed, belief, rendered, aware, led, scroll, portent, write
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        vowed = try container.decodeIfPresent(String.self, forKey: .vowed)
+        belief = try container.decodeIfPresent(String.self, forKey: .belief)
+        rendered = try container.decodeIfPresent(String.self, forKey: .rendered)
+        aware = try container.decodeIfPresent(String.self, forKey: .aware)
+        scroll = try container.decodeIfPresent(Int.self, forKey: .scroll)
+        portent = try container.decodeIfPresent(String.self, forKey: .portent)
+        write = try container.decodeIfPresent([writeModel].self, forKey: .write)
+        
+        if let stringValue = try? container.decodeIfPresent(String.self, forKey: .led) {
+            led = stringValue
+        } else if let intValue = try? container.decodeIfPresent(Int.self, forKey: .led) {
+            led = String(intValue)
+        } else {
+            led = nil
+        }
+    }
+    
 }
 
 class writeModel: Codable {

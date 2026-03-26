@@ -111,7 +111,10 @@ extension BaseViewController {
             self.navigationController?.pushViewController(listVc, animated: true)
             
         case "noc":
-            break
+            let listVc = WorkViewController()
+            listVc.stepModel = stepModel
+            listVc.cardModel = cardModel
+            self.navigationController?.pushViewController(listVc, animated: true)
             
         case "nod":
             break
