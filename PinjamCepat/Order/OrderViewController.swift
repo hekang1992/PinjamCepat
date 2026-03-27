@@ -140,7 +140,7 @@ class OrderViewController: BaseViewController {
         
         oneBtn.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.left.equalToSuperview().offset(13)
+            make.left.equalToSuperview().offset(15.pix())
             if LanguageManager.shared.getCurrentLanguage() == .indonesian {
                 make.size.equalTo(CGSize(width: 65.pix(), height: 37.pix()))
             }else {
@@ -150,7 +150,7 @@ class OrderViewController: BaseViewController {
         
         twoBtn.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.left.equalTo(oneBtn.snp.right).offset(13)
+            make.left.equalTo(oneBtn.snp.right).offset(15.pix())
             if LanguageManager.shared.getCurrentLanguage() == .indonesian {
                 make.size.equalTo(CGSize(width: 105.pix(), height: 37.pix()))
             }else {
@@ -160,7 +160,7 @@ class OrderViewController: BaseViewController {
         
         threeBtn.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.left.equalTo(twoBtn.snp.right).offset(13)
+            make.left.equalTo(twoBtn.snp.right).offset(15.pix())
             if LanguageManager.shared.getCurrentLanguage() == .indonesian {
                 make.size.equalTo(CGSize(width: 97.pix(), height: 37.pix()))
             }else {
@@ -170,7 +170,7 @@ class OrderViewController: BaseViewController {
         
         fourBtn.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.left.equalTo(threeBtn.snp.right).offset(13)
+            make.left.equalTo(threeBtn.snp.right).offset(15.pix())
             make.right.equalToSuperview().offset(-15.pix())
             if LanguageManager.shared.getCurrentLanguage() == .indonesian {
                 make.size.equalTo(CGSize(width: 58.pix(), height: 37.pix()))

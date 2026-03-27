@@ -48,7 +48,7 @@ class OrderListEmptyView: BaseView {
     private var buttonSize: CGSize {
         let isIndonesian = LanguageManager.shared.getCurrentLanguage() == .indonesian
         let width = isIndonesian ? 261 : 209
-        return CGSize(width: width.pix(), height: 224.pix())
+        return CGSize(width: width.pix(), height: 226.pix())
     }
     
     private func bindEvents() {

@@ -44,6 +44,8 @@
 		739AE7072F7637DB0076543E /* OrderListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739AE7062F7637DB0076543E /* OrderListViewCell.swift */; };
 		739AE7092F764CA30076543E /* OrderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739AE7082F764CA30076543E /* OrderListView.swift */; };
 		739AE70B2F7650CB0076543E /* HomeErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739AE70A2F7650CB0076543E /* HomeErrorView.swift */; };
+		739AE70D2F7653C90076543E /* HomeCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739AE70C2F7653C90076543E /* HomeCardViewCell.swift */; };
+		739AE70F2F7653E80076543E /* HomeProductListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739AE70E2F7653E80076543E /* HomeProductListViewCell.swift */; };
 		73C5A1F52F7436F1007A963B /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5A1F42F7436F1007A963B /* CompleteViewController.swift */; };
 		73ED69812F7229A90096AE72 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED69802F7229A90096AE72 /* BaseViewController.swift */; };
 		73ED69832F7229C00096AE72 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED69822F7229C00096AE72 /* BaseTabBarController.swift */; };
@@ -129,6 +131,8 @@
 		739AE7062F7637DB0076543E /* OrderListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListViewCell.swift; sourceTree = "<group>"; };
 		739AE7082F764CA30076543E /* OrderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListView.swift; sourceTree = "<group>"; };
 		739AE70A2F7650CB0076543E /* HomeErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeErrorView.swift; sourceTree = "<group>"; };
+		739AE70C2F7653C90076543E /* HomeCardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCardViewCell.swift; sourceTree = "<group>"; };
+		739AE70E2F7653E80076543E /* HomeProductListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProductListViewCell.swift; sourceTree = "<group>"; };
 		73C5A1F42F7436F1007A963B /* CompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewController.swift; sourceTree = "<group>"; };
 		73ED69802F7229A90096AE72 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		73ED69822F7229C00096AE72 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
@@ -261,6 +265,8 @@
 				7362DFED2F7381E400D50737 /* EndView.swift */,
 				7362DFF62F73876F00D50737 /* EndCardView.swift */,
 				739AE70A2F7650CB0076543E /* HomeErrorView.swift */,
+				739AE70C2F7653C90076543E /* HomeCardViewCell.swift */,
+				739AE70E2F7653E80076543E /* HomeProductListViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -667,10 +673,12 @@
 				736CA1B02F72DBB000FDB0EB /* CenterViewModel.swift in Sources */,
 				73F39FD52F73AF52004B0C78 /* ProductView.swift in Sources */,
 				73ED69942F72530F0096AE72 /* HomeViewController.swift in Sources */,
+				739AE70F2F7653E80076543E /* HomeProductListViewCell.swift in Sources */,
 				7362DFE62F73747900D50737 /* ProductViewController.swift in Sources */,
 				73ED69852F7229CF0096AE72 /* BaseNavigationController.swift in Sources */,
 				7352E1082F752D690006B053 /* BankSerVice.swift in Sources */,
 				7352E1092F752D690006B053 /* BankViewModel.swift in Sources */,
+				739AE70D2F7653C90076543E /* HomeCardViewCell.swift in Sources */,
 				7352E10A2F752D690006B053 /* BankViewController.swift in Sources */,
 				73F6A3D52F751BC700A7ABD2 /* AppSheetSelectView.swift in Sources */,
 				73F6A3DA2F7524AA00A7ABD2 /* WorkViewModel.swift in Sources */,

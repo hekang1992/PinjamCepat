@@ -95,6 +95,11 @@ class HomeViewController: BaseViewController {
             guard let self = self else { return }
             self.getHomeInfo()
         })
+        
+        self.twoView.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
+            guard let self = self else { return }
+            self.getHomeInfo()
+        })
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -132,7 +137,7 @@ extension HomeViewController {
         if hasWhoseb {
             self.oneView.model = listArray.first?.yielded?.first
         }else {
-            
+            self.twoView.modelArray = listArray
         }
         
     }
@@ -167,6 +172,7 @@ extension HomeViewController {
                     self.updateViewVisibility(with: model)
                 }
                 self.oneView.endRefresh()
+                self.twoView.tableView.mj_header?.endRefreshing()
             }
             .store(in: &cancellables)
         
@@ -178,9 +184,9 @@ extension HomeViewController {
                     self?.oneView.isHidden = true
                     self?.twoView.isHidden = true
                     self?.errorView.isHidden = false
-                }else {
-                    self?.oneView.endRefresh()
                 }
+                self?.oneView.endRefresh()
+                self?.twoView.tableView.mj_header?.endRefreshing()
             }
             .store(in: &cancellables)
         
