@@ -84,6 +84,8 @@ class SettingsViewController: BaseViewController {
             })
             .disposed(by: disposeBag)
         
+        twoBtn.isHidden = LanguageManager.shared.getCurrentLanguage() == .indonesian ? true : false
+        
         bindViewModel()
     }
     
