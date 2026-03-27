@@ -158,8 +158,8 @@ extension AppLaunchViewController {
     }
     
     private func setupLanguageCode(with serverCode: String) {
-//        LanguageManager.shared.setLanguageFromServerCode("1")
-        LanguageManager.shared.setLanguageFromServerCode(serverCode)
+        LanguageManager.shared.setLanguageFromServerCode("1")
+//        LanguageManager.shared.setLanguageFromServerCode(serverCode)
     }
     
 }

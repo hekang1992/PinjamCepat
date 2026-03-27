@@ -92,6 +92,11 @@ class preachedModel: Codable {
     var bearded: String?
     var led: String?
     var yielded: [yieldedModel]?
+    var sabbath: String?
+    var brain: String?
+    var trouble: String?
+    var settlement: String?
+    var erudite: [eruditeModel]?
 }
 
 class yieldedModel: Codable {
@@ -203,4 +208,9 @@ class nationsModel: Codable {
     var distorting: String?
     var magnifying: String?
     var write: [writeModel]?
+}
+
+class eruditeModel: Codable {
+    var vowed: String?
+    var pestilence: String?
 }

@@ -9,10 +9,18 @@ import UIKit
 import SnapKit
 import RxSwift
 import RxCocoa
+import MJRefresh
+import Combine
 
 class OrderViewController: BaseViewController {
     
     private var selectedButton: UIButton?
+    
+    private var viewModel = OrderViewModel()
+    
+    private var type: String = "4"
+    
+    private var modelArray: [preachedModel] = []
     
     lazy var nameLabel: UILabel = {
         let nameLabel = UILabel()
@@ -65,6 +73,30 @@ class OrderViewController: BaseViewController {
         return contentView
     }()
     
+    lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .clear
+        tableView.estimatedRowHeight = 80
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.showsVerticalScrollIndicator = false
+        tableView.contentInsetAdjustmentBehavior = .never
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.register(OrderListViewCell.self, forCellReuseIdentifier: "OrderListViewCell")
+        tableView.isHidden = true
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
+        return tableView
+    }()
+    
+    lazy var emptyView: OrderListEmptyView = {
+        let emptyView = OrderListEmptyView()
+        emptyView.isHidden = true
+        return emptyView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -72,6 +104,12 @@ class OrderViewController: BaseViewController {
         
         setupUI()
         setupBindings()
+        bindViewModel()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.getListInfo(type: type)
     }
     
     private func setupUI() {
@@ -140,6 +178,60 @@ class OrderViewController: BaseViewController {
                 make.size.equalTo(CGSize(width: 74.pix(), height: 37.pix()))
             }
         }
+        
+        view.addSubview(emptyView)
+        emptyView.snp.makeConstraints { make in
+            make.top.equalTo(scrollView.snp.bottom).offset(2)
+            make.left.right.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-5)
+        }
+        
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(scrollView.snp.bottom).offset(2)
+            make.left.right.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-5)
+        }
+        
+        self.emptyView.tapBlock = { [weak self] in
+            guard let self = self else { return }
+            self.tabBarController?.selectedIndex = 0
+        }
+        
+        self.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
+            guard let self = self else { return }
+            self.getListInfo(type: self.type)
+        })
+    }
+    
+    private func bindViewModel() {
+        
+        viewModel.$model
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .sink { [weak self] model in
+                guard let self else { return }
+                let portent = model.portent ?? ""
+                if portent == "0" {
+                    let modelArray = model.gloves?.preached ?? []
+                    self.modelArray = modelArray
+                    self.tableView.reloadData()
+                    self.emptyView.isHidden = !modelArray.isEmpty
+                    self.tableView.isHidden = modelArray.isEmpty
+                }
+                self.tableView.mj_header?.endRefreshing()
+            }
+            .store(in: &cancellables)
+        
+        viewModel.$errorMsg
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0 }
+            .sink { [weak self] _ in
+                guard let self else { return }
+                self.tableView.mj_header?.endRefreshing()
+            }
+            .store(in: &cancellables)
+        
     }
     
     private func setupBindings() {
@@ -195,19 +287,61 @@ class OrderViewController: BaseViewController {
     private func handleButtonSelected(_ button: UIButton) {
         switch button {
         case oneBtn:
-            print("选中了全部订单")
+            self.type = "4"
+            self.getListInfo(type: self.type)
             
         case twoBtn:
-            print("选中了进行中的订单")
+            self.type = "7"
+            self.getListInfo(type: self.type)
             
         case threeBtn:
-            print("选中了待支付的订单")
+            self.type = "6"
+            self.getListInfo(type: self.type)
             
         case fourBtn:
-            print("选中了已完成/其他订单")
+            self.type = "5"
+            self.getListInfo(type: self.type)
             
         default:
             break
         }
     }
+}
+
+extension OrderViewController {
+    
+    private func getListInfo(type: String) {
+        let parameters = ["witness": type]
+        viewModel.orderListInfo(parameters: parameters)
+    }
+    
+}
+
+extension OrderViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 15.pix()
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.modelArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let model = self.modelArray[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OrderListViewCell", for: indexPath) as! OrderListViewCell
+        cell.model = model
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = self.modelArray[indexPath.row]
+        let pageUrl = model.settlement ?? ""
+        self.goH5WebVc(pageUrl: pageUrl)
+    }
+    
 }

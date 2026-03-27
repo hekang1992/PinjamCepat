@@ -170,7 +170,7 @@ class LoginView: BaseView {
         oneImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(oneLabel.snp.bottom).offset(12)
-            make.size.equalTo(CGSize(width: 309, height: 46))
+            make.size.equalTo(CGSize(width: 309.pix(), height: 46.pix()))
         }
         
         numLabel.snp.makeConstraints { make in
@@ -202,7 +202,7 @@ class LoginView: BaseView {
         twoImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(twoLabel.snp.bottom).offset(12)
-            make.size.equalTo(CGSize(width: 309, height: 46))
+            make.size.equalTo(CGSize(width: 309.pix(), height: 46.pix()))
         }
         
         codeBtn.snp.makeConstraints { make in
