@@ -202,6 +202,10 @@ extension CompleteViewController {
                         oneListView.twoLabel.text = userModel.blind ?? ""
                         twoListView.twoLabel.text = userModel.forefathers ?? ""
                         threeListView.twoLabel.text = userModel.betokening ?? ""
+                        
+                        oneListView.twoLabel.font = UIFont.systemFont(ofSize: 13, weight: .bold)
+                        twoListView.twoLabel.font = UIFont.systemFont(ofSize: 13, weight: .bold)
+                        threeListView.twoLabel.font = UIFont.systemFont(ofSize: 13, weight: .bold)
                     }
                 }
                 self.scrollView.mj_header?.endRefreshing()

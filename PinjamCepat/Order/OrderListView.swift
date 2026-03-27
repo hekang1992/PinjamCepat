@@ -49,6 +49,7 @@ class OrderListView: BaseView {
             make.centerY.equalToSuperview()
             make.right.equalToSuperview().offset(-15)
             make.height.equalTo(20)
+            make.left.equalTo(oneLabel.snp.right).offset(5)
         }
     }
     
