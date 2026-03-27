@@ -31,6 +31,12 @@ class HomeViewController: BaseViewController {
         return twoView
     }()
     
+    private lazy var errorView: HomeErrorView = {
+        let errorView = HomeErrorView(frame: .zero)
+        errorView.isHidden = true
+        return errorView
+    }()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,12 +53,17 @@ class HomeViewController: BaseViewController {
     private func setupUI() {
         view.addSubview(oneView)
         view.addSubview(twoView)
+        view.addSubview(errorView)
         
         oneView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
         
         twoView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        errorView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
         
@@ -73,6 +84,11 @@ class HomeViewController: BaseViewController {
             }
             let pageUrl = UserDefaults.standard.string(forKey: "loan_url") ?? ""
             self.goH5WebVc(pageUrl: pageUrl)
+        }
+        
+        self.errorView.tapBlock = { [weak self] in
+            guard let self = self else { return }
+            self.getHomeInfo()
         }
         
         self.oneView.scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
@@ -106,6 +122,8 @@ extension HomeViewController {
         oneView.isHidden = !hasWhoseb
         
         twoView.isHidden = hasWhoseb
+        
+        errorView.isHidden = true
         
         if let index = listArray.firstIndex(where: { $0.led == "whosea" }) {
             listArray.remove(at: index)
@@ -156,7 +174,13 @@ extension HomeViewController {
             .receive(on: DispatchQueue.main)
             .compactMap { $0 }
             .sink { [weak self] _ in
-                self?.oneView.endRefresh()
+                if UIDevice.current.model == "iPad" {
+                    self?.oneView.isHidden = true
+                    self?.twoView.isHidden = true
+                    self?.errorView.isHidden = false
+                }else {
+                    self?.oneView.endRefresh()
+                }
             }
             .store(in: &cancellables)
         

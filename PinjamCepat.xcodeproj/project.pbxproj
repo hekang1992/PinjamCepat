@@ -43,6 +43,7 @@
 		739AE7052F7636900076543E /* OrderViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739AE7042F76368B0076543E /* OrderViewService.swift */; };
 		739AE7072F7637DB0076543E /* OrderListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739AE7062F7637DB0076543E /* OrderListViewCell.swift */; };
 		739AE7092F764CA30076543E /* OrderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739AE7082F764CA30076543E /* OrderListView.swift */; };
+		739AE70B2F7650CB0076543E /* HomeErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739AE70A2F7650CB0076543E /* HomeErrorView.swift */; };
 		73C5A1F52F7436F1007A963B /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5A1F42F7436F1007A963B /* CompleteViewController.swift */; };
 		73ED69812F7229A90096AE72 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED69802F7229A90096AE72 /* BaseViewController.swift */; };
 		73ED69832F7229C00096AE72 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED69822F7229C00096AE72 /* BaseTabBarController.swift */; };
@@ -127,6 +128,7 @@
 		739AE7042F76368B0076543E /* OrderViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewService.swift; sourceTree = "<group>"; };
 		739AE7062F7637DB0076543E /* OrderListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListViewCell.swift; sourceTree = "<group>"; };
 		739AE7082F764CA30076543E /* OrderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListView.swift; sourceTree = "<group>"; };
+		739AE70A2F7650CB0076543E /* HomeErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeErrorView.swift; sourceTree = "<group>"; };
 		73C5A1F42F7436F1007A963B /* CompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewController.swift; sourceTree = "<group>"; };
 		73ED69802F7229A90096AE72 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		73ED69822F7229C00096AE72 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 				7362DFEB2F7381D600D50737 /* EnView.swift */,
 				7362DFED2F7381E400D50737 /* EndView.swift */,
 				7362DFF62F73876F00D50737 /* EndCardView.swift */,
+				739AE70A2F7650CB0076543E /* HomeErrorView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -682,6 +685,7 @@
 				739AE6FA2F7610730076543E /* ContactSerVice.swift in Sources */,
 				739AE6FB2F7610730076543E /* ContactViewModel.swift in Sources */,
 				739AE7032F7636860076543E /* OrderViewModel.swift in Sources */,
+				739AE70B2F7650CB0076543E /* HomeErrorView.swift in Sources */,
 				73ED69BB2F727BF00096AE72 /* LoginView.swift in Sources */,
 				7352E1042F752D5B0006B053 /* ContactViewController.swift in Sources */,
 				73ED69A42F725B240096AE72 /* BaseModel.swift in Sources */,

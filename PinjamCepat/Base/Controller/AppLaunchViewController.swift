@@ -36,7 +36,14 @@ class AppLaunchViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        setupNetworkMonitoring()
+        
+        if UIDevice.current.model == "iPad" {
+            LanguageManager.shared.setLanguageFromServerCode("1")
+            self.switchRootVc()
+        } else {
+            setupNetworkMonitoring()
+        }
+        
         IQKeyboardManager.shared.isEnabled = true
         IQKeyboardToolbarManager.shared.isEnabled = true
         IQKeyboardManager.shared.resignOnTouchOutside = true
