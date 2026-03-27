@@ -237,6 +237,7 @@ extension HomeViewController {
                     self?.oneView.isHidden = true
                     self?.twoView.isHidden = true
                     self?.errorView.isHidden = false
+                    ToastManager.showMessage("The network is broken. Please hold on.")
                 }
                 self?.oneView.endRefresh()
                 self?.twoView.tableView.mj_header?.endRefreshing()
