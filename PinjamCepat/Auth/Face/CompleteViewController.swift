@@ -70,7 +70,7 @@ class CompleteViewController: BaseViewController {
     lazy var oneListView: OrderListView = {
         let oneListView = OrderListView()
         oneListView.oneLabel.text = "Full name:".localized
-        oneListView.bgView.backgroundColor = .white
+        oneListView.bgView.backgroundColor = .white        
         return oneListView
     }()
     
@@ -153,17 +153,17 @@ class CompleteViewController: BaseViewController {
         oneListView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(53.pix())
             make.centerX.equalToSuperview()
-            make.size.equalTo(CGSize(width: 311.pix(), height: 36.pix()))
+            make.size.equalTo(CGSize(width: 311.pix(), height: 40.pix()))
         }
         twoListView.snp.makeConstraints { make in
             make.top.equalTo(oneListView.snp.bottom).offset(14.pix())
             make.centerX.equalToSuperview()
-            make.size.equalTo(CGSize(width: 311.pix(), height: 36.pix()))
+            make.size.equalTo(CGSize(width: 311.pix(), height: 40.pix()))
         }
         threeListView.snp.makeConstraints { make in
             make.top.equalTo(twoListView.snp.bottom).offset(14.pix())
             make.centerX.equalToSuperview()
-            make.size.equalTo(CGSize(width: 311.pix(), height: 36.pix()))
+            make.size.equalTo(CGSize(width: 311.pix(), height: 40.pix()))
         }
         
         nextBtn
@@ -202,10 +202,9 @@ extension CompleteViewController {
                         oneListView.twoLabel.text = userModel.blind ?? ""
                         twoListView.twoLabel.text = userModel.forefathers ?? ""
                         threeListView.twoLabel.text = userModel.betokening ?? ""
-                        
-                        oneListView.twoLabel.font = UIFont.systemFont(ofSize: 13, weight: .bold)
-                        twoListView.twoLabel.font = UIFont.systemFont(ofSize: 13, weight: .bold)
-                        threeListView.twoLabel.font = UIFont.systemFont(ofSize: 13, weight: .bold)
+                        oneListView.twoLabel.font = UIFont.systemFont(ofSize: 12, weight: .bold)
+                        twoListView.twoLabel.font = UIFont.systemFont(ofSize: 12, weight: .bold)
+                        threeListView.twoLabel.font = UIFont.systemFont(ofSize: 12, weight: .bold)
                     }
                 }
                 self.scrollView.mj_header?.endRefreshing()

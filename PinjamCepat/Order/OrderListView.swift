@@ -28,6 +28,7 @@ class OrderListView: BaseView {
     lazy var twoLabel: UILabel = {
         let twoLabel = UILabel()
         twoLabel.textAlignment = .right
+        twoLabel.numberOfLines = 2
         return twoLabel
     }()
     
@@ -48,7 +49,6 @@ class OrderListView: BaseView {
         twoLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.right.equalToSuperview().offset(-15)
-            make.height.equalTo(20)
             make.left.equalTo(oneLabel.snp.right).offset(5)
         }
     }
