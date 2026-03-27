@@ -223,14 +223,18 @@ extension ContactViewController: UITableViewDelegate, UITableViewDataSource {
                 let phone = result["thank"] ?? ""
                 let name = result["jest"] ?? ""
                 if phone.isEmpty || name.isEmpty {
-                    ToastManager.showMessage("")
+                    ToastManager.showMessage("Nama atau nomor telepon tidak boleh kosong, silakan pilih kembali")
                     return
                 }
+                cell.twoFiled.text = "\(name)\("-")\(phone)"
+                model.jest = name
+                model.afterthought = phone
             }
             ContactManager.shared.requestPermission { granted in
                 if granted {
-                    let list = ContactManager.shared.fetchAllContacts()
-                    print("list===\(list)")
+                    ContactManager.shared.fetchAllContacts { list in
+                        print("list-====：", list)
+                    }
                 }
             }
         }

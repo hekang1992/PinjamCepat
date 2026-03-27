@@ -138,6 +138,7 @@ extension ContactManager: CNContactPickerDelegate {
         let fullName = "\(given) \(family)".trimmingCharacters(in: .whitespaces)
         
         guard let phone = contact.phoneNumbers.first?.value.stringValue else {
+            ToastManager.showMessage("Nama atau nomor telepon tidak boleh kosong, silakan pilih kembali")
             return
         }
         

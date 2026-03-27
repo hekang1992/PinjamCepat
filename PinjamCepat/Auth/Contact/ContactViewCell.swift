@@ -29,11 +29,16 @@ class ContactViewCell: UITableViewCell {
             
             let destiny = model.destiny ?? ""
             let modelArray = model.write ?? []
-
+            
             if let matchedModel = modelArray.first(where: { $0.led == destiny }) {
                 oneFiled.text = matchedModel.jest ?? ""
             }
             
+            if let name = model.jest, !name.isEmpty,
+               let phone = model.afterthought, !phone.isEmpty {
+                twoFiled.text = "\(name)-\(phone)"
+            }
+
         }
     }
     
