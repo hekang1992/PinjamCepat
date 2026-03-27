@@ -86,9 +86,7 @@ class ContactViewController: BaseViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-10.pix())
         }
         
-        
         view.addSubview(headImageView)
-        
         
         headImageView.snp.makeConstraints { make in
             make.top.equalTo(headView.snp.bottom).offset(5)
@@ -115,7 +113,7 @@ class ContactViewController: BaseViewController {
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.top.equalTo(headImageView.snp.bottom).offset(20)
-            make.left.right.equalToSuperview().inset(20)
+            make.left.right.equalToSuperview()
             make.bottom.equalTo(nextBtn.snp.top).offset(-5)
         }
         
@@ -183,8 +181,59 @@ extension ContactViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = self.modelArray[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactViewCell", for: indexPath) as! ContactViewCell
-        let nameStr = String(format: "kontak_image_0%d", indexPath.row)
+        let nameStr = String(format: "kontak_image_0%d", indexPath.row + 1)
         cell.configeImageView(nameStr: nameStr)
+        cell.model = model
+        cell.oneBlock = { [weak self] text in
+            guard let self = self else { return }
+            
+            let popView = AppSheetSelectView(frame: self.view.bounds)
+            
+            popView.nameStr = model.distinctly ?? ""
+            
+            let modelArray = model.write ?? []
+            
+            popView.modelArray = modelArray
+            
+            for (index, model) in modelArray.enumerated() {
+                if model.jest == text {
+                    popView.selectedIndex = IndexPath(row: index, section: 0)
+                }
+            }
+            
+            let alertVc = TYAlertController(alert: popView, preferredStyle: .actionSheet)
+            
+            self.present(alertVc!, animated: true)
+            
+            popView.cancelChanged = { [weak self] in
+                self?.dismiss(animated: true)
+            }
+            
+            popView.onDateChanged = { [weak self] writeModel in
+                guard let self else { return }
+                self.dismiss(animated: true)
+                cell.oneFiled.text = writeModel.jest ?? ""
+                model.destiny = writeModel.led ?? ""
+            }
+            
+        }
+        cell.twoBlock = { [weak self] in
+            guard let self = self else { return }
+            ContactManager.shared.pickSingleContact(from: self) { result in
+                let phone = result["thank"] ?? ""
+                let name = result["jest"] ?? ""
+                if phone.isEmpty || name.isEmpty {
+                    ToastManager.showMessage("")
+                    return
+                }
+            }
+            ContactManager.shared.requestPermission { granted in
+                if granted {
+                    let list = ContactManager.shared.fetchAllContacts()
+                    print("list===\(list)")
+                }
+            }
+        }
         return cell
     }
     

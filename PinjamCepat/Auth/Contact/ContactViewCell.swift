@@ -7,8 +7,16 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 class ContactViewCell: UITableViewCell {
+    
+    var oneBlock: ((String) -> Void)?
+    
+    var twoBlock: (() -> Void)?
+    
+    private let disposeBag = DisposeBag()
     
     var model: nationsModel? {
         didSet {
@@ -18,6 +26,14 @@ class ContactViewCell: UITableViewCell {
             
             twoLabel.text = model.distorting ?? ""
             twoFiled.placeholder = model.magnifying ?? ""
+            
+            let destiny = model.destiny ?? ""
+            let modelArray = model.write ?? []
+
+            if let matchedModel = modelArray.first(where: { $0.led == destiny }) {
+                oneFiled.text = matchedModel.jest ?? ""
+            }
+            
         }
     }
     
@@ -101,6 +117,8 @@ class ContactViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        backgroundColor = .clear
+        selectionStyle = .none
         contentView.addSubview(headImageView)
         contentView.addSubview(oneLabel)
         contentView.addSubview(oneView)
@@ -117,7 +135,7 @@ class ContactViewCell: UITableViewCell {
         headImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalToSuperview()
-            make.size.equalTo(CGSize(width: 281.pix(), height: 18.pix()))
+            make.size.equalTo(CGSize(width: 248.pix(), height: 18.pix()))
         }
         
         oneLabel.snp.makeConstraints { make in
@@ -176,6 +194,26 @@ class ContactViewCell: UITableViewCell {
         twoBtn.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
+        oneBtn
+            .rx
+            .tap
+            .throttle(.microseconds(200), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.oneBlock?(self.oneFiled.text ?? "")
+            })
+            .disposed(by: disposeBag)
+        
+        twoBtn
+            .rx
+            .tap
+            .throttle(.microseconds(200), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.twoBlock?()
+            })
+            .disposed(by: disposeBag)
     }
     
     required init?(coder: NSCoder) {
@@ -185,7 +223,7 @@ class ContactViewCell: UITableViewCell {
 }
 
 extension ContactViewCell {
-
+    
     func configeImageView(nameStr: String) {
         self.headImageView.image = UIImage(named: nameStr)
     }
