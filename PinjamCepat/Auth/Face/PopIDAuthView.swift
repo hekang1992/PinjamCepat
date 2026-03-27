@@ -62,6 +62,7 @@ class PopIDAuthView: BaseView {
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.rowHeight = UITableView.automaticDimension
         tableView.register(SureListViewCell.self, forCellReuseIdentifier: "SureListViewCell")
+        tableView.isScrollEnabled = false
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
         }
@@ -108,7 +109,7 @@ class PopIDAuthView: BaseView {
         
         bgImageView.addSubview(tableView)
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(descLabel.snp.bottom).offset(34.pix())
+            make.top.equalTo(descLabel.snp.bottom).offset(30.pix())
             make.left.right.equalToSuperview().inset(20)
             make.bottom.equalTo(nextBtn.snp.top).offset(-5.pix())
         }

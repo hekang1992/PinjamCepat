@@ -14,7 +14,7 @@ final class NetworkEnvManager {
     private init() {}
     
     func getSystemLanguage() -> String {
-        return Locale.preferredLanguages.first ?? ""
+        return Locale.current.identifier
     }
     
     func isUsingProxy() -> Int {

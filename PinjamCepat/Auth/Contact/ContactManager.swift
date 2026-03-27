@@ -48,9 +48,9 @@ class ContactManager: NSObject {
             preferredStyle: .alert
         )
         
-        alert.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel))
+        alert.addAction(UIAlertAction(title: "Cancel".localized, style: .default))
         
-        alert.addAction(UIAlertAction(title: "Go to Settings".localized, style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: "Go to Settings".localized, style: .cancel, handler: { _ in
             if let url = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(url)
             }

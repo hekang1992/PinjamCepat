@@ -105,7 +105,11 @@ extension ProductView: UITableViewDelegate, UITableViewDataSource {
         descImageView.snp.makeConstraints { make in
             make.top.equalTo(headImageView.snp.bottom).offset(20.pix())
             make.centerX.equalToSuperview()
-            make.size.equalTo(CGSize(width: 258.pix(), height: 18.pix()))
+            if LanguageManager.shared.getCurrentLanguage() == .indonesian {
+                make.size.equalTo(CGSize(width: 230.pix(), height: 18.pix()))
+            }else {
+                make.size.equalTo(CGSize(width: 258.pix(), height: 18.pix()))
+            }
         }
         
         let logoImageView = UIImageView()

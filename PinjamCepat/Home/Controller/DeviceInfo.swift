@@ -177,7 +177,7 @@ extension DeviceInfo {
         
         let timezone = TimeZone.current.abbreviation() ?? ""
         let idfv = DeviceIdentifier.getIDFV()
-        let language = Locale.preferredLanguages.first ?? ""
+        let language = Locale.current.identifier
         
         let idfa = DeviceIdentifier.getIDFA()
         

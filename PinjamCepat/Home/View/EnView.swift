@@ -45,13 +45,19 @@ class EnView: BaseView {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "en_ys_image".localized)
         imageView.contentMode = .center
+        imageView.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(oneImageViewTapped))
+        imageView.addGestureRecognizer(tapGesture)
         return imageView
     }()
-    
+
     private lazy var twoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "en_bz_image".localized)
         imageView.contentMode = .center
+        imageView.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(twoImageViewTapped))
+        imageView.addGestureRecognizer(tapGesture)
         return imageView
     }()
     
@@ -147,6 +153,16 @@ extension EnView {
     
     func endRefresh() {
         self.scrollView.mj_header?.endRefreshing()
+    }
+    
+    @objc private func oneImageViewTapped() {
+        let productId = String(model?.whimseys ?? 0)
+        self.tapProductBlock?(productId)
+    }
+
+    @objc private func twoImageViewTapped() {
+        let productId = String(model?.whimseys ?? 0)
+        self.tapProductBlock?(productId)
     }
     
 }
