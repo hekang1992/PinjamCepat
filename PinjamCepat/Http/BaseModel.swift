@@ -110,6 +110,7 @@ class yieldedModel: Codable {
     var verily: String?
     var addressed: String?
     var discovers: String?
+    var user_info: infoModel?
 }
 
 class cherishModel: Codable {
@@ -213,4 +214,10 @@ class nationsModel: Codable {
 class eruditeModel: Codable {
     var vowed: String?
     var pestilence: String?
+}
+
+class infoModel: Codable {
+    var blind: String?
+    var forefathers: String?
+    var betokening: String?
 }

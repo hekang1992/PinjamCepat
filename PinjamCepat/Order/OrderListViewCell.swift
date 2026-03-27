@@ -80,7 +80,7 @@ class OrderListViewCell: UITableViewCell {
         }
         oneLabel.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(17)
-            make.top.equalToSuperview().offset(11.pix())
+            make.top.equalToSuperview().offset(10.pix())
             make.height.equalTo(16)
         }
         

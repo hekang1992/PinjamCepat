@@ -67,6 +67,27 @@ class CompleteViewController: BaseViewController {
         return contentView
     }()
     
+    lazy var oneListView: OrderListView = {
+        let oneListView = OrderListView()
+        oneListView.oneLabel.text = "Full name:".localized
+        oneListView.bgView.backgroundColor = .white
+        return oneListView
+    }()
+    
+    lazy var twoListView: OrderListView = {
+        let twoListView = OrderListView()
+        twoListView.oneLabel.text = "ID number:".localized
+        twoListView.bgView.backgroundColor = .white
+        return twoListView
+    }()
+    
+    lazy var threeListView: OrderListView = {
+        let threeListView = OrderListView()
+        threeListView.oneLabel.text = "Date of birth:".localized
+        threeListView.bgView.backgroundColor = .white
+        return threeListView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -125,6 +146,26 @@ class CompleteViewController: BaseViewController {
             make.bottom.equalToSuperview().offset(-20.pix())
         }
         
+        contentImageView.addSubview(oneListView)
+        contentImageView.addSubview(twoListView)
+        contentImageView.addSubview(threeListView)
+        
+        oneListView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(53.pix())
+            make.centerX.equalToSuperview()
+            make.size.equalTo(CGSize(width: 311.pix(), height: 36.pix()))
+        }
+        twoListView.snp.makeConstraints { make in
+            make.top.equalTo(oneListView.snp.bottom).offset(14.pix())
+            make.centerX.equalToSuperview()
+            make.size.equalTo(CGSize(width: 311.pix(), height: 36.pix()))
+        }
+        threeListView.snp.makeConstraints { make in
+            make.top.equalTo(twoListView.snp.bottom).offset(14.pix())
+            make.centerX.equalToSuperview()
+            make.size.equalTo(CGSize(width: 311.pix(), height: 36.pix()))
+        }
+        
         nextBtn
             .rx
             .tap
@@ -157,7 +198,11 @@ extension CompleteViewController {
                 guard let self else { return }
                 let portent = model.portent ?? ""
                 if portent == "0" {
-                    
+                    if let userModel = model.gloves?.yielded?.user_info {
+                        oneListView.twoLabel.text = userModel.blind ?? ""
+                        twoListView.twoLabel.text = userModel.forefathers ?? ""
+                        threeListView.twoLabel.text = userModel.betokening ?? ""
+                    }
                 }
                 self.scrollView.mj_header?.endRefreshing()
             }

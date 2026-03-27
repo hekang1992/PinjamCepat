@@ -12,6 +12,8 @@ class OrderListView: BaseView {
     
     lazy var bgView: UIView = {
         let bgView = UIView()
+        bgView.layer.cornerRadius = 5
+        bgView.layer.masksToBounds = true
         return bgView
     }()
 
