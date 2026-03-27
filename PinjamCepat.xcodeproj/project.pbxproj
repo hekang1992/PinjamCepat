@@ -36,6 +36,7 @@
 		736CA1BB2F72E70200FDB0EB /* H5WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736CA1BA2F72E70200FDB0EB /* H5WebViewController.swift */; };
 		739AE6FA2F7610730076543E /* ContactSerVice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739AE6F82F7610730076543E /* ContactSerVice.swift */; };
 		739AE6FB2F7610730076543E /* ContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739AE6F92F7610730076543E /* ContactViewModel.swift */; };
+		739AE6FD2F7614160076543E /* ContactViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739AE6FC2F7614160076543E /* ContactViewCell.swift */; };
 		73C5A1F52F7436F1007A963B /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5A1F42F7436F1007A963B /* CompleteViewController.swift */; };
 		73ED69812F7229A90096AE72 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED69802F7229A90096AE72 /* BaseViewController.swift */; };
 		73ED69832F7229C00096AE72 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED69822F7229C00096AE72 /* BaseTabBarController.swift */; };
@@ -113,6 +114,7 @@
 		736CA1BA2F72E70200FDB0EB /* H5WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H5WebViewController.swift; sourceTree = "<group>"; };
 		739AE6F82F7610730076543E /* ContactSerVice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactSerVice.swift; sourceTree = "<group>"; };
 		739AE6F92F7610730076543E /* ContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewModel.swift; sourceTree = "<group>"; };
+		739AE6FC2F7614160076543E /* ContactViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewCell.swift; sourceTree = "<group>"; };
 		73C5A1F42F7436F1007A963B /* CompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewController.swift; sourceTree = "<group>"; };
 		73ED69802F7229A90096AE72 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		73ED69822F7229C00096AE72 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 				739AE6F82F7610730076543E /* ContactSerVice.swift */,
 				739AE6F92F7610730076543E /* ContactViewModel.swift */,
 				7352E1032F752D5A0006B053 /* ContactViewController.swift */,
+				739AE6FC2F7614160076543E /* ContactViewCell.swift */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
@@ -699,6 +702,7 @@
 				7362DFF32F73820900D50737 /* HomeViewModel.swift in Sources */,
 				7362DFE42F73741300D50737 /* AppRouter.swift in Sources */,
 				73ED699A2F7253440096AE72 /* BaseView.swift in Sources */,
+				739AE6FD2F7614160076543E /* ContactViewCell.swift in Sources */,
 				73F39FD92F73AF6A004B0C78 /* ProductService.swift in Sources */,
 				73ED69B52F7269B70096AE72 /* DeviceParamsManager.swift in Sources */,
 				736CA1B42F72E34700FDB0EB /* CenterListView.swift in Sources */,

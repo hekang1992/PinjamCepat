@@ -17,13 +17,12 @@ class ContactViewController: BaseViewController {
     
     private var viewModel = ContactViewModel()
     
-    var modelArray: [favouriteModel] = []
+    var modelArray: [nationsModel] = []
     
     var stepModel: recordModel? {
         didSet {
             guard let stepModel = stepModel else { return }
             headView.nameLabel.text = stepModel.vowed ?? ""
-            
         }
     }
     
@@ -59,7 +58,7 @@ class ContactViewController: BaseViewController {
         tableView.showsVerticalScrollIndicator = false
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.register(SureListViewCell.self, forCellReuseIdentifier: "SureListViewCell")
+        tableView.register(ContactViewCell.self, forCellReuseIdentifier: "ContactViewCell")
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
         }
@@ -104,12 +103,12 @@ class ContactViewController: BaseViewController {
             .bind(onNext: { [weak self] in
                 guard let self = self else { return }
                 var parameters = ["despondency": cardModel?.whimseys ?? ""]
-                for model in modelArray {
-                    let key = model.portent ?? ""
-                    let value = model.led ?? ""
-                    parameters[key] = value
-                }
-                viewModel.saveListInfo(parameters: parameters)
+                //                for model in modelArray {
+                //                    let key = model.portent ?? ""
+                //                    let value = model.led ?? ""
+                //                    parameters[key] = value
+                //                }
+                //                viewModel.saveListInfo(parameters: parameters)
             })
             .disposed(by: disposeBag)
         
@@ -136,7 +135,7 @@ extension ContactViewController {
                 guard let self else { return }
                 let portent = model.portent ?? ""
                 if portent == "0" {
-                    self.modelArray = model.gloves?.favourite ?? []
+                    self.modelArray = model.gloves?.nations ?? []
                     self.tableView.reloadData()
                 }
             }
@@ -182,71 +181,11 @@ extension ContactViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let model = self.modelArray[indexPath.row]
-        
-        let cellType: CellType
-        
-        if model.belief == "wickednessb" {
-            cellType = .text
-        }else {
-            cellType = .click
-        }
-        
-        let cell = SureListViewCell(style: .default,
-                                    reuseIdentifier: "SureListViewCell_\(cellType.rawValue)",
-                                    type: cellType)
-        cell.listModel = model
-        
-        if cellType == .text {
-            
-            cell.textChangeBlock = { text in
-                model.led = text
-                model.aware = text
-            }
-            
-        }else {
-            
-            cell.tapBlock = { [weak self] text in
-                guard let self = self else { return }
-                self.view.endEditing(true)
-                
-                let popView = AppSheetSelectView(frame: self.view.bounds)
-                
-                popView.nameStr = model.vowed ?? ""
-                
-                let modelArray = model.write ?? []
-                
-                popView.modelArray = modelArray
-                
-                for (index, model) in modelArray.enumerated() {
-                    if model.jest == text {
-                        popView.selectedIndex = IndexPath(row: index, section: 0)
-                    }
-                }
-                
-                let alertVc = TYAlertController(alert: popView, preferredStyle: .actionSheet)
-                
-                self.present(alertVc!, animated: true)
-                
-                popView.cancelChanged = { [weak self] in
-                    self?.dismiss(animated: true)
-                }
-                
-                popView.onDateChanged = { [weak self] writeModel in
-                    guard let self else { return }
-                    self.dismiss(animated: true)
-                    cell.nameFiled.text = writeModel.jest ?? ""
-                    model.led = writeModel.led ?? ""
-                    model.aware = writeModel.jest ?? ""
-                }
-                
-            }
-            
-        }
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ContactViewCell", for: indexPath) as! ContactViewCell
+        let nameStr = String(format: "kontak_image_0%d", indexPath.row)
+        cell.configeImageView(nameStr: nameStr)
         return cell
-        
     }
     
 }

@@ -20,7 +20,7 @@ class ContactViewModel: ObservableObject {
         
         Task {
             do {
-                model = try await WorkSerVice.listInfo(parameters: parameters)
+                model = try await ContactSerVice.listInfo(parameters: parameters)
             } catch {
                 errorMsg = error.localizedDescription
             }
@@ -32,7 +32,7 @@ class ContactViewModel: ObservableObject {
         
         Task {
             do {
-                saveModel = try await WorkSerVice.saveListInfo(parameters: parameters)
+                saveModel = try await ContactSerVice.saveListInfo(parameters: parameters)
             } catch {
                 errorMsg = error.localizedDescription
             }
@@ -44,7 +44,7 @@ class ContactViewModel: ObservableObject {
         
         Task {
             do {
-                _ = try await WorkSerVice.uploadListInfo(parameters: parameters)
+                _ = try await ContactSerVice.uploadListInfo(parameters: parameters)
             } catch {
                 errorMsg = error.localizedDescription
             }

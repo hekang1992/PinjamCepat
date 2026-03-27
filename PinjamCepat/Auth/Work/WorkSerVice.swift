@@ -39,14 +39,4 @@ class WorkSerVice {
         return result
     }
     
-    static func uploadListInfo(parameters: [String: Any]) async throws -> BaseModel? {
-        
-        let result: BaseModel = try await NetworkManager.shared.post(
-            url: "/physicianer/brought",
-            parameters: parameters
-        )
-        
-        return result
-    }
-    
 }

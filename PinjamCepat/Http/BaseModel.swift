@@ -43,10 +43,12 @@ class glovesModel: Codable {
     var intimacy: Int?
     var peculiar: [peculiarModel]?
     var favourite: [favouriteModel]?
+    var nations: [nationsModel]?
     
     enum CodingKeys: String, CodingKey {
         case handle, steal, pure, able, ugly, preached, cherish, record,
-              contemplative, lines, yielded, intimacy, peculiar, favourite
+             contemplative, lines, yielded, intimacy, peculiar, favourite,
+             nations
     }
     
     required init(from decoder: Decoder) throws {
@@ -65,6 +67,7 @@ class glovesModel: Codable {
         intimacy = try container.decodeIfPresent(Int.self, forKey: .intimacy)
         peculiar = try container.decodeIfPresent([peculiarModel].self, forKey: .peculiar)
         favourite = try container.decodeIfPresent([favouriteModel].self, forKey: .favourite)
+        nations = try container.decodeIfPresent([nationsModel].self, forKey: .nations)
         
         if let recordObject = try? container.decode(recordModel.self, forKey: .record) {
             record = recordObject
@@ -188,4 +191,16 @@ class writeModel: Codable {
             led = try? container.decode(String.self, forKey: .led)
         }
     }
+}
+
+class nationsModel: Codable {
+    var destiny: String?
+    var jest: String?
+    var afterthought: String?
+    var vowed: String?
+    var distinctly: String?
+    var shaped: String?
+    var distorting: String?
+    var magnifying: String?
+    var write: [writeModel]?
 }
