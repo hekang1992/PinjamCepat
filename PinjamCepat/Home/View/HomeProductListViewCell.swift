@@ -46,7 +46,7 @@ class HomeProductListViewCell: UITableViewCell {
         let nameLabel = UILabel()
         nameLabel.textAlignment = .left
         nameLabel.textColor = UIColor.init(hexString: "#3A3A3A")
-        nameLabel.font = UIFont.systemFont(ofSize: 15, weight: .bold)
+        nameLabel.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
         return nameLabel
     }()
     
