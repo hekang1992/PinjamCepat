@@ -10,6 +10,8 @@ import SnapKit
 
 class EndView: BaseView {
     
+    var tapProductBlock: ((String) -> Void)?
+    
     var modelArray: [preachedModel]? {
         didSet {
             tableView.reloadData()
@@ -68,10 +70,18 @@ extension EndView: UITableViewDelegate, UITableViewDataSource {
         if type == "whosec" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCardViewCell", for: indexPath) as! HomeCardViewCell
             cell.model = listmodel
+            cell.tapProductBlock = { [weak self] productId in
+                guard let self = self else { return }
+                self.tapProductBlock?(productId)
+            }
             return cell
         }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "HomeProductListViewCell", for: indexPath) as! HomeProductListViewCell
             cell.model = listmodel
+            cell.tapProductBlock = { [weak self] productId in
+                guard let self = self else { return }
+                self.tapProductBlock?(productId)
+            }
             return cell
         }
     }

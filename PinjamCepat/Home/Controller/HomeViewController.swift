@@ -67,13 +67,13 @@ class HomeViewController: BaseViewController {
             make.edges.equalToSuperview()
         }
         
-        oneView.tapProductBlock = { [weak self] producuId in
+        oneView.tapProductBlock = { [weak self] productId in
             guard let self = self else { return }
             guard LoginManager.shared.isLoggedIn() else {
                 self.toLoginVc()
                 return
             }
-            self.clickProductInfo(productId: producuId)
+            self.clickProductInfo(productId: productId)
         }
         
         oneView.policyBlock = { [weak self] in
@@ -89,6 +89,15 @@ class HomeViewController: BaseViewController {
         self.errorView.tapBlock = { [weak self] in
             guard let self = self else { return }
             self.getHomeInfo()
+        }
+        
+        self.twoView.tapProductBlock = { [weak self] productId in
+            guard let self = self else { return }
+            guard LoginManager.shared.isLoggedIn() else {
+                self.toLoginVc()
+                return
+            }
+            self.clickProductInfo(productId: productId)
         }
         
         self.oneView.scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in

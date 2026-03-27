@@ -8,8 +8,14 @@
 import UIKit
 import SnapKit
 import Kingfisher
+import RxSwift
+import RxCocoa
 
 class HomeProductListViewCell: UITableViewCell {
+    
+    var tapProductBlock: ((String) -> Void)?
+    
+    private var disposeBag = DisposeBag()
 
     var model: yieldedModel? {
         didSet {
@@ -80,6 +86,11 @@ class HomeProductListViewCell: UITableViewCell {
         return twoLabel
     }()
     
+    lazy var tapBtn: UIButton = {
+        let tapBtn = UIButton(type: .custom)
+        return tapBtn
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = .clear
@@ -91,6 +102,7 @@ class HomeProductListViewCell: UITableViewCell {
         appImageView.addSubview(appLabel)
         bgView.addSubview(oneLabel)
         bgView.addSubview(twoLabel)
+        contentView.addSubview(tapBtn)
         bgView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalToSuperview()
@@ -129,6 +141,19 @@ class HomeProductListViewCell: UITableViewCell {
             make.top.equalTo(oneLabel.snp.bottom).offset(2.pix())
             make.height.equalTo(24)
         }
+        tapBtn.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        tapBtn
+            .rx
+            .tap
+            .throttle(.microseconds(200), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] in
+                guard let self = self, let productID = self.model?.whimseys else { return }
+                self.tapProductBlock?(String(productID))
+            })
+            .disposed(by: disposeBag)
     }
     
     required init?(coder: NSCoder) {
