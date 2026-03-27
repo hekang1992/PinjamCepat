@@ -87,9 +87,7 @@ class WorkViewController: BaseViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-10.pix())
         }
         
-        
         view.addSubview(headImageView)
-        
         
         headImageView.snp.makeConstraints { make in
             make.top.equalTo(headView.snp.bottom).offset(5)
@@ -105,8 +103,14 @@ class WorkViewController: BaseViewController {
                 guard let self = self else { return }
                 var parameters = ["despondency": cardModel?.whimseys ?? ""]
                 for model in modelArray {
+                    let type = model.belief ?? ""
                     let key = model.portent ?? ""
-                    let value = model.led ?? ""
+                    var value: String
+                    if type == "wickednessb" {
+                        value = model.aware ?? ""
+                    }else {
+                        value = model.led ?? ""
+                    }
                     parameters[key] = value
                 }
                 viewModel.saveListInfo(parameters: parameters)

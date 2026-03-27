@@ -129,7 +129,10 @@ extension BaseViewController {
             self.navigationController?.pushViewController(listVc, animated: true)
             
         case "nod":
-            break
+            let listVc = ContactViewController()
+            listVc.stepModel = stepModel
+            listVc.cardModel = cardModel
+            self.navigationController?.pushViewController(listVc, animated: true)
             
         case "noe":
             let listVc = BankViewController()

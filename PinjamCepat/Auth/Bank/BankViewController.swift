@@ -105,12 +105,13 @@ class BankViewController: BaseViewController {
                 guard let self = self else { return }
                 var parameters = ["despondency": cardModel?.whimseys ?? ""]
                 for model in modelArray {
+                    let type = model.belief ?? ""
                     let key = model.portent ?? ""
                     var value: String
-                    if LanguageManager.shared.getCurrentLanguage() == .indonesian {
-                        value = model.led ?? ""
-                    }else {
+                    if type == "wickednessb" {
                         value = model.aware ?? ""
+                    }else {
+                        value = model.led ?? ""
                     }
                     parameters[key] = value
                 }

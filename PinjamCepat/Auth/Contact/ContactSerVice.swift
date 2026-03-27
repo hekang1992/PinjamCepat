@@ -1,11 +1,11 @@
 //
-//  WorkSerVice.swift
+//  ContactSerVice.swift
 //  PinjamCepat
 //
 //  Created by hekang on 2026/3/26.
 //
 
-class WorkSerVice {
+class ContactSerVice {
     
     static func listInfo(parameters: [String: Any]) async throws -> BaseModel? {
         
@@ -16,7 +16,7 @@ class WorkSerVice {
         }
         
         let result: BaseModel = try await NetworkManager.shared.post(
-            url: "/physicianer/pure",
+            url: "/physicianer/blind",
             parameters: parameters
         )
         
@@ -32,17 +32,7 @@ class WorkSerVice {
         }
         
         let result: BaseModel = try await NetworkManager.shared.post(
-            url: "/physicianer/foolish",
-            parameters: parameters
-        )
-        
-        return result
-    }
-    
-    static func uploadListInfo(parameters: [String: Any]) async throws -> BaseModel? {
-        
-        let result: BaseModel = try await NetworkManager.shared.post(
-            url: "/physicianer/brought",
+            url: "/physicianer/reverence",
             parameters: parameters
         )
         
