@@ -66,6 +66,8 @@ class PhotoIdViewController: BaseViewController {
         return contentView
     }()
     
+    var entertime: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -160,6 +162,10 @@ class PhotoIdViewController: BaseViewController {
         getDetailInfo()
         
         bindViewModel()
+        
+        locationManager.startLocation { _ in }
+        
+        entertime = String(Int(Date().timeIntervalSince1970))
     }
     
 }
@@ -167,9 +173,13 @@ class PhotoIdViewController: BaseViewController {
 extension PhotoIdViewController {
     
     private func goFaceVc() {
-        let faceVc = FaceViewController()
-        faceVc.photoModel = photoModel
-        self.navigationController?.pushViewController(faceVc, animated: true)
+        self.appTcInfo()
+        Task {
+            try await Task.sleep(nanoseconds: 250_000_000)
+            let faceVc = FaceViewController()
+            faceVc.photoModel = photoModel
+            self.navigationController?.pushViewController(faceVc, animated: true)
+        }
     }
     
     private func bindViewModel() {
@@ -274,6 +284,10 @@ extension PhotoIdViewController {
             let parameters = ["led": "11", "strictness": "1"]
             viewModel.uploadRearInfo(parameters: parameters, imageData: data)
         }
+    }
+    
+    private func appTcInfo() {
+        self.trackAppInfo(step: "2", entertime: entertime, orderID: "")
     }
     
 }

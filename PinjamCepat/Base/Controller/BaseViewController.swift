@@ -17,6 +17,8 @@ class BaseViewController: UIViewController {
     
     var cancellables = Set<AnyCancellable>()
     
+    let locationManager = CustomLocationManager()
+    
     private var productViewModel = ProductViewModel()
     
     lazy var headView: AppHeadView = {
@@ -45,18 +47,6 @@ class BaseViewController: UIViewController {
                     let cardModel = model.gloves?.lines ?? linesModel()
                     let stepModel = model.gloves?.record ?? recordModel()
                     self?.goAuthPageVc(stepModel: stepModel, cardModel: cardModel)
-                }
-            }
-            .store(in: &cancellables)
-        
-        productViewModel.$orderModel
-            .receive(on: DispatchQueue.main)
-            .compactMap { $0 }
-            .sink { [weak self] model in
-                let portent = model.portent ?? ""
-                if portent == "0" {
-                    let pageUrl = model.gloves?.ugly ?? ""
-                    self?.goH5WebVc(pageUrl: pageUrl)
                 }
             }
             .store(in: &cancellables)
@@ -105,8 +95,11 @@ extension BaseViewController {
 extension BaseViewController {
     
     func toProductDetailInfo(cardModel: linesModel) {
-        let parameters = ["despondency": cardModel.whimseys ?? ""]
-        productViewModel.getProductDetailInfo(parameters: parameters)
+        Task {
+            try await Task.sleep(nanoseconds: 250_000_000)
+            let parameters = ["despondency": cardModel.whimseys ?? ""]
+            productViewModel.getProductDetailInfo(parameters: parameters)
+        }
     }
     
     func goAuthPageVc(stepModel: recordModel, cardModel: linesModel) {
@@ -141,6 +134,22 @@ extension BaseViewController {
             self.navigationController?.pushViewController(listVc, animated: true)
             
         case "":
+            locationManager.startLocation { _ in }
+            productViewModel.$orderModel
+                .receive(on: DispatchQueue.main)
+                .compactMap { $0 }
+                .sink { [weak self] model in
+                    let portent = model.portent ?? ""
+                    if portent == "0" {
+                        self?.trackAppInfo(step: "8",
+                                           entertime: String(Int(Date().timeIntervalSince1970)),
+                                           orderID: cardModel.fitting ?? "")
+                        let pageUrl = model.gloves?.ugly ?? ""
+                        self?.goH5WebVc(pageUrl: pageUrl)
+                    }
+                }
+                .store(in: &cancellables)
+            
             let parameters = ["fitting": cardModel.fitting ?? ""]
             productViewModel.orderIDInfo(parameters: parameters)
             
@@ -149,4 +158,13 @@ extension BaseViewController {
         }
         
     }
+}
+
+extension BaseViewController {
+    
+    func trackAppInfo(step: String, entertime: String, orderID: String) {
+        let parameters = ["clasped": step, "wore": entertime, "witchcraft": orderID]
+        productViewModel.trackInfo(parameters: parameters)
+    }
+    
 }

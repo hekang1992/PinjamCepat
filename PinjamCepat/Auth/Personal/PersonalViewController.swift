@@ -15,6 +15,8 @@ import TYAlertController
 
 class PersonalViewController: BaseViewController {
     
+    private var entertime: String = ""
+    
     private var viewModel = PersonalViewModel()
     
     var modelArray: [favouriteModel] = []
@@ -127,7 +129,12 @@ class PersonalViewController: BaseViewController {
         }
         
         bindViewModel()
+        
         getListInfo()
+        
+        entertime = String(Int(Date().timeIntervalSince1970))
+        
+        locationManager.startLocation { _ in }
     }
     
 }
@@ -163,6 +170,7 @@ extension PersonalViewController {
                 guard let self else { return }
                 let portent = model.portent ?? ""
                 if portent == "0" {
+                    self.trackAppInfo(step: "4", entertime: entertime, orderID: "")
                     self.toProductDetailInfo(cardModel: cardModel ?? linesModel())
                 }else {
                     ToastManager.showMessage(model.henceforward ?? "")

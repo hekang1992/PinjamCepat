@@ -2,14 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>fdafahgsfsggfadadfasdfadfdafahgsfsggfadadfasdfadfdafahgsfsggfadadfasdfadfdafahgsfsggfadadfasdfad fdafahgsfsggfadadfasdfadfdafahgsfsggfadadfasdfadfdafahgsfsggfadadfasdfadfdafahgsfsggfadadfasdfad fdafahgsfsggfadadfasdfadfdafahgsfsggfadadfasdfadfdafahgsfsggfadadfasdfadfdafahgsfsggfadadfasdfad</string>
-	<key>NSContactsUsageDescription</key>
-	<string>fdafda</string>
-	<key>NSUserTrackingUsageDescription</key>
-	<string>fdafad</string>
-	<key>NSCameraUsageDescription</key>
-	<string>fdafads</string>
 	<key>FacebookAdvertiserIDCollectionEnabled</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>

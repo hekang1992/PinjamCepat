@@ -12,12 +12,13 @@ import RxCocoa
 import Combine
 import MJRefresh
 import AppTrackingTransparency
+import CoreLocation
 
 class HomeViewController: BaseViewController {
     
     // MARK: - Properties
     private var viewModel = HomeViewModel()
-    
+        
     // MARK: - UI Components
     private lazy var oneView: EnView = {
         let oneView = EnView(frame: .zero)
@@ -42,6 +43,20 @@ class HomeViewController: BaseViewController {
         super.viewDidLoad()
         setupUI()
         bindViewModel()
+        requestIDFADelayed()
+        
+        guard LoginManager.shared.isLoggedIn(),
+              LanguageManager.shared.getCurrentLanguage() == .indonesian else {
+            return
+        }
+        
+        let locationManager = CLLocationManager()
+        
+        let status = locationManager.authorizationStatus
+        
+        if status == .denied || status == .restricted {
+            showPermissionAlert()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -111,17 +126,13 @@ class HomeViewController: BaseViewController {
         })
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        requestIDFADelayed()
-    }
 }
 
 // MARK: - Binding
 extension HomeViewController {
     
     func requestIDFADelayed() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             ATTrackingManager.requestTrackingAuthorization { _ in }
         }
     }
@@ -156,6 +167,39 @@ extension HomeViewController {
     
     private func getHomeInfo() {
         viewModel.homeInfo()
+        self.uploadDataForIndonesianUser()
+    }
+    
+    private func uploadDataForIndonesianUser() {
+        guard LoginManager.shared.isLoggedIn(),
+              LanguageManager.shared.getCurrentLanguage() == .indonesian else {
+            return
+        }
+        
+        uploadLocationInfo()
+        uploadDeviceInfo()
+    }
+    
+    private func uploadLocationInfo() {
+        locationManager.startLocation { [weak self] result in
+            guard let self = self, !result.isEmpty else { return }
+            viewModel.uploadLocationInfo(parameters: result)
+        }
+    }
+    
+    private func uploadDeviceInfo() {
+        DeviceInfo.getAllInfo { [weak self] dict in
+            guard let self = self else { return }
+            
+            guard let jsonData = try? JSONSerialization.data(withJSONObject: dict, options: []),
+                  let jsonString = String(data: jsonData, encoding: .utf8) else {
+                print("Failed to serialize device info")
+                return
+            }
+            
+            let parameters = ["gloves": jsonString]
+            viewModel.uploadAppInfo(parameters: parameters)
+        }
     }
     
     private func clickProductInfo(productId: String) {
@@ -218,4 +262,35 @@ extension HomeViewController {
             .store(in: &cancellables)
         
     }
+}
+
+extension HomeViewController {
+    
+    private func showPermissionAlert() {
+        let lastShownDate = UserDefaults.standard.object(forKey: "LastPermissionAlertShownDate") as? Date
+        let isTodayShown = lastShownDate.map { Calendar.current.isDateInToday($0) } ?? false
+        
+        if isTodayShown {
+            return
+        }
+        
+        let alert = UIAlertController(
+            title: "Permission Required".localized,
+            message: "Location permission is disabled. Please enable it in Settings to allow your loan application to be processed.".localized,
+            preferredStyle: .alert
+        )
+        
+        alert.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel))
+        
+        alert.addAction(UIAlertAction(title: "Go to Settings".localized, style: .default, handler: { _ in
+            if let url = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(url)
+            }
+        }))
+        
+        self.present(alert, animated: true)
+        
+        UserDefaults.standard.set(Date(), forKey: "LastPermissionAlertShownDate")
+    }
+    
 }

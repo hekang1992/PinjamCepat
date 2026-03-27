@@ -19,6 +19,8 @@ class BankViewController: BaseViewController {
     
     var modelArray: [favouriteModel] = []
     
+    private var entertime: String = ""
+    
     var stepModel: recordModel? {
         didSet {
             guard let stepModel = stepModel else { return }
@@ -127,7 +129,12 @@ class BankViewController: BaseViewController {
         }
         
         bindViewModel()
+        
         getListInfo()
+        
+        entertime = String(Int(Date().timeIntervalSince1970))
+        
+        locationManager.startLocation { _ in }
     }
     
 }
@@ -163,6 +170,7 @@ extension BankViewController {
                 guard let self else { return }
                 let portent = model.portent ?? ""
                 if portent == "0" {
+                    self.trackAppInfo(step: "7", entertime: entertime, orderID: "")
                     self.toProductDetailInfo(cardModel: cardModel ?? linesModel())
                 }else {
                     ToastManager.showMessage(model.henceforward ?? "")

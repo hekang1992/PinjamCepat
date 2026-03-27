@@ -17,6 +17,8 @@ class FaceViewController: BaseViewController {
     
     private var viewModel = FaceViewModel()
     
+    private var entertime: String = ""
+    
     var photoModel: BaseModel? {
         didSet {
             guard let photoModel = photoModel else { return }
@@ -160,6 +162,10 @@ class FaceViewController: BaseViewController {
         getDetailInfo()
         
         bindViewModel()
+        
+        locationManager.startLocation { _ in }
+        
+        entertime = String(Int(Date().timeIntervalSince1970))
     }
     
 }
@@ -196,6 +202,7 @@ extension FaceViewController {
                 guard let self else { return }
                 let portent = model.portent ?? ""
                 if portent == "0" {
+                    self.appTcInfo()
                     self.toProductDetailInfo(cardModel: photoModel?.gloves?.lines ?? linesModel())
                 }else {
                     ToastManager.showMessage(model.henceforward ?? "")
@@ -221,6 +228,10 @@ extension FaceViewController {
             let parameters = ["led": "10", "strictness": "1"]
             viewModel.uploadRearInfo(parameters: parameters, imageData: data)
         }
+    }
+    
+    private func appTcInfo() {
+        self.trackAppInfo(step: "3", entertime: entertime, orderID: "")
     }
     
 }

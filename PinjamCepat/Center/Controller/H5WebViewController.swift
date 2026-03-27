@@ -141,7 +141,12 @@ extension H5WebViewController {
     }
     
     @objc func LargerShe(pageUrl: String) {
-        
+        if pageUrl.contains("ios://Pinj.amCe.pat") {
+            AppRouter.open(pageUrl, from: self)
+        }else if pageUrl.hasPrefix("http") {
+            self.pageUrl = pageUrl
+            self.loadPage()
+        }
     }
     
     @objc func SheHad() {
@@ -149,14 +154,24 @@ extension H5WebViewController {
     }
     
     @objc func ItShe() {
-        guard #available(iOS 14.0, *),
-              let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
-            return
+        
+        Task {
+            try await Task.sleep(nanoseconds: 200_000_000)
+            guard #available(iOS 14.0, *),
+                  let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
+                return
+            }
+            SKStoreReviewController.requestReview(in: windowScene)
         }
-        SKStoreReviewController.requestReview(in: windowScene)
+        
+        
     }
     
     @objc func HeartTo() {
-        
+        locationManager.startLocation { _ in }
+        Task {
+            try await Task.sleep(nanoseconds: 3_000_000_000)
+            self.trackAppInfo(step: "9", entertime: String(Int(Date().timeIntervalSince1970)), orderID: "")
+        }
     }
 }

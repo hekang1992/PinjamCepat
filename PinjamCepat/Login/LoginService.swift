@@ -5,6 +5,8 @@
 //  Created by hekang on 2026/3/24.
 //
 
+import Foundation
+
 class LoginService {
     
     static func codeInfo(parameters: [String: Any]) async throws -> BaseModel? {

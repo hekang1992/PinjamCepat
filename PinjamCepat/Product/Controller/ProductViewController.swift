@@ -64,6 +64,8 @@ class ProductViewController: BaseViewController {
             }
         }
         
+        locationManager.startLocation { _ in }
+        
         bindViewModel()
     }
     

@@ -8,15 +8,13 @@
 import Foundation
 import CoreLocation
 
-typealias LocationCallback = ([String: String]) -> Void
+typealias LocationCallback = ([String: Any]) -> Void
 
 class CustomLocationManager: NSObject, CLLocationManagerDelegate {
     
     private let manager = CLLocationManager()
     
     private var callback: LocationCallback?
-    
-    private var hasCallback = false
     
     override init() {
         super.init()
@@ -26,7 +24,22 @@ class CustomLocationManager: NSObject, CLLocationManagerDelegate {
     
     func startLocation(callback: @escaping LocationCallback) {
         self.callback = callback
-        self.hasCallback = false
+        
+        let status = manager.authorizationStatus
+        switch status {
+        case .notDetermined:
+            manager.requestWhenInUseAuthorization()
+            
+        case .authorizedWhenInUse, .authorizedAlways:
+            manager.startUpdatingLocation()
+            
+        case .denied, .restricted:
+            safeCallback([:])
+            
+        @unknown default:
+            safeCallback([:])
+        }
+        
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
@@ -39,7 +52,7 @@ class CustomLocationManager: NSObject, CLLocationManagerDelegate {
             safeCallback([:])
             
         case .notDetermined:
-            manager.requestWhenInUseAuthorization()
+            break
             
         @unknown default:
             safeCallback([:])
@@ -54,11 +67,15 @@ class CustomLocationManager: NSObject, CLLocationManagerDelegate {
         
         manager.stopUpdatingLocation()
         
-        let latitude = String(location.coordinate.latitude)
+        let latitude = location.coordinate.latitude
         
-        let longitude = String(location.coordinate.longitude)
+        let longitude = location.coordinate.longitude
         
         print("latitude----\(latitude), longitude----\(longitude)")
+        
+        UserDefaults.standard.setValue(formatCoordinate(latitude), forKey: "app_latitude")
+        UserDefaults.standard.setValue(formatCoordinate(longitude), forKey: "app_longitude")
+        UserDefaults.standard.synchronize()
         
         reverseGeocode(location: location, lat: latitude, lon: longitude)
     }
@@ -68,7 +85,7 @@ class CustomLocationManager: NSObject, CLLocationManagerDelegate {
         safeCallback([:])
     }
     
-    private func reverseGeocode(location: CLLocation, lat: String, lon: String) {
+    private func reverseGeocode(location: CLLocation, lat: Double, lon: Double) {
         let geocoder = CLGeocoder()
         
         geocoder.reverseGeocodeLocation(location) { [weak self] placemarks, error in
@@ -79,13 +96,13 @@ class CustomLocationManager: NSObject, CLLocationManagerDelegate {
                 return
             }
             
-            let result: [String: String] = [
+            let result: [String: Any] = [
                 "spear": place.administrativeArea ?? "",
                 "blazing": place.isoCountryCode ?? "",
                 "source": place.country ?? "",
                 "supernatural": place.name ?? "",
-                "revelations": lat,
-                "moon": lon,
+                "revelations": formatCoordinate(lat),
+                "moon": formatCoordinate(lon),
                 "set": place.locality ?? "",
                 "regularity": place.subLocality ?? ""
             ]
@@ -94,7 +111,7 @@ class CustomLocationManager: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    private func safeCallback(_ result: [String: String]) {
+    private func safeCallback(_ result: [String: Any]) {
         DispatchQueue.main.async {
             self.callback?(result)
         }

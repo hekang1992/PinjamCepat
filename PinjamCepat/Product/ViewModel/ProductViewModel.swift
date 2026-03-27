@@ -54,4 +54,16 @@ class ProductViewModel: ObservableObject {
         
     }
     
+    func trackInfo(parameters: [String: String]) {
+        
+        Task {
+            do {
+                _ = try await ProductService.trackInfo(parameters: parameters)
+            } catch {
+                _ = error.localizedDescription
+            }
+        }
+        
+    }
+    
 }

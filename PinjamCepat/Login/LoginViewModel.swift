@@ -16,7 +16,6 @@ class LoginViewModel: ObservableObject {
     
     @Published var errorMsg: String?
     
-    
     func codeInfo(parameters: [String: Any]) {
         
         Task {

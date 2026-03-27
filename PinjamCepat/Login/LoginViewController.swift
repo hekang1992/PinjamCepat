@@ -18,8 +18,8 @@ class LoginViewController: BaseViewController {
     private var remainingSeconds: Int = 0
     
     private var viewModel = LoginViewModel()
-    
-    let locationManager = CustomLocationManager()
+        
+    private var entertime: String = ""
     
     lazy var loginView: LoginView = {
         let loginView = LoginView()
@@ -57,6 +57,7 @@ class LoginViewController: BaseViewController {
                 ToastManager.showMessage("Enter phone number".localized)
                 return
             }
+            entertime = String(Int(Date().timeIntervalSince1970))
             self.codeInfo(phone: phone)
         }
         
@@ -81,13 +82,15 @@ class LoginViewController: BaseViewController {
         }
         
         bindViewModel()
+        
+        entertime = String(Int(Date().timeIntervalSince1970))
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.loginView.phoneFiled.becomeFirstResponder()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+        Task {
+            try await Task.sleep(nanoseconds: 1_000_000_000)
             self.locationManager.startLocation { result in
                 print("location:===\(result)")
             }
@@ -186,6 +189,7 @@ extension LoginViewController {
                     let phone = model.gloves?.pure ?? ""
                     let token = model.gloves?.able ?? ""
                     LoginManager.shared.saveLogin(phone: phone, token: token)
+                    self.trackAppInfo(step: "1", entertime: entertime, orderID: "")
                     self.switchRootVc()
                 }
                 ToastManager.showMessage(henceforward)
