@@ -13,6 +13,7 @@
 		7315F8432F7220FC00C6DE2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7315F8382F7220FC00C6DE2E /* LaunchScreen.storyboard */; };
 		73434AA22F7423BB00D99435 /* FaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73434AA12F7423BB00D99435 /* FaceViewController.swift */; };
 		73434AA42F7427A600D99435 /* PhotoIdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73434AA32F7427A600D99435 /* PhotoIdViewController.swift */; };
+		734CD1AF2F766A2F00CA4730 /* CustomLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734CD1AE2F766A2F00CA4730 /* CustomLocationManager.swift */; };
 		7352E1042F752D5B0006B053 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7352E1032F752D5A0006B053 /* ContactViewController.swift */; };
 		7352E1082F752D690006B053 /* BankSerVice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7352E1052F752D690006B053 /* BankSerVice.swift */; };
 		7352E1092F752D690006B053 /* BankViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7352E1062F752D690006B053 /* BankViewModel.swift */; };
@@ -100,6 +101,7 @@
 		7315F8452F7221CD00C6DE2E /* PinjamCepat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PinjamCepat.entitlements; sourceTree = "<group>"; };
 		73434AA12F7423BB00D99435 /* FaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceViewController.swift; sourceTree = "<group>"; };
 		73434AA32F7427A600D99435 /* PhotoIdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoIdViewController.swift; sourceTree = "<group>"; };
+		734CD1AE2F766A2F00CA4730 /* CustomLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLocationManager.swift; sourceTree = "<group>"; };
 		7352E1032F752D5A0006B053 /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		7352E1052F752D690006B053 /* BankSerVice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankSerVice.swift; sourceTree = "<group>"; };
 		7352E1062F752D690006B053 /* BankViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankViewModel.swift; sourceTree = "<group>"; };
@@ -478,6 +480,7 @@
 		73ED69922F7252D80096AE72 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				734CD1AE2F766A2F00CA4730 /* CustomLocationManager.swift */,
 				73ED69B62F72781B0096AE72 /* LanguageManager.swift */,
 				73ED69B42F7269B70096AE72 /* DeviceParamsManager.swift */,
 				73ED69B22F7268C30096AE72 /* DeviceIdentifier.swift */,
@@ -729,6 +732,7 @@
 				73ED69B72F72781B0096AE72 /* LanguageManager.swift in Sources */,
 				73F6A3D12F750EB300A7ABD2 /* PersonalViewModel.swift in Sources */,
 				73ED69A02F7258850096AE72 /* AppNetworkConfig.swift in Sources */,
+				734CD1AF2F766A2F00CA4730 /* CustomLocationManager.swift in Sources */,
 				73ED69B12F7263E30096AE72 /* ToastManager.swift in Sources */,
 				739AE7092F764CA30076543E /* OrderListView.swift in Sources */,
 				7362DFF72F73876F00D50737 /* EndCardView.swift in Sources */,

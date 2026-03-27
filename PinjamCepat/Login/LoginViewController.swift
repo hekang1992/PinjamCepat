@@ -19,6 +19,8 @@ class LoginViewController: BaseViewController {
     
     private var viewModel = LoginViewModel()
     
+    let locationManager = CustomLocationManager()
+    
     lazy var loginView: LoginView = {
         let loginView = LoginView()
         return loginView
@@ -84,6 +86,12 @@ class LoginViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.loginView.phoneFiled.becomeFirstResponder()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            self.locationManager.startLocation { result in
+                print("location:===\(result)")
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -91,6 +99,12 @@ class LoginViewController: BaseViewController {
         self.loginView.codeFiled.resignFirstResponder()
         self.loginView.phoneFiled.resignFirstResponder()
     }
+    
+    @MainActor
+    deinit {
+        print("LoginViewController====deinit====")
+    }
+    
 }
 
 extension LoginViewController {
@@ -181,9 +195,7 @@ extension LoginViewController {
         viewModel.$errorMsg
             .receive(on: DispatchQueue.main)
             .compactMap { $0 }
-            .sink { _ in
-                
-            }
+            .sink { _ in }
             .store(in: &cancellables)
     }
     
