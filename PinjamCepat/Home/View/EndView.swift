@@ -38,7 +38,8 @@ class EndView: BaseView {
         super.init(frame: frame)
         addSubview(tableView)
         tableView.snp.makeConstraints { make in
-            make.top.bottom.equalTo(safeAreaLayoutGuide)
+            make.top.equalTo(safeAreaLayoutGuide).offset(15)
+            make.bottom.equalTo(safeAreaLayoutGuide)
             make.left.right.equalToSuperview()
         }
     }
