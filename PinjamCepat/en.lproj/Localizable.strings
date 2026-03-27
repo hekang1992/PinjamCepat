@@ -63,3 +63,13 @@
 "cco_desc_en_image" = "cco_desc_en_image";
 "cco_en_image" = "cco_en_image";
 "Please select a certification item" = "Please select a certification item";
+
+"Order" = "Order";
+"en_all_sel_image" = "en_all_sel_image";
+"en_all_nor_image" = "en_all_nor_image";
+"en_pro_sel_image" = "en_pro_sel_image";
+"en_pro_nor_image" = "en_pro_nor_image";
+"en_pay_sel_image" = "en_pay_sel_image";
+"en_pay_nor_image" = "en_pay_nor_image";
+"en_fic_sel_image" = "en_fic_sel_image";
+"en_fic_nor_image" = "en_fic_nor_image";

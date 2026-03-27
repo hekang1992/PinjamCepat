@@ -58,7 +58,8 @@ class CenterView: UIView {
     lazy var phoneLabel: UILabel = {
         let phoneLabel = UILabel()
         phoneLabel.textAlignment = .center
-        phoneLabel.text = phoneNumberRegex(number: LoginManager.shared.getPhone() ?? "")
+        let phone = LoginManager.shared.getPhone() ?? ""
+        phoneLabel.text = phoneNumberRegex(number: phone)
         phoneLabel.textColor = .black
         phoneLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         return phoneLabel
