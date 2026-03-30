@@ -104,6 +104,7 @@ class HomeViewController: BaseViewController {
         self.errorView.tapBlock = { [weak self] in
             guard let self = self else { return }
             self.getHomeInfo()
+            self.requestIDFADelayed()
         }
         
         self.twoView.tapProductBlock = { [weak self] productId in
