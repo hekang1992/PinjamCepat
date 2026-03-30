@@ -168,7 +168,8 @@ extension WorkViewController {
                 let portent = model.portent ?? ""
                 if portent == "0" {
                     self.trackAppInfo(step: "5", entertime: entertime, orderID: "")
-                    self.toProductDetailInfo(cardModel: cardModel ?? linesModel())
+//                    self.toProductDetailInfo(cardModel: cardModel ?? linesModel())
+                    self.toProductVc()
                 }else {
                     ToastManager.showMessage(model.henceforward ?? "")
                 }

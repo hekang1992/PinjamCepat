@@ -172,7 +172,8 @@ class CompleteViewController: BaseViewController {
             .throttle(.milliseconds(200), scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] in
                 guard let self = self else { return }
-                self.toProductDetailInfo(cardModel: photoModel?.gloves?.lines ?? linesModel())
+                self.toProductVc()
+//                self.toProductDetailInfo(cardModel: photoModel?.gloves?.lines ?? linesModel())
             })
             .disposed(by: disposeBag)
         
