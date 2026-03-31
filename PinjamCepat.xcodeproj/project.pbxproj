@@ -537,7 +537,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7315F82F2F7220F500C6DE2E /* Build configuration list for PBXNativeTarget "PinjamCepat" */;
 			buildPhases = (
-				B3DB93324F9849C58B1DACE1 /* Compile Code Assets */,
 				EA9032987F5058CFDE56BDFA /* [CP] Check Pods Manifest.lock */,
 				7315F8182F7220F400C6DE2E /* Sources */,
 				7315F8192F7220F400C6DE2E /* Frameworks */,
@@ -621,26 +620,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PinjamCepat/Pods-PinjamCepat-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B3DB93324F9849C58B1DACE1 /* Compile Code Assets */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Compile Code Assets";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.\nsh -c \"${A1ECAD1}\"";
 			showEnvVarsInLog = 0;
 		};
 		EA9032987F5058CFDE56BDFA /* [CP] Check Pods Manifest.lock */ = {
